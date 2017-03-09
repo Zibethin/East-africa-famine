@@ -30,20 +30,16 @@ section small { color:#aaa; }
 @media (min-width:768px) {
   body {
     margin:0px;
-    padding-top:70px;
     background:#fff;
   }
   article {
-    width:60%;
+    width:50%;
     min-width:320px;
     position:relative;
-    padding-top:30px;
-    padding-bottom:50%;
     z-index:21;
   }
   section {
     padding:40px;
-    margin-left:40px;
     position:relative;
     transition:background 500ms, color 500ms;
     -moz-transition:background 500ms, color 500ms;
@@ -105,59 +101,6 @@ section small { color:#aaa; }
   position:absolute;
 }
 
-.spot-cover { display:none; }
-.spot-emergency-01 { display:none; }
-.spot-emergency-01.active { background:url(../img/marker-temp.png); }
-.spot-emergency-02 { display:none; }
-.spot-emergency-02.active { background:url(../img/marker-temp.png); }
-.spot-emergency-03 { display:none; }
-.spot-emergency-03.active { background:url(../img/marker-temp.png); }
-.spot-emergency-04 { display:none; }
-.spot-emergency-04.active { background:url(../img/marker-temp.png); }
-.spot-emergency-05 { display:none; }
-.spot-emergency-05.active { background:url(../img/marker-temp.png); }
-.spot-icrc-emergency-guiuan { display:none; }
-.spot-icrc-emergency-guiuan.active { background:url(../img/marker-temp.png); }
-.spot-icrc-emergency-homohon { display:none; }
-.spot-icrc-emergency-homohon.active { background:url(../img/marker-temp.png); }
-.spot-icrc-emergency-basey { display:none; }
-.spot-icrc-emergency-basey.active { background:url(../img/marker-temp.png); }
-.spot-icrc-emergency-balangiga { display:none; }
-.spot-icrc-emergency-balangiga.active { background:url(../img/marker-temp.png); }
-.spot-icrc-emergency-abuyog { display:none; }
-.spot-icrc-emergency-abuyog.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-guiuan { display:none; }
-.spot-icrc-recovery-guiuan.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-salcedo { display:none; }
-.spot-icrc-recovery-salcedo.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-homohon { display:none; }
-.spot-icrc-recovery-homohon.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-random { display:none; }
-.spot-icrc-recovery-random.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-marabut { display:none; }
-.spot-icrc-recovery-marabut.active { background:url(../img/marker-temp.png); }
-.spot-icrc-recovery-basey { display:none; }
-.spot-icrc-recovery-basey.active { background:url(../img/marker-temp.png); }
-.spot-livelihoods { display:none; }
-.spot-liporada { display:none; }
-.spot-liporada.active { background:url(../img/marker-temp.png); }
-.spot-martinez { display:none; }
-.spot-martinez.active { background:url(../img/marker-temp.png); }
-.spot-cabujoc { display:none; }
-.spot-cabujoc.active { background:url(../img/marker-temp.png); }
-.spot-coconutlady { display:none; }
-.spot-coconutlady.active { background:url(../img/marker-temp.png); }
-.spot-shelter { display:none; }
-.spot-sheltergallery1 { display:none; }
-.spot-sheltergallery1.active { background:url(../img/marker-temp.png); }
-.spot-palawangallery { display:none; }
-.spot-palawangallery.active { background:url(../img/marker-temp.png); }
-.spot-films { display:none; }
-.spot-manila { display:none; }
-.spot-manila.active { background:url(../img/marker-prc.png); }
-.spot-movement { display:none; }
-.spot.active { display: block; } 
-
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map { opacity:0.5; }
 }
@@ -194,6 +137,7 @@ body.section-0 #map { opacity:0.5; }
 .logos-img{
   margin: 0px auto 16px auto;
   border-radius: 5px;
+  max-height:100px;
   background: #ffffff;
 }
 

@@ -1,490 +1,165 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-
-    <title>Red Cross Red Crescent Response: Haiyan One Year On</title>
-
-    <!-- 
-    A big thank you to @younghan for the tutorial at 
-    http://alistapart.com/article/hack-your-maps 
-    this page is a leaflet version based on his code.
-    -->
+<head>
+    <title>East Africa Famine</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta property="og:type" content="Article" />
     <meta property="og:title" content="Red Cross Red Crescent Response: Haiyan One Year On" />
     <meta property="og:url" content="http://philippineredcross.github.io/haiyan-one-year/" />
     <!-- <meta property="og:image" content="URL of the image you’d like to feature" /> -->
     <meta property="og:site_name" content="Red Cross Red Crescent Response: Haiyan One Year On" />
-
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="css/ekko-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
-    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-56269073-4', 'auto');
-      ga('require', 'displayfeatures');
-      ga('send', 'pageview');
-
-    </script>
-
-  </head>
-  <body class='section-0'>
-
+</head>
+<body class='section-0'>
     <div id="myImageModal" class="modal fade">
-      <div class="modal-dialog modal-lg modal-80">
-        <div class="modal-content modal-content-img">
-          <div class="modal-body modal-body-img">
-            <button type="button" class="close close-imgModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Close</span></button>
-            <img class=" modal-img img-responsive" src="#">
-          </div>
+        <div class="modal-dialog modal-lg modal-80">
+            <div class="modal-content modal-content-img">
+                <div class="modal-body modal-body-img">
+                    <button type="button" class="close close-imgModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Close</span></button>
+                    <img class=" modal-img img-responsive" src="#">
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-
-     <!--  navbar for mobile only -->
-  <div class="navbar navbar-default navbar-fixed-top visible-xs-block" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>          
+    <!--  navbar for mobile only -->
+    <div class="navbar navbar-default navbar-fixed-top visible-xs-block" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#emergency-01"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</a></li>
+                    <li><a href="#icrc-recovery-guiuan"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Livelihood profiles<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#liporada"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Maria Liporada</a></li>
+                            <li><a href="#martinez"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Gaspar Martinez</a></li>
+                            <li><a href="#cabujoc"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Joel Cabujoc</a></li>
+                            <li><a href="#coconutlady"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#sheltergallery1"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</a></li>
+                    <li><a href="#films"><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</a></li>
+                    <li><a href="#palawangallery"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</a></li>
+                    <li><a href="#manila"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</a></li>
+                    <li><a href="#movement"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#emergency-01"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</a></li>
-            <li><a href="#icrc-recovery-guiuan"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Livelihood profiles<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#liporada"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Maria Liporada</a></li>
-                <li><a href="#martinez"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Gaspar Martinez</a></li>
-                <li><a href="#cabujoc"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Joel Cabujoc</a></li>
-                <li><a href="#coconutlady"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</a></li>
-              </ul>
-            </li>
-            <li><a href="#sheltergallery1"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</a></li>
-            <li><a href="#films"><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</a></li>
-            <li><a href="#palawangallery"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</a></li>
-            <li><a href="#manila"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</a></li>
-            <li><a href="#movement"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</a></li>
-          </ul>          
-        </div>
-      </div>
     </div>
-  </div>
-
-
-              
-              
-
-
 
 
     <div id='pane' class="hidden-xs">
-      <div id='map'></div>
-      <div class='attribution'>
-        <a href="http://leafletjs.com/" target="_blank">Leaflet</a> | <!-- <a href="https://www.mapbox.com" title="Mapbox" target="_blank">Mapbox</a> | --> Map data &copy; <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a> | <!-- Map style by <a href="http://hot.openstreetmap.org" target="_blank">H.O.T.</a> | --> &copy; <a href="https://ifrc.org/" title="IFRC" target="_blank">IFRC</a> 2014 | <a title="Disclaimer" onClick="showDisclaimer();">Disclaimer</a>
-      </div>
+        <div id='map'></div>
+        <div class='attribution'>
+        </div>
     </div>
-
 
     <article>
 
+        <section id='cover' class='cover active'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <div style="text-align:center;">
+                <div class="logos"><img class="img-responsive logos-img" src="img/BritishRedCrossLogo.jpg"></div>
+                <h1 class="header-name">East Africa Famine</h1>
+                <h2>March 2017</h2>
+                <h1 class="color-red" style="margin-top:10px; margin-bottom:20px;">The Red Cross Red Crescent Response</h1>
+            </div>
+            <p>Typhoon Haiyan struck the Philippines on 8 November 2013. It was the strongest typhoon to ever make landfall and the scale of devastation was without precedent. The storm affected 16 million people across a scattered archipelago of islands, each with their own challenges around access and infrastructure.</p>
 
-      <section id='cover' class='cover active'>        
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div style="text-align:center;">
-        <div class="logos"><img class="img-responsive logos-img" src="img/logos.png"></div> 
-        <h1 class="header-name">Typhoon Haiyan</h1>
-        <h2>One Year On</h2>
-        <h1 class="color-red" style="margin-top:10px; margin-bottom:20px;">The Red Cross Red Crescent Response</h1>  
-        </div>
-        <p>Typhoon Haiyan struck the Philippines on 8 November 2013. It was the strongest typhoon to ever make landfall and the scale of devastation was without precedent. The storm affected 16 million people across a scattered archipelago of islands, each with their own challenges around access and infrastructure.</p>  
-        
-        <p>The current recovery operation of the Red Cross and Red Crescent Movement extends across a large area of five island groups. With the help of more than 8,000 community-based volunteers, we reached 1.3 million people with emergency relief. Our goal in the recovery phase is to support 500,000 of the most vulnerable people over the next three years, with a focus on safer shelter and livelihoods. One year after the typhoon, we invite you to take a closer look at the work we have been doing, and to meet some of the people who with our support are getting back on their feet.</p>
-        <p> Select a section or scroll through and access a quick navigation menu using the '☰' menu icon at the top left corner of any section.</p>
-        
-        <div class="section-indent">
-          <a href="#emergency-01"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</h4></a>
-          <a href="#icrc-recovery-guiuan"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</h4></a>
-          <a href="#livelihoods"><h4><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Livelihood profiles</h4></a>
-          <a href="#coconutlady"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</h4></a>
-          <a href="#sheltergallery1"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</h4></a>
-          <a href="#films"><h4><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</h4></a>
-          <a href="#palawangallery"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</h4></a>
-          <a href="#manila"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</h4></a>
-          <a href="#movement"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</h4></a>
-        </div>                        
-        <small class='scroll hidden-xs'>Scroll ▼</small>
-      </section>
+            <p>The current recovery operation of the Red Cross and Red Crescent Movement extends across a large area of five island groups. With the help of more than 8,000 community-based volunteers, we reached 1.3 million people with emergency relief. Our goal in the recovery phase is to support 500,000 of the most vulnerable people over the next three years, with a focus on safer shelter and livelihoods. One year after the typhoon, we invite you to take a closer look at the work we have been doing, and to meet some of the people who with our support are getting back on their feet.</p>
+            <p> Select a section or scroll through and access a quick navigation menu using the '☰' menu icon at the top left corner of any section.</p>
 
+            <div class="section-indent">
+                <a href="#emergency-01"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</h4></a>
+                <a href="#icrc-recovery-guiuan"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</h4></a>
+                <a href="#livelihoods"><h4><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Livelihood profiles</h4></a>
+                <a href="#coconutlady"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</h4></a>
+                <a href="#sheltergallery1"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</h4></a>
+                <a href="#films"><h4><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</h4></a>
+                <a href="#palawangallery"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</h4></a>
+                <a href="#manila"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</h4></a>
+                <a href="#movement"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</h4></a>
+            </div>
+            <small class='scroll hidden-xs'>Scroll ▼</small>
+        </section>
 
 
+        <section id='nigeria'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <h2 class="header-name">Nigeria</h2>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-01_small.jpg">
+            </div>
+            <p>Essential items such as jerry cans and hygiene kits being distributed by the Philippine Red Cross in Isabel, near Ormoc in Leyte shortly after the typhoon hit.  &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-02_small.jpg">
+            </div>
+            <p> A young boy holds aloft a jerry can following a relief distribution in Isabel, Leyte. &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
+        </section>
 
 
-      <section id='emergency-01'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Emergency Phase</h2>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-01_small.jpg"></div>
-        <p>Essential items such as jerry cans and hygiene kits being distributed by the Philippine Red Cross in Isabel, near Ormoc in Leyte shortly after the typhoon hit.  &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-02_small.jpg"></div>
-        <p> A young boy holds aloft a jerry can following a relief distribution in Isabel, Leyte. &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
-      </section> 
-
-      <section id='emergency-02'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div> 
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-04_small.jpg"></div>
-        <p> A man stands among the ruins of his home near Palo, Leyte. The typhoon destroyed or badly damaged 1.14 million homes. &nbsp;<small>Photo credit: Alanah Torralba</small></p> 
-      </section> 
-
-      <section id='emergency-03'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-03_small.jpg"></div> 
-        <p>Distribution near Carles, Iloilo on Panay Island - thousands of people in northern Panay were among those who received relief. &nbsp;<small>Photo credit: Benelux Red Cross</small></p>
-      </section>
-
-        
-      <section id='emergency-04'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-05_small.jpg"></div>
-        <p>Children in Barangay 25 in Tacloban receiving psychological support from the Philippine Red Cross in the aftermath of the typhoon using art therapy. &nbsp;<small>Photo credit: Kate Marshall/IFRC</small></p>
-      </section>
-
-      <section id='emergency-05'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergencyrelief-06_small.jpg"></div>
-        <p>Philippine Red Cross tracing volunteers armed with satellite phones track down survivors on foot in Burauen, Leyte. &nbsp;<small>Photo credit: Nichola Jones/IFRC</small></p>
-      </section>
+        <section id='yemen'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <h2 class="header-name">Yemen</h2>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-04_small.jpg">
+            </div>
+            <p> A man stands among the ruins of his home near Palo, Leyte. The typhoon destroyed or badly damaged 1.14 million homes. &nbsp;<small>Photo credit: Alanah Torralba</small></p>
+        </section>
 
 
+        <section id='somalia'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <h2 class="header-name">Somalia</h2>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-04_small.jpg">
+            </div>
+            <p> A man stands among the ruins of his home near Palo, Leyte. The typhoon destroyed or badly damaged 1.14 million homes. &nbsp;<small>Photo credit: Alanah Torralba</small></p>
+        </section>
 
+        <section id='South Sudan'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <h2 class="header-name">South Sudan</h2>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-04_small.jpg">
+            </div>
+            <p> A man stands among the ruins of his home near Palo, Leyte. The typhoon destroyed or badly damaged 1.14 million homes. &nbsp;<small>Photo credit: Alanah Torralba</small></p>
+        </section>
 
-
-
-
-      <section id='icrc-emergency-guiuan'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-             
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/emergency01_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/emergency03_small.jpg"></div> 
-        <p>In Guiuan, one of the places hardest hit by Typhoon Haiyan, staff was working around the clock assessing the most pressing needs of the affected population. &nbsp;<small>Photo credit: Dennis Ramos/ICRC (left), Brecht Goris/ICRC (right)</small></p>              
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency02_small.jpg"></div>
-        <p>A mother stands with her family in their destroyed house moments before sunset in a desolate landscape of destroyed coconut trees outside the centre of Guiuan. The Philippine Red Cross is closely coordinating its relief response with the International Federation of Red Cross and Red Crescent Societies, the ICRC, and a number of National Societies of other countries, in responding to the humanitarian needs in the aftermath of Typhoon Haiyan. &nbsp;<small>Photo credit: Olivier Matthys/ICRC </small></p>
-      </section>
-
-      <section id='icrc-emergency-homohon'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency05_small.jpg"></div>
-        <p>Homohon relief distribution. &nbsp;<small>Photo credit: Brecht Goris/ICRC</small></p>
-      </section>
-
-      <section id='icrc-emergency-basey'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency04_small.jpg"></div>
-        <p>Basey relief distribution. &nbsp;<small>Photo credit: Brecht Goris/ICRC</small></p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency06_small.jpg"></div>
-        <p>Emergency hospital in Basey. &nbsp;<small>Photo credit: Brecht Goris/ICRC</small></p>
-      </section>
-
-      <section id='icrc-emergency-balangiga'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/emergency07_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/emergency08_small.jpg"></div>
-
-        <p>Basic health care unit in Balangiga and provision of clean drinking water through water trucking. &nbsp;<small>Photo credit: Brecht Goris/ICRC</small></p>
-
-   
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency09_small.jpg"></div>
-        <p>In the wake of typhoon Haiyan, the Philippine Red Cross and ICRC helped people restore contact with separated loved ones through the Restoring Family Links program. &nbsp;<small>Photo credit: Brecht Goris/ICRC</small></p>        
-      </section>
-
-      <section id='icrc-emergency-abuyog'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/emergency10_small.jpg"></div>
-        <p>Leyte Regional Prison, Abuyog, Leyte. After weeks without news, a prisoner weeps upon learning that his whole family is safe and sound in Guiuan, Eastern Samar, which was hardly hit by Typhoon Haiyan. Red Cross messages and satellite phone calls helped 120 detainees contact their relatives.</p>
-      </section>
-      
-
-
-      <section id='icrc-recovery-guiuan'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Recovery Phase</h2>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery01_small.jpg"></div>
-        <p>Construction of a model house in Guiuan, Eastern Samar. &nbsp;<small>Photo credit: ICRC</small></p>
-      </section>
-
-      <section id='icrc-recovery-salcedo'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery02_small.jpg"></div>
-        <p>Completed storm-resilient shelters in Salcedo, Eastern Samar. Up to 4,500 shelters will be built for families in eight municipalities in this area which is also affected by decades of armed conflict. &nbsp;<small>Photo credit: Gavin Macmillan/ICRC</small></p>
-      </section>
-
-      <section id='icrc-recovery-homohon'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/recovery03_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/recovery04_small.jpg"></div>
-
-        <p>Shelter kits distribution in Homonhon island and hauling of shelter materials as part of the cash-for-work activities. &nbsp;<small>Photo credit: Tim Stats/ICRC (left), Jesse Edep/ICRC (right)</small></p>
-      </section>
-
-
-      <section id='icrc-recovery-random'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery05_small.jpg"></div>
-        <p>People now have access to clean drinking water after the rehabilitation of water supply networks destroyed by Typhoon Haiyan. &nbsp;<small>Photo credit: M R Hasan/ICRC</small></p>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/recovery06a_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/recovery06b_small.jpg"></div> 
-        <p>Cash grants were provided to fisher folks which they used to buy fishing boats and gears to help them rebuild their livelihoods. &nbsp;<small>Photo credit: M R Hasan/ICRC</small></p>
-      </section>  
-        
-      <section id='icrc-recovery-marabut'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery09_small.jpg"></div>
-        <p>Newly constructed storm-resilient houses in Marabut. &nbsp;<small>Photo credit: Henry Lu/ICRC</small></p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery07_small.jpg"></div>
-        <p>A woman gave birth at the Marabut Rural Health Unit (RHU), which was repaired along with other RHUs in Eastern Samar. &nbsp;<small>Photo credit: ICRC/M R Hasan/ICRC</small></p>
-      </section>
-
-      <section id='icrc-recovery-basey'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/recovery08_small.jpg"></div>
-        <p>The Red Cross and Red Crescent Movement supported the rehabilitation of healthcare infrastructures such as Basey District Hospital. &nbsp;<small>Photo credit: Henry Lu/ICRC</small></p>        
-      </section>
-
-       
-
-      
-      <section id='livelihoods'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Livelihoods</h2>
-        <img class="pull-left" src="img/livelihoods.png">
-        <p>Restoring assets and incomes lays a solid foundation for long-term recovery of individuals and communities through livelihood support, skills training and enterprise development. The Philippine Red Cross has been supporting vulnerable people with cash grants to replace assets and restore livelihoods to pre-disaster levels. Initially, we distributed unconditional cash to more than 91,000 households to cover their immediate needs. Now we are supporting more sustainable solutions to help these families get back on their feet.</p>
-        <small class='scroll hidden-xs'>Scroll ▼</small>
-      </section>
-
-
-
-      <section id='liporada'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        
-        <div class="modalLink pull-right" style="max-width:50%;" onclick="callImageModal(this);"  >
-        <img class="modalLinkImg img-responsive img-circle" src="img/liporada-1_small.jpg"></div>
-        <h2 class="header-name">Maria</h2>
-        <p>Mother of two Maria Redubla Liporada loves to make cakes, but it was only when she received about USD 130 in livelihood support from Red Cross that she was able to realise her dream to set up a small bakery.</p>         
-        <p>Maria and her family live in a remote upland community in Leyte called Anonang, which was hard hit by Typhoon Haiyan.</p>
-        <p>The family was evacuated to higher ground before the typhoon to escape flooding from a nearby river.  When they returned, they found their house and belongings gone and most of their crops destroyed.  They had very little left to eat.</p>
-        <p>That time was tough for them all, Maria says.</p> 
-        <p>‘During that time I felt a mixture of emotions. We had lost everything, but at the same time we were thankful to survive.’</p>
-        <p>Not long after that Maria’s family and some other survivors left for Manila to seek a new life. By chance they saw an interview with the Philippine Red Cross Chairman, Richard Gordon. He explained what the Red Cross was doing to distribute relief goods to people in need. That gave Maria and her family renewed hope, and they decided to return home. Once recovery work started, they were able to qualify for Red Cross livelihood support.</p>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/liporada-2_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/liporada-3_small.jpg"></div>
-        <p>These days, Maria gets up at 3 every morning to make her kakanin (cakes) and sells enough to make about USD 10 a day. All the family savings go straight into the bank and will be used to rebuild their home and pay school fees.</p>
-        <p>‘I want to thank Red Cross for giving me the opportunity to start a new life and a new business,’ she says.</p>
-        <p>‘My message to other women is: don’t just sit at home – help your husband and together you will prosper.’</p>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/liporada-4_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/liporada-5_small.jpg"></div>
-      </section>
-
-      <section id='martinez'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <div class="modalLink pull-right" style="width:50%;" onclick="callImageModal(this);" >
-        <img class="modalLinkImg img-responsive" src="img/martinez-1_small.jpg"></div>
-
-        <div class="modalLink pull-right" style="width:50%; clear:both;" onclick="callImageModal(this);" >
-        <img class="modalLinkImg img-responsive" src="img/martinez-2_small.jpg"></div>
-        
-        <h2 class="header-name">Gaspar</h2>
-        <p>Married with four children, Gaspar Martinez is a farmer from the village (barangay) of Villa Corazon, Burauen, Leyte. Before Typhoon Haiyan, Gaspar earned about USD 18 every 40 days by selling rice, corn and root vegetables. Although he earned barely enough to meet his family’s basic needs, they were content with what they had.</p>
-        <p>Life for Gaspar and his family changed after Haiyan. Their small nipa hut (a type of stilt house common in the Philippines) was destroyed by the strong wind and their crops were ruined. They had no choice but to move into a tiny shed belonging to some other family members.</p>
-        <p>Gaspar experienced feelings of hopelessness and frustration as he tried to find ways of feeding his family. But one day he heard about household livelihood assistance from the Philippine Red Cross and thought he would apply. Gaspar and his family were selected as a beneficiary household and applied for a conditional cash grant of USD 135, which they used to start a small business buying and selling rice, vegetables and fish. Now Gaspar has no trouble providing for his family, including two children at the local high school, and is saving to rebuild the family’s small nipa hut so they can once more call it home.</p>
-        <div style="height:1px; width:100%; clear:both;"></div>
-      </section>
-
-      <section id='cabujoc'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>       
- 
-        <h2 class="header-name">Joel</h2>
-        <p>Joel Cabujoc is a young entrepreneur from Barangay Santol, San Miguel, Leyte. Before Haiyan, Joel’s family had a bamboo furniture business and was doing well, making good money selling their products in a nearby market and keeping themselves well fed. But Haiyan changed all that by destroying the business. Joel and his family succumbed to feelings of deep despair. They still struggled even though Joel found work as a farmhand, working hard to provide for the family and restore their lives.</p> 
-        <p>Joel successfully applied to the Philippine Red Cross for a livelihood support grant. With the USD 180 he received, Joel was able to revive the family business. Now the volume of orders enables him to make up to USD 56 a week. Every day, Joel harvests bamboo and buys materials at the local market. He has saved enough money to rebuild his house and pay a farm labourer to tend the family farm, paying the labourer with a sack of rice once the harvest is over. ‘We are happy and thankful,’ he says with pride.</p>
-        <img class="img-double-sm" src="img/cabujoc-1.jpg">
-        <img class="img-double-sm" src="img/cabujoc-2.jpg">
-      </section>
-
-      <section id='coconutlady'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Coconut Lady</h2>
-        <h4>Cash relief gives Irene and family new start</h4>
-        <h4>Irene Collera, Candahug, Palo, Leyte</h4>
-        <p>Irene, her husband Elmer and six young children fled for their lives when Typhoon Haiyan tore through their community and their house was destroyed. They ended up taking refuge on the Palo beachfront, along with hundreds of other people who had lost everything and had nowhere else to go.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/irene-1_small.jpg"></div>
-        <p>But a year later, thanks to the USD 110 Philippine Red Cross emergency cash relief Irene received in February, the Colleras have bounced back. Irene has become the ‘buko shack lady’, complete with billboard and a thriving small business selling fresh coconut juice.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/irene-3_small.jpg"></div>
-        <p>Irene explains that before Haiyan, many women from her community would sell sari sari (variety) goods. But very few people make a profit, because so many neighbours and friends ask for credit.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/irene-2_small.jpg"></div>
-        <p>So Irene saved 1,000 pesos for house repairs and invested the rest to buy 1,200 coconuts from a passing farmer. She repeated this every week until she had saved enough to rebuild her house, setting aside enough to cover health costs and school expenses.</p>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/irene-6_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/irene-5_small.jpg"></div> 
-        <p>Life is good, she says, because now her children get enough to eat and she’s making enough to employ two helpers and open another stall.</p>
-        <p>‘My family are very happy and hopefully my business will keep growing,’ she says with a smile.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/irene-4_small.jpg"></div>
-        </div>
-      </section>
-
-
-
-      <!-- <section id='shelter'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Shelter</h2>
-        <img class="pull-left" src="img/shelter.png">
-        
-        <small class='scroll hidden-xs'>Scroll ▼</small>
-      </section>
- -->
-
-      <section id='sheltergallery1'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Shelter - beneficiaries contribute labour to build a home</h2>
-        <img class="pull-left" src="img/shelter.png"><p>Typhoon Haiyan damaged or destroyed well over 1 million homes. In the aftermath of Typhoon Haiyan, the Philippine Red Cross provided nearly 624,000 people with emergency shelter - nearly one quarter of the total affected households. In recovery, the core shelter target is 40,000 houses. Red Cross has so far hired and trained more than 1,800 carpenters and craftsmen to construct houses, made either of indigenous materials or with a concrete base and columns, and all based on the key shelter principles of ‘build back safer’. As far as possible, beneficiaries also contribute labour - known as sweat equity - to their own building project and in return receive commodity vouchers to exchange for food and household items.</p>
-        <p>Pictured here is a PRC/IFRC shelter construction team in Tabontabon, Leyte. The team of skilled and unskilled labourers, together with the beneficiary, take 6-8 days to complete a house. They are paid at least the minimum wage – about USD 11 for tradesmen and USD 6.70 for the unskilled.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/gallery2-1_small.jpg"></div>
-        <p>Some labourers are direct beneficiaries of the construction projects and will move into the very shelter that is under construction. Beneficiaries who are able to are expected to contribute their own labour and employ labourers from the community to help build the house. This is called ‘sweat equity’. These  beneficiaries are given commodity vouchers in exchange for labour.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/gallery2-2_small.jpg"></div>
-        <p>Skilled labourers such as masons and carpenters are in high demand to build homes to IFRC's specifications. This is the inside of a 'core' shelter in an inland village in Leyte, The householder is also involved in the construction by contributing 'sweat equity' to the project.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/gallery2-3_small.jpg"></div>
-        <p>Once the shelter is finished, the occupant can move in. Homes built by IFRC south of Tacloban have a concrete 'core' and timber frame, topped with high specification CGI sheets. This is one of the earliest models and the family occupying it have added on a shaded porch area complete with concrete pillars built to the same specs as the house pillars.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/gallery2-4_small.jpg"></div>
-      </section>
-
-      <section id='films'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2>Films</h2>
-        <p><a href="https://www.youtube.com/watch?v=Xg0hvbP2G0w" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Cash in emergencies</a></p>
-        <p><a href="https://www.youtube.com/watch?v=PT2kyLjEnBY" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Building better, safer</a></p>
-        <p><a href="https://www.youtube.com/watch?v=Rxyv_6cizgk" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Fellica, Haiyan survivor</a></p>
-        <p><a href="http://youtu.be/f2hOXAaC7P4" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Haiyan recovery operation: livelihoods</a></p>
-        <p><a href="http://youtu.be/jPp-u5VSCx8" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Haiyan recovery operation: shelter</a></p>
-        <p><a href="http://youtu.be/VlCxH3tuZIs" data-toggle="lightbox"><span class="glyphicon glyphicon-film glyphicon-large"></span>&nbsp; Haiyan recovery operation: reaching out</a></p>
-
-                
-        <div style="margin:30px 0px;">
-          <p><a href="https://www.youtube.com/user/ifrc" target="_blank"><span class="glyphicon glyphicon-play color-red"></span>&nbsp; IFRC YouTube channel</a></p>
-          <p><a href="https://www.youtube.com/user/icrcfilms" target="_blank"><span class="glyphicon glyphicon-play color-red"></span>&nbsp; ICRC YouTube channel</a></p>
-        </div>
-        
-      </section>
-
-      <section id='palawangallery'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name">Reaching out</h2>
-        <h4>Palawan - volunteers reaching out to tribal communities</h4>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/palawan01_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/palawan02_small.jpg"></div> 
-        <p>Palawan is best known as a prime tourist destination, but most visitors know nothing of the marginalised Tagbanwa tribes inhabiting some of the remote islands off Coron Town and Culion Island.</p>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/palawan03_small.jpg"></div>
-        <div class="modalLink-half" onclick="callImageModal(this);"><img class="modalLinkImg img-responsive" src="img/palawan04_small.jpg"></div> 
-        <p>Days after Typhoon Haiyan, Philippine Red Cross mobilised staff and volunteers to drop badly need emergency supplies to the worst affected tribal islands, including the village of Banuang Daan in Coron Island and the community of Bulukbulukaan, Osmenia, two hours by boat from Culion, a former leper colony. Many residents, including the poorest fishermen and seaweed farmers, lost their homes to the fierce wind and waves and were short of food and water. Red Cross also distributed cash to 2,000 of the poorest families.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/palawan05_small.jpg"></div>
-        <p>In the months that followed, Philippine Red Cross continued its regular outreach visits to check on the wellbeing of the communities as well as providing shelter repair materials. Community volunteers have been recruited to conduct workshops on hygiene promotion and building back safer.</p>
-        <div class="modalLink" onclick="callImageModal(this);">
-        <img class="modalLinkImg img-responsive" src="img/palawan06_small.jpg"></div>
-      </section>
-
-
-
-      <section id='manila'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name color-red">Philippine Red Cross</h2>
-        <p>Born officially in 1947, the Philippine Red Cross has truly become the premier humanitarian organization in the country, committed to provide quality life-saving services that protect the life and dignity especially of indigent Filipinos in vulnerable situations.</p>
-        <p>At present, the Philippine Red Cross provides six major services: Blood Services, Disaster Management Services, Safety Services, Health Services, Social Services, Red Cross Youth and Volunteer Services. All of them embody the fundamental principles of the International Red Cross and Red Crescent Movement – humanity, impartiality, neutrality, independence, voluntary service, unity and universality. These values guide and inspire all Red Cross staff and volunteers, to whom being a Red Crosser is more than just a philosophy but a way of life.</p>
-        <p>The Philippine Red Cross takes pride in urging all Filipinos to take part in the heroism of the Philippine Red Cross by becoming a full-fledged member, volunteer, or donor. For more information, please visit the <a href="http://www.redcross.org.ph/" target="_blank"><b><span class="color-red">Philippine Red Cross website</span></b></a>.</p>
-
-      </section>
-
-      <section id='movement'>
-        <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-        <h2 class="header-name color-red">International Red Cross and Red Crescent Movement</h2>
-        <p>The International Red Cross and Red Crescent Movement is the world's largest humanitarian network. The Movement is neutral and impartial, and provides protection and assistance to people affected by disasters and conflicts.  The Movement is made up of nearly 100 million members, volunteers and supporters in 189 National Societies. It has three main components:</p>
-        <ul>
-          <li><a href="http://www.ifrc.org/en/who-we-are/the-movement/icrc/" target="_blank">The International Committee of the Red Cross (ICRC)</a></li>
-          <li><a href="http://www.ifrc.org/en/who-we-are/the-movement/ifrc/" target="_blank">The International Federation of Red Cross and Red Crescent Societies (IFRC)</a></li>
-          <li><a href="http://www.ifrc.org/en/who-we-are/the-movement/national-societies/" target="_blank">189 member Red Cross and Red Crescent Societies</a></li>
-        </ul>
-        <p>As partners, the different members of the Movement support communities in becoming stronger and safer through a variety of development projects and humanitarian activities. The Movement also works in cooperation with governments, donors and other aid organizations to assist vulnerable people around the world.</p>
-        <hr>
-
-
-      </section>
-      
     </article>
-
-    
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script src="js/jquery.min.js"></script>
-
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
-
     <!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> -->
     <script src="js/leaflet.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="js/ekko-lightbox.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
     <script src="js/main.js"></script>
-
     <!--[if lt IE 9]>
     <script>
         window.alert("You are using an outdated browser. We suggest you upgrade. Visit www.browsehappy.com for information on the latest versions of the major web browsers.");
       </script>
     <![endif]-->
-
-  </body>
+</body>
 </html>
