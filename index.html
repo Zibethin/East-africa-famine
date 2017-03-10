@@ -13,10 +13,12 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/ekko-lightbox.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="css/ekko-lightbox.min.css" />-->
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+
 </head>
 <body class='section-0'>
     <div id="myImageModal" class="modal fade">
@@ -24,7 +26,7 @@
             <div class="modal-content modal-content-img">
                 <div class="modal-body modal-body-img">
                     <button type="button" class="close close-imgModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Close</span></button>
-                    <img class=" modal-img img-responsive" src="#">
+                    <img class="modal-img img-responsive" src="#">
                 </div>
             </div>
         </div>
@@ -67,7 +69,7 @@
 
 
     <div id='pane' class="hidden-xs">
-        <div id='map'></div>
+        <div id='map'><div id="number-container"></div></div>
         <div class='attribution'>
         </div>
     </div>
@@ -82,41 +84,49 @@
                 <h2>March 2017</h2>
                 <h1 class="color-red" style="margin-top:10px; margin-bottom:20px;">The Red Cross Red Crescent Response</h1>
             </div>
-            <p>Typhoon Haiyan struck the Philippines on 8 November 2013. It was the strongest typhoon to ever make landfall and the scale of devastation was without precedent. The storm affected 16 million people across a scattered archipelago of islands, each with their own challenges around access and infrastructure.</p>
+            <p>The current situation in East Africa lorem ipsum blablaba.</p>
 
             <p>The current recovery operation of the Red Cross and Red Crescent Movement extends across a large area of five island groups. With the help of more than 8,000 community-based volunteers, we reached 1.3 million people with emergency relief. Our goal in the recovery phase is to support 500,000 of the most vulnerable people over the next three years, with a focus on safer shelter and livelihoods. One year after the typhoon, we invite you to take a closer look at the work we have been doing, and to meet some of the people who with our support are getting back on their feet.</p>
             <p> Select a section or scroll through and access a quick navigation menu using the '☰' menu icon at the top left corner of any section.</p>
 
             <div class="section-indent">
-                <a href="#emergency-01"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</h4></a>
-                <a href="#icrc-recovery-guiuan"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</h4></a>
-                <a href="#livelihoods"><h4><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Livelihood profiles</h4></a>
-                <a href="#coconutlady"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</h4></a>
-                <a href="#sheltergallery1"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</h4></a>
-                <a href="#films"><h4><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</h4></a>
-                <a href="#palawangallery"><h4><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</h4></a>
-                <a href="#manila"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</h4></a>
-                <a href="#movement"><h4><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</h4></a>
+                <a href="#nigeria"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Nigeria</h4></a>
+                <a href="#yemen"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Yemen</h4></a>
+                <a href="#somalia"><h4><span class="glyphicon glyphicon-user color-red"></span>&nbsp; Somalia</h4></a>
+                <a href="#south-sudan"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; South Sudan</h4></a>
             </div>
             <small class='scroll hidden-xs'>Scroll ▼</small>
         </section>
 
-
-        <section id='nigeria'>
+        <section id='africa'>
             <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-            <h2 class="header-name">Nigeria</h2>
+            <h2 class="header-name">East Africa Situation</h2>
             <div class="modalLink" onclick="callImageModal(this);">
-                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-01_small.jpg">
+                <img class="modalLinkImg img-responsive" src="img/emergency04_small.jpg">
             </div>
             <p>Essential items such as jerry cans and hygiene kits being distributed by the Philippine Red Cross in Isabel, near Ormoc in Leyte shortly after the typhoon hit.  &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
             <div class="modalLink" onclick="callImageModal(this);">
-                <img class="modalLinkImg img-responsive" src="img/emergencyrelief-02_small.jpg">
+                <img class="modalLinkImg img-responsive" src="img/emergency04_small.jpg">
             </div>
             <p> A young boy holds aloft a jerry can following a relief distribution in Isabel, Leyte. &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
         </section>
 
 
-        <section id='yemen'>
+        <section id='NGA'>
+            <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
+            <h2 class="header-name">Nigeria</h2>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergency04_small.jpg">
+            </div>
+            <p>Essential items such as jerry cans and hygiene kits being distributed by the Philippine Red Cross in Isabel, near Ormoc in Leyte shortly after the typhoon hit.  &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
+            <div class="modalLink" onclick="callImageModal(this);">
+                <img class="modalLinkImg img-responsive" src="img/emergency04_small.jpg">
+            </div>
+            <p> A young boy holds aloft a jerry can following a relief distribution in Isabel, Leyte. &nbsp;<small>Photo credit: Netherlands Red Cross</small></p>
+        </section>
+
+
+        <section id='YEM'>
             <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
             <h2 class="header-name">Yemen</h2>
             <div class="modalLink" onclick="callImageModal(this);">
@@ -126,7 +136,7 @@
         </section>
 
 
-        <section id='somalia'>
+        <section id='SOM'>
             <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
             <h2 class="header-name">Somalia</h2>
             <div class="modalLink" onclick="callImageModal(this);">
@@ -135,7 +145,7 @@
             <p> A man stands among the ruins of his home near Palo, Leyte. The typhoon destroyed or badly damaged 1.14 million homes. &nbsp;<small>Photo credit: Alanah Torralba</small></p>
         </section>
 
-        <section id='South Sudan'>
+        <section id='SSD'>
             <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
             <h2 class="header-name">South Sudan</h2>
             <div class="modalLink" onclick="callImageModal(this);">
@@ -151,7 +161,7 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
     <!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> -->
-    <script src="js/leaflet.js"></script>
+    <!--<script src="js/leaflet.js"></script>-->
     <script src="js/underscore-min.js"></script>
     <script src="js/ekko-lightbox.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>

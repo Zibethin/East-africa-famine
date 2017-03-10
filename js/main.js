@@ -2,7 +2,7 @@
 //var width = $(window).width();
 //var mapCreated = false;
 
-//$(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) {
+//$(document).delegate('*[data-toggle='lightbox']', 'click', function (event) {
 //    event.preventDefault();
 //    $(this).ekkoLightbox();
 //});
@@ -16,11 +16,11 @@
 //});
 
 //function callImageModal(item) {
-//    var imgUrl = $(item).find('img').attr("src").slice(0, -9) + 'large.jpg';
-//    var img_maxHeight = (windowHeight * 0.85).toString() + "px";
-//    $(".modal-img").css('max-height', img_maxHeight);
-//    $(".modal-img").attr('src', imgUrl);
-//    $("#myImageModal").modal();
+//    var imgUrl = $(item).find('img').attr('src').slice(0, -9) + 'large.jpg';
+//    var img_maxHeight = (windowHeight * 0.85).toString() + 'px';
+//    $('.modal-img').css('max-height', img_maxHeight);
+//    $('.modal-img').attr('src', imgUrl);
+//    $('#myImageModal').modal();
 //}
 
 
@@ -31,57 +31,86 @@
 //        mapCreated = true;
 
 
-//        $(".quickNav").html('<div class="btn-group hidden-xs">' +
-//            '<button type="button" class="btn btn-xs dropdown-toggle btn-quickNav" data-toggle="dropdown">' +
-//              '<span style="font-size:18px; color:#f5f5f5;"> ☰ </span></button>' +
-//              '<ul class="dropdown-menu" role="menu">' +
-//                '<li><a href="#">Home</a></li>' +
-//                '<li><a href="#emergency-01"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Emergency phase</a></li>' +
-//                '<li><a href="#icrc-recovery-guiuan"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Recovery phase</a></li>' +
-//                '<li><a href="#livelihoods">Livelihood Profiles</a></li>' +
-//                '<li><a href="#liporada"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Maria Liporada</a></li>' +
-//                '<li><a href="#martinez"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Gaspar Martinez</a></li>' +
-//                '<li><a href="#cabujoc"><span class="glyphicon glyphicon-user color-blue"></span>&nbsp; Joel Cabujoc</a></li>' +
-//                '<li><a href="#coconutlady"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Coconut Lady</a></li>' +
-//                '<li><a href="#sheltergallery1"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; To build a home</a></li>' +
-//                '<li><a href="#films"><span class="glyphicon glyphicon-film color-khaki"></span>&nbsp; Films</a></li>' +
-//                '<li><a href="#palawangallery"><span class="glyphicon glyphicon-picture color-green"></span>&nbsp; Reaching out</a></li>' +
-//                '<li><a href="#manila"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; Philippine Red Cross</a></li>' +
-//                '<li><a href="#movement"><span class="glyphicon glyphicon-info-sign color-red"></span>&nbsp; International Red Cross and Red Crescent Movement</a></li></ul></div>');
-//        $(".quickNav").tooltip();
+//        $('.quickNav').html('<div class='btn-group hidden-xs'>' +
+//            '<button type='button' class='btn btn-xs dropdown-toggle btn-quickNav' data-toggle='dropdown'>' +
+//              '<span style='font-size:18px; color:#f5f5f5;'> ☰ </span></button>' +
+//              '<ul class='dropdown-menu' role='menu'>' +
+//                '<li><a href='#'>Home</a></li>' +
+//                '<li><a href='#emergency-01'><span class='glyphicon glyphicon-picture color-green'></span>&nbsp; Emergency phase</a></li>' +
+//                '<li><a href='#icrc-recovery-guiuan'><span class='glyphicon glyphicon-picture color-green'></span>&nbsp; Recovery phase</a></li>' +
+//                '<li><a href='#livelihoods'>Livelihood Profiles</a></li>' +
+//                '<li><a href='#liporada'><span class='glyphicon glyphicon-user color-blue'></span>&nbsp; Maria Liporada</a></li>' +
+//                '<li><a href='#martinez'><span class='glyphicon glyphicon-user color-blue'></span>&nbsp; Gaspar Martinez</a></li>' +
+//                '<li><a href='#cabujoc'><span class='glyphicon glyphicon-user color-blue'></span>&nbsp; Joel Cabujoc</a></li>' +
+//                '<li><a href='#coconutlady'><span class='glyphicon glyphicon-picture color-green'></span>&nbsp; Coconut Lady</a></li>' +
+//                '<li><a href='#sheltergallery1'><span class='glyphicon glyphicon-picture color-green'></span>&nbsp; To build a home</a></li>' +
+//                '<li><a href='#films'><span class='glyphicon glyphicon-film color-khaki'></span>&nbsp; Films</a></li>' +
+//                '<li><a href='#palawangallery'><span class='glyphicon glyphicon-picture color-green'></span>&nbsp; Reaching out</a></li>' +
+//                '<li><a href='#manila'><span class='glyphicon glyphicon-info-sign color-red'></span>&nbsp; Philippine Red Cross</a></li>' +
+//                '<li><a href='#movement'><span class='glyphicon glyphicon-info-sign color-red'></span>&nbsp; International Red Cross and Red Crescent Movement</a></li></ul></div>');
+//        $('.quickNav').tooltip();
 
 
-//        $('body').css("padding-top", "0px");
+//        $('body').css('padding-top', '0px');
 
 
         var mapLocations = {
-            africa: {
-                center: [-28.200195, 5.441022],
-                zoom: '2.5'
+            'africa': {
+                'camera': {
+                    'duration': '4000',
+                    'center': [-28.200195, 5.441022],
+                    'zoom': '2.5',
+                    'pitch': '0'
+                },
+                'inNeed': 70
             },
-            SSD: {
-                center: [30.080566, 7.231699],
-                zoom: '3'
+
+            'SSD': {
+                'camera': {
+                    'duration': '4000',
+                    'center': [1.472168, 7.231699],
+                    'zoom': '3.5',
+                    'pitch': '45'
+                },
+                'inNeed': 7.5
             },
-            SOM: {
-                center: [48.845215, 6.009459],
-                zoom: '3'
+
+            'SOM': {
+                'camera': {
+                    'duration': '4000',
+                    'center': [13.908691, 5.441022],
+                    'zoom': '3.5',
+                    'pitch': '15'
+                },
+                'inNeed': 6.2
             },
-            NGA: {
-                center: [7.756348, 9.449062],
-                zoom: '3'
+
+            'NGA': {
+                'camera': {
+                    'duration': '4000',
+                    'center': [-20.544434, 14.434680],
+                    'zoom': '3.5',
+                    'pitch': '35'
+                },
+                'inNeed': 8.5
             },
-            YEM: {
-                center: [47.395020, 15.580711],
-                zoom: '3'
+
+            'YEM': {
+                'camera': {
+                    'duration': '4000',
+                    'center': [18.830566, 15.114553],
+                    'zoom': '3.5',
+                    'pitch': '5'
+                },
+                'inNeed': 18.8
             },
         };
 
         mapboxgl.accessToken = 'pk.eyJ1IjoiYnJjbWFwcyIsImEiOiJRZklIbXY0In0.SeDBAb72saeEJhTVDrVusg';
         var map = new mapboxgl.Map({
             container: 'map',
-            style: "mapbox://styles/brcmaps/cj00w54pm00na2ro400gflm5j",
-            //"mapbox://styles/brcmaps/cizzog3yu00bq2smrhbrmuw7d", //"mapbox://styles/mapbox/dark-v9" ,
+            style: 'mapbox://styles/brcmaps/cj00w54pm00na2ro400gflm5j',
+            //'mapbox://styles/brcmaps/cizzog3yu00bq2smrhbrmuw7d', //'mapbox://styles/mapbox/dark-v9' ,
             center: [-28.200195, 5.441022],//[30.201416, 7.275292],
             zoom: 2.5
         });
@@ -114,9 +143,9 @@
                     'visibility': 'visible'
                 },
                 'paint': {
-                    "fill-color": "rgba(153, 0, 0, 0.8)"
+                    'fill-color': 'rgba(153, 0, 0, 0.8)'
                 },
-                'source-layer': 'ne_10m_admin_0_countries-99cdmu', "filter": ["in", "ISO_A3", "SSD", "YEM", "NGA", "SOM"]
+                'source-layer': 'ne_10m_admin_0_countries-99cdmu', 'filter': ['in', 'ISO_A3', 'SSD', 'YEM', 'NGA', 'SOM']
             });
 
             //adding Lines around the country to make it prettier
@@ -129,10 +158,10 @@
                     'visibility': 'visible'
                 },
                 'paint': {
-                    "line-color": "#cccccc",
+                    'line-color': '#cccccc',
                     'line-width': 3
                 },
-                'source-layer': 'ne_10m_admin_0_countries-99cdmu', "filter": ["in", "ISO_A3", "SSD", "YEM", "NGA", "SOM"]
+                'source-layer': 'ne_10m_admin_0_countries-99cdmu', 'filter': ['in', 'ISO_A3', 'SSD', 'YEM', 'NGA', 'SOM']
             });
 
             // highlighting country names
@@ -147,32 +176,66 @@
                     'text-size': 14
                 },
                 'paint': {
-                    "text-color": "#000000"
+                    'text-color': '#000000'
                 },
-                'source-layer': 'country_label', "filter": ["in", "name_en", "South Sudan", "Yemen", "Nigeria", "Somalia"]
+                'source-layer': 'country_label', 'filter': ['in', 'name_en', 'South Sudan', 'Yemen', 'Nigeria', 'Somalia']
             });
             map.scrollZoom.disable();
         });
 
-        map.on('click', function (e) {
-            // Use queryRenderedFeatures to get features at a click event's point
-            // Use layer option to avoid getting results from other layers
-            var features = map.queryRenderedFeatures(e.point, { layers: ['countryFill'] });
-            // if there are features within the given radius of the click event,
-            // fly to the location of the click event
-            if (features.length) {
-                // Get coordinates from the symbol and center the map on those coordinates
-                var newPlace = toString(features[0].properties.ISO_A3);
-                map.flyTo(mapLocations.newPlace);
-            }
-        });
 
-        // Use the same approach as above to indicate that the symbols are clickable
-        // by changing the cursor style to 'pointer'.
-        map.on('mousemove', function (e) {
-            var features = map.queryRenderedFeatures(e.point, { layers: ['countryFill'] });
-            map.getCanvas().style.cursor = features.length ? 'pointer' : '';
-        });
+        window.onscroll = function () {
+            var chapterNames = Object.keys(mapLocations);
+            for (var i = 0; i < chapterNames.length; i++) {
+                var chapterName = chapterNames[i];
+                if (isElementOnScreen(chapterName)) {
+                    setActiveChapter(chapterName);
+                    break;
+                }
+            }
+        };
+                
+
+        var activeChapterName = 'africa';
+
+        function setActiveChapter(chapterName) {
+            console.log('inside=', chapterName);
+            if (chapterName === activeChapterName) return;
+            map.flyTo(mapLocations[chapterName].camera);
+
+            document.getElementById(chapterName).setAttribute('class', 'active');
+            document.getElementById(activeChapterName).setAttribute('class', '');
+
+            activeChapterName = chapterName;
+
+            html = '<div class=\'text\'><span class=\'count\'>'+ mapLocations[chapterName].inNeed + '</span>&nbsp; million people in need</div>';
+            $('#number-container').fadeOut(1000, function () {
+                setTimeout(function () {
+                    $('#number-container').html(html).fadeIn(1000, function () {
+                    });
+                    $('.count').each(function () {
+                        $(this).prop('Counter', 0).animate({
+                            Counter: $(this).text()
+                        }, {
+                            duration: 4000,
+                            easing: 'swing',
+                            step: function (now) {
+                                $(this).text(Math.ceil(now * 10) / 10);
+                            }
+                        });
+                    });
+                }, 500)
+            })
+               
+        }
+
+        function isElementOnScreen(id) {
+            var element = document.getElementById(id);
+            var bounds = element.getBoundingClientRect();
+            return bounds.top < window.innerHeight && bounds.bottom > 0;
+        }
+
+
 
         //DAN's code
 
@@ -261,7 +324,7 @@
 
 //// show disclaimer text on click of disclaimer link
 //function showDisclaimer() {
-//    window.alert("The maps used do not imply the expression of any opinion on the part of the International Federation of Red Cross and Red Crescent Societies or National Societies concerning the legal status of a territory or of its authorities.");
+//    window.alert('The maps used do not imply the expression of any opinion on the part of the International Federation of Red Cross and Red Crescent Societies or National Societies concerning the legal status of a territory or of its authorities.');
 //}
 
 //fullSetup();
