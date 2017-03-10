@@ -7,10 +7,8 @@ section {
   min-height: 360px;
 }
 
-#number-container{
+.number-container{
   position: absolute;
-  left: 60%;
-  top: 20%;
   color: rgba(153, 0, 0, 0.8);
   transition:opacity 250ms;
   -moz-transition:opacity 250ms;
@@ -19,11 +17,19 @@ section {
   font-weight:500;
   z-index:9999;
   font-family: 'Roboto Condensed', sans-serif;
+  display:flex;
+}
+
+#in-need{
+    left: 60%;
+    top: 20%;
 }
 
 .count{
-    font-size:50px;
-    font-family:Lato, sans-serif;
+    font-size: 50px;
+    font-family: Lato, sans-serif;
+    min-width: 100px;
+    display: block;
 }
 
 .navbar-header {
