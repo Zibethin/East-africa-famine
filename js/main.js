@@ -72,54 +72,41 @@ var mapLocations = {
     },
 };
 
-
-var countryFills = {
-    'id': 'countryFill',
-    'type': 'fill',
-    'source': 'countries',
-    'layout': {
-        'visibility': 'visible'
-    },
-    'paint': {
-        'fill-color': 'rgba(153, 0, 0, 0.8)'
-    },
-    'source-layer': 'ne_10m_admin_0_countries-99cdmu', 'filter': ['in', 'ISO_A3']
+//creating the layer object for map layers
+var LayerObject = {
+    //initialising the object
+    init: function (id, type, source, layout, paint, sourceLayer, filter) {
+        this.id = id;
+        this.type = type;
+        this.source = source;
+        this.layout = layout;
+        this.paint = paint;
+        this['source-layer'] = sourceLayer;
+        this.filter = filter;
+    }
 };
 
-var countryBorders = {
-    'id': 'countryLine',
-    'type': 'line',
-    'source': 'countries',
-    'layout': {
-        'visibility': 'visible'
-    },
-    'paint': {
-        'line-color': '#cccccc',
-        'line-width': 3
-    },
-    'source-layer': 'ne_10m_admin_0_countries-99cdmu', 'filter': ['in', 'ISO_A3']
-};
+//color for active and inactive countries
+var colorNotActive = 'rgba(153, 0, 0, 0.7)';
+var colorActive = 'rgba(204, 0, 0, 1)';
 
-var countryNameHighlight = {
-    'id': 'countryNames',
-    'type': 'symbol',
-    'source': 'countryNames',
-    'layout': {
-        'visibility': 'visible',
-        'text-field': '{name_en}',
-        'text-size': 14
-    },
-    'paint': {
-        'text-color': '#000000'
-    },
-    'source-layer': 'country_label', 'filter': ['in', 'name_en']
-};
+//creating the layers for borders and name highlighting
 
-//adding list of countries to parameters for map
+var countryBorders = Object.create(LayerObject);
+countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#cccccc','line-width': 3}, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3']);
 
-var listOfISO3 = ['SSD', 'SOM', 'NGA', 'KEN', 'ETH'];
-var listCountryNames = ['South Sudan', 'Somalia', 'Nigeria', 'Kenya', 'Ethiopia'];
-countryFills.filter.push.apply(countryFills.filter, listOfISO3);
+var countryNameHighlight = Object.create(LayerObject);
+countryNameHighlight.init('countryNames', 'symbol', 'countryNames', {
+    'visibility': 'visible',
+    'text-field': '{name_en}',
+    'text-size': 14
+}, { 'text-color': '#000000' }, 'country_label', ['in', 'name_en', '']);
+console.log(countryNameHighlight);
+
+//adding list of countries to parameters of the layer objects
+
+var listOfISO3 = ['SSD', 'SOM', 'NGA', 'KEN', 'ETH', 'YEM'];
+var listCountryNames = ['South Sudan', 'Somalia', 'Nigeria', 'Kenya', 'Ethiopia', 'Yemen'];
 countryBorders.filter.push.apply(countryBorders.filter, listOfISO3);
 countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryNames);
 
@@ -151,10 +138,13 @@ map.on('load', function () {
         url: 'mapbox://mapbox.mapbox-streets-v7'
     });
 
-    //Adding layers:
-    //adding country fill for targeted countries
+    // creating and adding a layer of fill per country for targeted countries using the layer object
 
-    map.addLayer(countryFills);
+    for (var i = 0; i < listOfISO3.length; i++) {
+        var temp = Object.create(LayerObject);
+        temp.init(listOfISO3[i], 'fill', 'countries', { 'visibility': 'visible' }, { 'fill-color': colorNotActive }, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3', listOfISO3[i]]);
+        map.addLayer(temp);
+    }
 
     //adding Lines around the country to make it prettier
 
@@ -164,61 +154,77 @@ map.on('load', function () {
 
     map.addLayer(countryNameHighlight);
     map.scrollZoom.disable();
+
+
+    // Figuring out what chapter is on the screen
+
+    window.onscroll = function () {
+        var chapterNames = Object.keys(mapLocations);
+        for (var i = 0; i < chapterNames.length; i++) {
+            var chapterName = chapterNames[i];
+            if (isElementOnScreen(chapterName)) {
+                setActiveChapter(chapterName);
+                break;
+            }
+        }
+    };
+
+
+    function isElementOnScreen(id) {
+        var element = document.getElementById(id);
+        var bounds = element.getBoundingClientRect();
+        return bounds.top < window.innerHeight && bounds.bottom > 0;
+    }
+
+
+    // setting the "active" label to chapter on screen
+
+    var activeChapterName = 'africa';
+    var oldChapter = 'africa';
+
+    function setActiveChapter(chapterName) {
+        if (chapterName === activeChapterName) return;
+
+        // setting the new active country to the active color
+        if (chapterName !== 'africa') {
+            map.setPaintProperty(chapterName, 'fill-color', colorActive);
+        }
+        if (oldChapter !== 'africa') {
+            //setting the previous country to the inactive color
+            map.setPaintProperty(oldChapter, 'fill-color', colorNotActive);
+        }
+
+        //Moving camera to new country
+        map.flyTo(mapLocations[chapterName].camera);
+
+        document.getElementById(chapterName).setAttribute('class', 'active');
+        document.getElementById(activeChapterName).setAttribute('class', '');
+
+        activeChapterName = chapterName;
+
+        // fade out previous number and then fade in new number of in number of people in Need
+        html = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
+        $('.number-container').fadeOut(1000, function () {
+            setTimeout(function () {
+                $('.number-container').html(html).fadeIn(1000, function () {
+                });
+                $('.count').each(function () {
+                    $(this).prop('Counter', 0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 4000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now * 10) / 10);
+                        }
+                    });
+                });
+            }, 500)
+        })
+        oldChapter = chapterName;
+    }
+
 });
 
-// Figuring out what chapter is on the screen
 
-window.onscroll = function () {
-    var chapterNames = Object.keys(mapLocations);
-    for (var i = 0; i < chapterNames.length; i++) {
-        var chapterName = chapterNames[i];
-        if (isElementOnScreen(chapterName)) {
-            setActiveChapter(chapterName);
-            break;
-        }
-    }
-};
-
-// setting the "active" label to chapter on screen
-
-var activeChapterName = 'africa';
-
-function setActiveChapter(chapterName) {
-    if (chapterName === activeChapterName) return;
-
-    //Moving camera to new country
-    map.flyTo(mapLocations[chapterName].camera);
-
-    document.getElementById(chapterName).setAttribute('class', 'active');
-    document.getElementById(activeChapterName).setAttribute('class', '');
-
-    activeChapterName = chapterName;
-
-
-    html = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
-    $('.number-container').fadeOut(1000, function () {
-        setTimeout(function () {
-            $('.number-container').html(html).fadeIn(1000, function () {
-            });
-            $('.count').each(function () {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 4000,
-                    easing: 'swing',
-                    step: function (now) {
-                        $(this).text(Math.ceil(now * 10) / 10);
-                    }
-                });
-            });
-        }, 500)
-    })
-
-}
-
-function isElementOnScreen(id) {
-    var element = document.getElementById(id);
-    var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 0;
-}
 
