@@ -1,10 +1,14 @@
 /*--- Colours ---*/
 
-@colour-body-writing : #333;
+@colour-body-text : #333;
+@colour-active-backgr: #fff;
+@colour-inactive-backgr: rgba(34,34,34,0.2);
+
+@colour-secondary: #999;
 
 body {
     padding: 0px;
-    background: #fff;
+    background: @colour-active-backgr;
 }
 
 section {
@@ -16,21 +20,21 @@ section {
 /*----------------------------------- Sections -------------------------------*/
 
 section, section a {
-    color: @colour-body-writing;
+    color: @colour-body-text;
     text-decoration: none;
 }
 
 section {
-    background: rgba(34,34,34,0.2);
+    background: @colour-inactive-backgr;
 }
 
 section {
-    background: #fff;
-    color: #333333;
+    background: @colour-active-backgr;
+    color: @colour-body-text;
 }
 
 section small {
-    color: #aaa;
+    color: @colour-secondary;
 }
 
 #title{
@@ -39,7 +43,7 @@ section small {
 }
 
 #instructions {
-    color: #999;
+    color: @colour-secondary;
 }
 
 /* --------------------------- IPAD ----------------------------------------*/
@@ -47,7 +51,7 @@ section small {
 /*@media (min-width:768px) {*/
     body {
         margin: 0px;
-        background: #fff;
+        background: @colour-active-backgr;
     }
 
     article {
@@ -59,7 +63,7 @@ section small {
 
     section {
         padding: 40px;
-        padding-left: 60px;
+        padding-left: 80px;
         position: relative;
         transition: background 500ms, color 500ms;
         -moz-transition: background 500ms, color 500ms;
@@ -68,26 +72,26 @@ section small {
 
         section,
         section a {
-            color: #888;
+            color: @colour-secondary;
             text-decoration: none;
         }
 
     section {
-        background: rgba(34,34,34,0.2);
+        background: @colour-inactive-backgr;
     }
 
         section.active {
-            background: #fff;
-            color: #333333;
+            background: @colour-active-backgr;
+            color: @colour-body-text;
             opacity: 1;
         }
 
             section.active a {
-                color: #333333;
+                color: @colour-body-text;
             }
 
             section.active small {
-                color: #aaa;
+                color: @colour-secondary;
             }
 
     .scroll {
@@ -131,6 +135,7 @@ section small {
 /*}*/
 
 /* ------------------------------ COMPUTER -----------------------------*/
+
 @media (min-width:1280px) {
     body {
         font-size: 18px;
@@ -147,13 +152,13 @@ section small {
     z-index: 9999;
     margin: 0 10px;
     font-size: x-small;
-    color: #78787d;
+    color: @colour-secondary;
 }
 
 .attribution a {
     text-decoration: none;
     cursor: pointer;
-    color: #6d6e70;
+    color: @colour-secondary;
 }
 
 /*------------------------------ Logos -----------------------------*/
@@ -165,7 +170,7 @@ section small {
     margin: 0px auto 16px auto;
     border-radius: 5px;
     max-height: 100px;
-    background: #ffffff;
+    background: @colour-active-backgr;
 }
 
 /*------------------------------ Icons -----------------------------*/
@@ -186,38 +191,20 @@ section small {
 /*------------------------------ Nav -----------------------------*/
 
 .navbar-header {
-    background: #fff;
+    background: @colour-active-backgr;
 }
 
 #navigation{
-    background-color: #fff;
-}
-    
-
-.quickNav {
-    position: absolute;
-    /*top: 5px;*/
-    left: 5px;
-    visibility: hidden;
+    background-color: none;
+    position:fixed;
+    z-index:9999;
+    height:100%;
 }
 
-.btn-quickNav {
-    background: #484848;
-    background: transparent;
-}
-
-.quickNav .dropdown-menu {
-    background: #484848;
-    padding: 10px;
-}
-
-.quickNav .dropdown-menu a {
-    text-shadow: none !important;
-}
-
-.active .quickNav {
-    visibility: visible;
-}
+#navigation svg{
+    padding:15px;
+    height:95vh;
+}    
 
 /*----------------------- numbers ---------------------*/
 
@@ -256,7 +243,7 @@ section small {
 /*------------------------- Content layout ----------------------*/
 
 .modal-content-img {
-    background: #000;
+    background: @colour-active-backgr;
     border-radius: 0px;
 }
 
@@ -313,5 +300,4 @@ section small {
 .img-double-sm {
     max-width: 49%;
     vertical-align: baseline;
-    /*  border: 1px solid #2f2f2f;*/
 }

@@ -1,6 +1,8 @@
 //Dataset for map, chapter names, numbers and zoom 
 //Note the country code needs to be the ISO3 code
 
+//-------------------------------------------- VARIABLES -------------------------------------------------
+
 //colours for active and inactive countries
 var colorNotActive = 'rgba(153, 0, 0, 0.7)';
 var colorActive = 'rgba(204, 0, 0, 1)';
@@ -19,7 +21,12 @@ var center = [
     [-20.544434, 14.434680],  //NGA
     [18.830566, 15.114553],   //YEM
     [19.808350, 6.315299],    //KEN
-    [18.676758, 12.039321]];   //ETH
+    [18.676758, 12.039321]];  //ETH
+
+var activeChapterName = 'africa';
+var oldChapter = 'africa';
+
+//---------------------------------------- OBJECT DEFINITIONS -------------------------------------------
 
 //creating the layer object for map layers
 
@@ -58,6 +65,7 @@ var CameraObject = {
     }
 };
 
+//------------------------------------------ CREATING OBJECTS -------------------------------------------
 //initialising the locations list
 
 var mapLocations = {
@@ -82,7 +90,7 @@ for (var i = 0; i < listOfISO3.length; i++) {
     tempCamera.init(4000, center[i], 3.5, pitch[i]);
     temp.init(tempCamera, inNeed[i], foodNeed[i], idp[i]);
     mapLocations[listOfISO3[i]] = temp;
-};
+}
 
 //creating the layers for borders and name highlighting
 
@@ -98,6 +106,83 @@ countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibilit
 countryBorders.filter.push.apply(countryBorders.filter, listOfISO3);
 countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryNames);
 
+
+//----------------------------------- FUNCTIONS ------------------------------------------------------
+
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+// setting the "active" label to chapter on screen
+
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    // setting the new active country to the active color
+    if (chapterName !== 'africa') {
+        map.setPaintProperty(chapterName, 'fill-color', colorActive);
+    }
+    if (oldChapter !== 'africa') {
+        //setting the previous country to the inactive color
+        map.setPaintProperty(oldChapter, 'fill-color', colorNotActive);
+    }
+
+    //Moving camera to new country
+    map.flyTo(mapLocations[chapterName].camera);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+
+    // fade out previous number and then fade in new number of in number of people in Need
+    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
+    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div>&nbsp; million malnourished</div>';
+    $('.number-container').fadeOut(1000, function () {
+        setTimeout(function () {
+
+            // if the number of people in need is not null then add the numbers to the map
+            if (mapLocations[chapterName].inNeed > 0) {
+                $('#in-need').html(needHtml).fadeIn(1000, function () {
+                });
+            }
+
+            if (mapLocations[chapterName].foodNeed > 0) {
+                $('#food-need').css("visibility", "visible");
+                $('#food-need').html(foodHtml).fadeIn(1000, function () {
+                });
+            }
+            if (mapLocations[chapterName].foodNeed === 0) {
+                $('#food-need').css("visibility", "hidden");
+            }
+
+            // function to animate the numbers to count up
+            $('.count').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function (now) {
+                        $(this).text(Math.ceil(now * 10) / 10);
+                    }
+                });
+            });
+
+        }, 500);
+    }); // end fadedout of number container
+
+
+    oldChapter = chapterName;
+} //End function SetActive Chapter
+
+
+//------------------------------------ SETTING UP MAPBOX ----------------------------------------------
+
+
 // Setting up the background map (grey basic map labelled east-africa-famine2 on mapbox)
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJjbWFwcyIsImEiOiJRZklIbXY0In0.SeDBAb72saeEJhTVDrVusg';
@@ -108,7 +193,6 @@ var map = new mapboxgl.Map({
     zoom: 2.5,
     interactive: false
 });
-
 
 // ------------------------------ When the map loads add all the layers --------------------------------
 
@@ -157,82 +241,5 @@ map.on('load', function () {
             }
         }
     };
-
-    function isElementOnScreen(id) {
-        var element = document.getElementById(id);
-        var bounds = element.getBoundingClientRect();
-        return bounds.top < window.innerHeight && bounds.bottom > 0;
-    }
-
-    // setting the "active" label to chapter on screen
-
-    var activeChapterName = 'africa';
-    var oldChapter = 'africa';
-
-    function setActiveChapter(chapterName) {
-        if (chapterName === activeChapterName) return;
-
-        // setting the new active country to the active color
-        if (chapterName !== 'africa') {
-            map.setPaintProperty(chapterName, 'fill-color', colorActive);
-        }
-        if (oldChapter !== 'africa') {
-            //setting the previous country to the inactive color
-            map.setPaintProperty(oldChapter, 'fill-color', colorNotActive);
-        }
-
-        //Moving camera to new country
-        map.flyTo(mapLocations[chapterName].camera);
-
-        document.getElementById(chapterName).setAttribute('class', 'active');
-        document.getElementById(activeChapterName).setAttribute('class', '');
-
-        activeChapterName = chapterName;
-
- 
- 
-
-
-                // fade out previous number and then fade in new number of in number of people in Need
-                var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
-                var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div>&nbsp; million malnourished</div>';
-                $('.number-container').fadeOut(1000, function () {
-                    setTimeout(function () {
-
-                        // if the number of people in need is not null then add the numbers to the map
-                        if (mapLocations[chapterName].inNeed > 0) {
-                            $('#in-need').html(needHtml).fadeIn(1000, function () {
-                            });
-                        };
-
-                        if (mapLocations[chapterName].foodNeed > 0) {
-                            $('#food-need').css("visibility", "visible");
-                            $('#food-need').html(foodHtml).fadeIn(1000, function () {
-                            });
-                        };
-                        if (mapLocations[chapterName].foodNeed == 0)
-                        {
-                            $('#food-need').css("visibility", "hidden");
-                        };
-
-                        // function to animate the numbers to count up
-                        $('.count').each(function () {
-                            $(this).prop('Counter', 0).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 2000,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now * 10) / 10);
-                                }
-                            });
-                        });
-
-                    }, 500)
-                }) // end fadedout of number container
-
-
-        oldChapter = chapterName;
-    }
 
 }); // END function on map load
