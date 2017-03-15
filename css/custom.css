@@ -18,10 +18,10 @@ section {
 }
 section {
   background: #fff;
-  color: #333333;
+  color: #333;
 }
 section small {
-  color: #aaa;
+  color: #999;
 }
 #title {
   text-align: center;
@@ -44,7 +44,7 @@ article {
 }
 section {
   padding: 40px;
-  padding-left: 60px;
+  padding-left: 80px;
   position: relative;
   transition: background 500ms, color 500ms;
   -moz-transition: background 500ms, color 500ms;
@@ -52,7 +52,7 @@ section {
 }
 section,
 section a {
-  color: #888;
+  color: #999;
   text-decoration: none;
 }
 section {
@@ -60,14 +60,14 @@ section {
 }
 section.active {
   background: #fff;
-  color: #333333;
+  color: #333;
   opacity: 1;
 }
 section.active a {
-  color: #333333;
+  color: #333;
 }
 section.active small {
-  color: #aaa;
+  color: #999;
 }
 .scroll {
   text-align: center;
@@ -119,12 +119,12 @@ body.section-0 #map {
   z-index: 9999;
   margin: 0 10px;
   font-size: x-small;
-  color: #78787d;
+  color: #999;
 }
 .attribution a {
   text-decoration: none;
   cursor: pointer;
-  color: #6d6e70;
+  color: #999;
 }
 /*------------------------------ Logos -----------------------------*/
 .logos {
@@ -134,7 +134,7 @@ body.section-0 #map {
   margin: 0px auto 16px auto;
   border-radius: 5px;
   max-height: 100px;
-  background: #ffffff;
+  background: #fff;
 }
 /*------------------------------ Icons -----------------------------*/
 .glyphicon-large {
@@ -152,27 +152,14 @@ body.section-0 #map {
   background: #fff;
 }
 #navigation {
-  background-color: #fff;
+  background-color: none;
+  position: fixed;
+  z-index: 9999;
+  height: 100%;
 }
-.quickNav {
-  position: absolute;
-  /*top: 5px;*/
-  left: 5px;
-  visibility: hidden;
-}
-.btn-quickNav {
-  background: #484848;
-  background: transparent;
-}
-.quickNav .dropdown-menu {
-  background: #484848;
-  padding: 10px;
-}
-.quickNav .dropdown-menu a {
-  text-shadow: none !important;
-}
-.active .quickNav {
-  visibility: visible;
+#navigation svg {
+  padding: 15px;
+  height: 95vh;
 }
 /*----------------------- numbers ---------------------*/
 .number-container {
@@ -205,7 +192,7 @@ body.section-0 #map {
 }
 /*------------------------- Content layout ----------------------*/
 .modal-content-img {
-  background: #000;
+  background: #fff;
   border-radius: 0px;
 }
 .modal-80 {
@@ -252,5 +239,4 @@ body.section-0 #map {
 .img-double-sm {
   max-width: 49%;
   vertical-align: baseline;
-  /*  border: 1px solid #2f2f2f;*/
 }
