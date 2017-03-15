@@ -32,7 +32,7 @@
     </div>
 
     <!--  navbar for mobile only -->
-    <div class="navbar navbar-default navbar-fixed-top visible-xs-block visible-sm-block visible-md-block visible-lg-block" role="navigation">
+    <div id="navigation" class="navbar-fixed-top visible-xs-block visible-sm-block visible-md-block visible-lg-block" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,7 +44,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Bird's Eye View</a></li>
                     <li><a href="#YEM"><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Yemen      </a>    </li>
                     <li><a href="#SOM"><span class="glyphicon glyphicon-user color-red">   </span>&nbsp; Somalia    </a>    </li>
                     <li><a href="#SSD"><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; South Sudan</a>    </li>
@@ -70,30 +70,19 @@
 
         <section id='cover' class='cover active'>
             <div class="quickNav" data-toggle="tooltip" data-placement="right" title="Quick Navigation"></div>
-            <div style="text-align:center;">
+            <div id="title">
                 <div class="logos"><img class="img-responsive logos-img" src="img/BritishRedCrossLogo.jpg"></div>
-                <h1 class="header-name">East Africa Famine</h1>
+                <h1 class="header-name">The Famine Situation in Africa</h1>
                 <h2>March 2017</h2>
-                <h1 class="color-red" style="margin-top:10px; margin-bottom:20px;">The Red Cross Red Crescent Response</h1>
+                <!--<h1 class="color-red" style="margin-top:10px; margin-bottom:20px;">The Red Cross Red Crescent Response</h1>-->
             </div>
             <p>
                 East Africa is currently experiencing one of the worst droughts in living memory.
                 Conflict has also forced millions of people to flee their homes.
-                Millions of lives are now at risk.
-                Children and new mothers are in grave danger. With no access to food, starvation is an ever present threat.
-                They need our help and they need it now.
             </p>
-            <!--<p> Select a section or scroll through and access a quick navigation menu using the '☰' menu icon at the top left corner of any section.</p>
+            <p id="instructions">To navigate through people's stories in each country, you can scroll through the pages or select a section at the top.</p>
 
-            <div class="section-indent">
-                <a href="#NGA"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Nigeria</h4></a>
-                <a href="#YEM"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Yemen</h4></a>
-                <a href="#SOM"><h4><span class="glyphicon glyphicon-user color-red"></span>&nbsp; Somalia</h4></a>
-                <a href="#SSD"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; South Sudan</h4></a>
-                <a href="#ETH"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Ethiopia</h4></a>
-                <a href="#KEN"><h4><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Kenya</h4></a>
-            </div>-->
-            <small class='scroll hidden-xs'>Scroll ▼</small>
+            <p class='scroll hidden-xs'>Start scrolling ▼</p>
         </section>
 
         <section id='africa'>
