@@ -76,7 +76,7 @@ var mapLocations = {
             'zoom': '2.5',
             'pitch': '0'
         },
-        'inNeed': 70,
+        'inNeed': 70.1,
         'foodNeed': 0,
         'idp': 0
     }
@@ -164,7 +164,7 @@ function setActiveChapter(chapterName) {
                 $(this).prop('Counter', 0).animate({
                     Counter: $(this).text()
                 }, {
-                    duration: 2000,
+                    duration: 1500,
                     easing: 'swing',
                     step: function (now) {
                         $(this).text(Math.ceil(now * 10) / 10);
