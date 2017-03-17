@@ -23,7 +23,7 @@ var center = [
     [19.808350, 6.315299],    //KEN
     [18.676758, 12.039321]];  //ETH
 
-var activeChapterName = 'africa';
+var activeChapterName = 'ETH';
 var oldChapter = 'africa';
 
 //---------------------------------------- OBJECT DEFINITIONS -------------------------------------------
