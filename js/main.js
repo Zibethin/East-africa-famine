@@ -122,7 +122,8 @@ countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryN
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 0;  //Returns true-false if element is in screen boundaries
+    console.log("id=", id," top=", bounds.top, " bottom=", bounds.bottom, " window.innerHeight=", window.innerHeight);
+    return bounds.top < (window.innerHeight/2) && bounds.bottom > 0;  //Returns true-false if element is in screen boundaries
 }
 
 // Function which looks for the section red-cross-work inside a given chapter ID
@@ -133,7 +134,6 @@ function isRedCrossWorkOnScreen(id) {
         var bounds = element.getBoundingClientRect();
         return bounds.top < window.innerHeight && bounds.bottom > 0; ////CHECK THIS FOR CHROME
     } else { return false; }
-
 }
 
 function countUp(decimals) {
@@ -205,8 +205,8 @@ function setActiveChapter(chapterName) {
     //Moving camera to new country
     map.flyTo(mapLocations[chapterName].camera);
 
-    document.getElementById(chapterName).setAttribute('class', 'active');
-    document.getElementById(activeChapterName).setAttribute('class', '');
+    //document.getElementById(chapterName).setAttribute('class', 'active');
+    //document.getElementById(activeChapterName).setAttribute('class', '');
 
     activeChapterName = chapterName;
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear

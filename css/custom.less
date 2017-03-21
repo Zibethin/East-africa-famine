@@ -12,7 +12,7 @@
 
 body {
     padding: 0px;
-    background: @colour-active-backgr;
+    background: none;
     font-family: @font-primary;
     line-height: 1.5;
     font-size: 15px;
@@ -42,7 +42,7 @@ h3 {
 section {
     padding: 30px;
     min-height: 360px;
-    background: @colour-inactive-backgr;
+    background: @colour-active-backgr;
     color: @colour-body-text;
     position: relative;
     transition: background 500ms, color 500ms;
@@ -66,15 +66,11 @@ section a {
     text-decoration: none;
 }
 
-section {
-    background: @colour-inactive-backgr;
-}
-
-section.active {
+/*section.active {
     background: @colour-active-backgr;
     color: @colour-body-text;
     opacity: 1;
-}
+}*/
 
 /*section.active a {
     color: @colour-body-text;
@@ -97,7 +93,40 @@ section img{
     color: @colour-secondary;
 }
 
-/* --------------------------- IPAD ----------------------------------------*/
+/* --------------------------- DEVICES ----------------------------------------*/
+article{
+     z-index: 21;
+}
+
+
+#pane{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 0;
+}
+
+    #map {
+        position: absolute;
+        left:0px;
+        top: 0px;
+        bottom: 0px;
+        width: 100%;
+        transition: opacity 250ms;
+        -moz-transition: opacity 250ms;
+        -webkit-transition: opacity 250ms;
+    }
+
+    /* Distinguish the "cover page" visually other sections. */
+    body.section-0 #map {
+        opacity: 1;
+    }
+
+
+.transparent-map{
+    height:100vh;
+    background-color: rgba(0,0,0,0.2);
+}
 
 @media (min-width: 1279px) {
     section{
@@ -131,23 +160,8 @@ section img{
         width: 100-@size-of-article;
         z-index: 20;
     }
+} //END IPAD and above
 
-    #map {
-        position: absolute;
-        left:0px;
-        top: 0px;
-        bottom: 0px;
-        width: 100%;
-        transition: opacity 250ms;
-        -moz-transition: opacity 250ms;
-        -webkit-transition: opacity 250ms;
-    }
-
-    /* Distinguish the "cover page" visually other sections. */
-    body.section-0 #map {
-        opacity: 1;
-    }
-    }
 
 /*--------------------------- Map comments @bottom ------------------*/
 
