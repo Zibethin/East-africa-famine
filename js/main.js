@@ -98,7 +98,7 @@ for (var i = 0; i < listOfISO3.length; i++) {
     temp.init(tempCamera, inNeed[i], foodNeed[i], idp[i], peopleHelped[i], foodHelped[i], cashTransferred[i]);
     mapLocations[listOfISO3[i]] = temp;
 }
-console.log(mapLocations);
+
 
 //creating the layers for borders and name highlighting
 
@@ -120,7 +120,6 @@ countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryN
 // Function which checks if a given country chapter is on screen
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
-    console.log('chapter =', element);
     var bounds = element.getBoundingClientRect();
     return bounds.top < window.innerHeight && bounds.bottom > 0;  //Returns true-false if element is in screen boundaries
 }
@@ -209,6 +208,7 @@ function setActiveChapter(chapterName) {
     document.getElementById(activeChapterName).setAttribute('class', '');
 
     activeChapterName = chapterName;
+    activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
 
     // fade out previous number and then fade in new number of in number of people in Need
     var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
@@ -286,14 +286,14 @@ map.on('load', function () {
                     if (activeRedCrossWork === chapterName) { break; }  // setting this so that the numbers don't go in a loop while we stay on the section
                     // fade out previous number and then fade in new number of in number of people in Need
                     var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].peopleHelped + '</div><div>&nbsp; thousand people helped</div>';
-                    var foodHtml = '<div class=\'count\'>Provided food to ' + mapLocations[chapterName].foodHelped + '</div><div>&nbsp; thousand people</div>';
-
+                    var foodHtml = '<div class=\'count\'>' + mapLocations[chapterName].foodHelped + '</div><div> thousand people are provided food</div>';
+                    console.log(typeof (mapLocations[chapterName].foodHelped));
                     setNumberCountUp(chapterName, needHtml, foodHtml, 1);
                     activeRedCrossWork = chapterName;
                     break;
                 }
                 break;
-            }
+            } console.log(activeRedCrossWork);
         }
     };
 
