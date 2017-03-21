@@ -1,4 +1,5 @@
 ﻿/*--- Colours ---*/
+/*rgba(153, 0, 0, 0.8);*/
 body {
   padding: 0px;
   background: #fff;
@@ -75,45 +76,44 @@ section img {
     padding: 50px;
   }
 }
-article {
-  width: 55%;
-  min-width: 320px;
-  position: relative;
-  z-index: 21;
-}
-.scroll {
-  text-align: center;
-  bottom: 0px;
-  font-size: 1em;
-  text-transform: uppercase;
-  padding: 2em;
-  color: darkred;
-}
-/*container for map*/
-#pane {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 55%;
-  z-index: 20;
-}
-#map {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  width: 250%;
-  left: -150%;
-  transition: opacity 250ms;
-  -moz-transition: opacity 250ms;
-  -webkit-transition: opacity 250ms;
-}
-/*.mapboxgl-canvas-container{
-        opacity: 0.6;
-    }*/
-/* Distinguish the "cover page" visually other sections. */
-body.section-0 #map {
-  opacity: 1;
+@media (min-width: 768px) {
+  article {
+    width: 55%;
+    min-width: 320px;
+    position: relative;
+    z-index: 21;
+  }
+  .scroll {
+    text-align: center;
+    bottom: 0px;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 2em;
+    color: darkred;
+  }
+  /*container for map*/
+  #pane {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 45%;
+    z-index: 20;
+  }
+  #map {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    transition: opacity 250ms;
+    -moz-transition: opacity 250ms;
+    -webkit-transition: opacity 250ms;
+  }
+  /* Distinguish the "cover page" visually other sections. */
+  body.section-0 #map {
+    opacity: 1;
+  }
 }
 /*--------------------------- Map comments @bottom ------------------*/
 .attribution {
@@ -174,7 +174,7 @@ text {
 /*----------------------- numbers ---------------------*/
 .number-container {
   position: absolute;
-  color: rgba(153, 0, 0, 0.8);
+  color: #5e5e5e;
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
@@ -183,13 +183,20 @@ text {
   z-index: 9999;
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
+  line-height: 1;
+  padding-bottom: 2em;
+  text-align: center;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
 }
 #in-need {
-  left: 70%;
+  left: 20%;
   top: 20%;
 }
 #food-need {
-  left: 70%;
+  left: 20%;
   top: 30%;
   font-size: 2em;
 }

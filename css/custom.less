@@ -3,10 +3,12 @@
 @colour-body-text : #333;
 @colour-active-backgr: #fff;
 @colour-inactive-backgr: rgba(34,34,34,0.2);
+@font-number-color: #5e5e5e;/*rgba(153, 0, 0, 0.8);*/
 
 @colour-secondary: #999;
 @font-primary: 'Muli', sans-serif;
 @font-secondary: 'Roboto Condensed', sans-serif;
+@size-of-article: 55%;
 
 body {
     padding: 0px;
@@ -103,8 +105,9 @@ section img{
     }
 }
 
+@media (min-width: 768px) {
     article {
-        width: 55%;
+        width: @size-of-article;
         min-width: 320px;
         position: relative;
         z-index: 21;
@@ -125,30 +128,26 @@ section img{
         top: 0px;
         bottom: 0px;
         right: 0px;
-        width: 55%;
+        width: 100-@size-of-article;
         z-index: 20;
     }
 
     #map {
         position: absolute;
+        left:0px;
         top: 0px;
         bottom: 0px;
-        width: 250%;
-        left: -150%;
+        width: 100%;
         transition: opacity 250ms;
         -moz-transition: opacity 250ms;
         -webkit-transition: opacity 250ms;
     }
 
-    /*.mapboxgl-canvas-container{
-        opacity: 0.6;
-    }*/
-
     /* Distinguish the "cover page" visually other sections. */
     body.section-0 #map {
         opacity: 1;
     }
-
+    }
 
 /*--------------------------- Map comments @bottom ------------------*/
 
@@ -224,7 +223,7 @@ text {
 
 .number-container {
     position: absolute;
-    color: rgba(153, 0, 0, 0.8);
+    color: @font-number-color;
     transition: opacity 250ms;
     -moz-transition: opacity 250ms;
     -webkit-transition: opacity 250ms;
@@ -233,15 +232,23 @@ text {
     z-index: 9999;
     font-family: @font-secondary;
     display: flex;
+    line-height: 1;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
 }
 
 #in-need {
-    left: 70%;
+    left: 20%;
     top: 20%;
 }
 
 #food-need {
-    left: 70%;
+    left: 20%;
     top: 30%;
     font-size:2em;
 }

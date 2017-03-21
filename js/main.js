@@ -4,8 +4,8 @@
 //-------------------------------------------- VARIABLES -------------------------------------------------
 
 //colours for active and inactive countries
-var colorNotActive = 'rgba(153, 0, 0, 0.7)';
-var colorActive = 'rgba(204, 0, 0, 1)';
+var colorNotActive = 'rgba(189, 182, 176, 0.8)'//'rgba(153, 0, 0, 0.7)';
+var colorActive = 'rgba(238, 42, 36, 1)';//'rgba(204, 0, 0, 1)';
 var listOfISO3 = ['SSD', 'SOM', 'NGA', 'YEM', 'KEN', 'ETH'];
 var listCountryNames = ['South Sudan', 'Somalia', 'Nigeria', 'Yemen', 'Kenya', 'Ethiopia'];
 
@@ -18,13 +18,14 @@ var cashTransferred = [0, 100, 160, 48, 4, 0];  //ETH and SSD not known
 var idp = [1.8, 1.1, 1.9, 2.0, 0, 0 ];              //ETH not known - IDP = internally displaced people
 var pitch = [45, 15, 35, 5, 50, 20];
 
+// get viewport width and transform numbers
 var center = [
-    [1.472168, 7.231699],     //SSD
-    [13.908691, 5.441022],    //SOM
-    [-20.544434, 14.434680],  //NGA
-    [18.830566, 15.114553],   //YEM
-    [19.808350, 6.315299],    //KEN
-    [18.676758, 12.039321]];  //ETH
+    [-3.472168, 15.231699],     //SSD
+    [0.908691, 10.441022],    //SOM
+    [-29.544434, 14.434680],  //NGA
+    [8.830566, 15.114553],   //YEM
+    [3.446777, 10.679687],//[19.808350, 6.315299],    //KEN
+    [0.676758, 12.039321]];  //ETH
 
 var activeChapterName = 'ETH';
 var activeRedCrossWork = 'ETH';
@@ -103,10 +104,10 @@ for (var i = 0; i < listOfISO3.length; i++) {
 //creating the layers for borders and name highlighting
 
 var countryBorders = Object.create(LayerObject);
-countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#cccccc','line-width': 2}, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3']);
+countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#fff','line-width': 1}, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3']);
 
 var countryNameHighlight = Object.create(LayerObject);
-countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibility': 'visible', 'text-field': '{name_en}', 'text-size': 14 }, { 'text-color': '#000000' },
+countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibility': 'visible', 'text-field': '{name_en}', 'text-size': 14 }, { 'text-color': '#5e5e5e' },
     'country_label', ['in', 'name_en', '']);
 
 //adding list of countries to parameters of the layer objects
@@ -211,8 +212,8 @@ function setActiveChapter(chapterName) {
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
 
     // fade out previous number and then fade in new number of in number of people in Need
-    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div>&nbsp; million people in need</div>';
-    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div>&nbsp; million malnourished</div>';
+    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div> million people in need</div>';
+    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div> million malnourished</div>';
 
     setNumberCountUp(chapterName, needHtml, foodHtml, 10);
 
