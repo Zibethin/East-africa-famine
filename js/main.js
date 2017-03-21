@@ -131,7 +131,7 @@ function isRedCrossWorkOnScreen(id) {
     if (element !== null) {
         var bounds = element.getBoundingClientRect();
         return bounds.top < window.innerHeight && bounds.bottom > 0; ////CHECK THIS FOR CHROME
-    } else { return false };
+    } else { return false; }
 
 }
 
@@ -287,13 +287,12 @@ map.on('load', function () {
                     // fade out previous number and then fade in new number of in number of people in Need
                     var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].peopleHelped + '</div><div>&nbsp; thousand people helped</div>';
                     var foodHtml = '<div class=\'count\'>' + mapLocations[chapterName].foodHelped + '</div><div> thousand people are provided food</div>';
-                    console.log(typeof (mapLocations[chapterName].foodHelped));
                     setNumberCountUp(chapterName, needHtml, foodHtml, 1);
                     activeRedCrossWork = chapterName;
                     break;
                 }
                 break;
-            } console.log(activeRedCrossWork);
+            }
         }
     };
 

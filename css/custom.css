@@ -2,53 +2,42 @@
 body {
   padding: 0px;
   background: #fff;
-}
-section {
-  padding: 60px 10px 0px 10px;
-  min-height: 360px;
+  font-family: 'Muli', sans-serif;
+  line-height: 1.5;
+  font-size: 15px;
 }
 /*----------------------------------- Sections -------------------------------*/
+div:last-child {
+  padding-bottom: 1em;
+}
+h2 {
+  font-size: 2em;
+  font-weight: lighter;
+  padding-top: 1em;
+}
+h2 + p {
+  padding-top: 1.5em;
+}
+h3 {
+  padding-bottom: 1em;
+}
+section {
+  padding: 30px;
+  min-height: 360px;
+  background: rgba(34, 34, 34, 0.2);
+  color: #333;
+  position: relative;
+  transition: background 500ms, color 500ms;
+  -moz-transition: background 500ms, color 500ms;
+  -webkit-transition: background 500ms, color 500ms;
+}
 section,
 section a {
   color: #333;
   text-decoration: none;
 }
-section {
-  background: rgba(34, 34, 34, 0.2);
-}
-section {
-  background: #fff;
-  color: #333;
-}
 section small {
   color: #999;
-}
-#title {
-  text-align: center;
-  padding: 2em 0 2em 0;
-}
-#instructions {
-  color: #999;
-}
-/* --------------------------- IPAD ----------------------------------------*/
-/*@media (min-width:768px) {*/
-body {
-  margin: 0px;
-  background: #fff;
-}
-article {
-  width: 55%;
-  min-width: 320px;
-  position: relative;
-  z-index: 21;
-}
-section {
-  padding: 40px;
-  padding-left: 80px;
-  position: relative;
-  transition: background 500ms, color 500ms;
-  -moz-transition: background 500ms, color 500ms;
-  -webkit-transition: background 500ms, color 500ms;
 }
 section,
 section a {
@@ -63,14 +52,34 @@ section.active {
   color: #333;
   opacity: 1;
 }
-section.active a {
-  color: #333;
+/*section.active a {
+    color: @colour-body-text;
 }
+
 section.active small {
+    color: @colour-secondary;
+}*/
+section img {
+  padding: 2em 0 2em 0;
+}
+#title {
+  text-align: center;
+  padding: 2em 0 2em 0;
+}
+#instructions {
   color: #999;
 }
-section img {
-  padding: 10px 0 10px 0;
+/* --------------------------- IPAD ----------------------------------------*/
+@media (min-width: 1279px) {
+  section {
+    padding: 50px;
+  }
+}
+article {
+  width: 55%;
+  min-width: 320px;
+  position: relative;
+  z-index: 21;
 }
 .scroll {
   text-align: center;
@@ -86,7 +95,7 @@ section img {
   top: 0px;
   bottom: 0px;
   right: 0px;
-  width: 50%;
+  width: 55%;
   z-index: 20;
 }
 #map {
@@ -105,14 +114,6 @@ section img {
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
   opacity: 1;
-}
-/*}*/
-/* ------------------------------ COMPUTER -----------------------------*/
-@media (min-width: 1280px) {
-  body {
-    font-size: 14px;
-    line-height: 24px;
-  }
 }
 /*--------------------------- Map comments @bottom ------------------*/
 .attribution {
@@ -195,7 +196,7 @@ text {
 /* styling numbers */
 .count {
   font-size: 1.7em;
-  font-family: Lato, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   min-width: 100px;
   display: block;
 }

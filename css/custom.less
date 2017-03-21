@@ -5,22 +5,62 @@
 @colour-inactive-backgr: rgba(34,34,34,0.2);
 
 @colour-secondary: #999;
+@font-primary: 'Muli', sans-serif;
+@font-secondary: 'Roboto Condensed', sans-serif;
 
 body {
     padding: 0px;
     background: @colour-active-backgr;
-}
-
-section {
-    padding: 60px 10px 0px 10px;
-    min-height: 360px;
+    font-family: @font-primary;
+    line-height: 1.5;
+    font-size: 15px;
 }
 
 
 /*----------------------------------- Sections -------------------------------*/
+div:last-child {
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: lighter;
+    padding-top: 1em;
+}
+
+h2 + p {
+    padding-top: 1.5em;
+}
+
+h3 {
+    padding-bottom: 1em;
+}
+
+
+section {
+    padding: 30px;
+    min-height: 360px;
+    background: @colour-inactive-backgr;
+    color: @colour-body-text;
+    position: relative;
+    transition: background 500ms, color 500ms;
+    -moz-transition: background 500ms, color 500ms;
+    -webkit-transition: background 500ms, color 500ms;
+}
 
 section, section a {
     color: @colour-body-text;
+    text-decoration: none;
+}
+
+section small {
+    color: @colour-secondary;
+}
+
+
+section,
+section a {
+    color: @colour-secondary;
     text-decoration: none;
 }
 
@@ -28,13 +68,22 @@ section {
     background: @colour-inactive-backgr;
 }
 
-section {
+section.active {
     background: @colour-active-backgr;
+    color: @colour-body-text;
+    opacity: 1;
+}
+
+/*section.active a {
     color: @colour-body-text;
 }
 
-section small {
+section.active small {
     color: @colour-secondary;
+}*/
+
+section img{
+    padding: 2em 0 2em 0;
 }
 
 #title{
@@ -48,54 +97,17 @@ section small {
 
 /* --------------------------- IPAD ----------------------------------------*/
 
-/*@media (min-width:768px) {*/
-    body {
-        margin: 0px;
-        background: @colour-active-backgr;
+@media (min-width: 1279px) {
+    section{
+        padding: 50px;
     }
+}
 
     article {
         width: 55%;
         min-width: 320px;
         position: relative;
         z-index: 21;
-    }
-
-    section {
-        padding: 40px;
-        padding-left: 80px;
-        position: relative;
-        transition: background 500ms, color 500ms;
-        -moz-transition: background 500ms, color 500ms;
-        -webkit-transition: background 500ms, color 500ms;
-    }
-
-        section,
-        section a {
-            color: @colour-secondary;
-            text-decoration: none;
-        }
-
-    section {
-        background: @colour-inactive-backgr;
-    }
-
-    section.active {
-        background: @colour-active-backgr;
-        color: @colour-body-text;
-        opacity: 1;
-    }
-
-    section.active a {
-        color: @colour-body-text;
-    }
-
-    section.active small {
-        color: @colour-secondary;
-    }
-
-    section img{
-        padding: 10px 0 10px 0;
     }
 
     .scroll {
@@ -113,7 +125,7 @@ section small {
         top: 0px;
         bottom: 0px;
         right: 0px;
-        width: 50%;
+        width: 55%;
         z-index: 20;
     }
 
@@ -136,16 +148,7 @@ section small {
     body.section-0 #map {
         opacity: 1;
     }
-/*}*/
 
-/* ------------------------------ COMPUTER -----------------------------*/
-
-@media (min-width:1280px) {
-    body {
-        font-size: 14px;
-        line-height: 24px;
-    }
-}
 
 /*--------------------------- Map comments @bottom ------------------*/
 
@@ -228,7 +231,7 @@ text {
     font-size: 2.5em;
     font-weight: 500;
     z-index: 9999;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: @font-secondary;
     display: flex;
 }
 
@@ -246,7 +249,7 @@ text {
 /* styling numbers */
 .count {
     font-size: 1.7em;
-    font-family: Lato, sans-serif;
+    font-family:@font-secondary;
     min-width: 100px;
     display: block;
 }
