@@ -3,38 +3,85 @@
 @colour-body-text : #333;
 @colour-active-backgr: #fff;
 @colour-inactive-backgr: rgba(34,34,34,0.2);
+@font-number-color: #5e5e5e;/*rgba(153, 0, 0, 0.8);*/
 
 @colour-secondary: #999;
+@font-primary: 'Muli', sans-serif;
+@font-secondary: 'Roboto Condensed', sans-serif;
+@size-of-article: 55%;
 
 body {
     padding: 0px;
-    background: @colour-active-backgr;
-}
-
-section {
-    padding: 60px 10px 0px 10px;
-    min-height: 360px;
+    background: none;
+    font-family: @font-primary;
+    line-height: 1.5;
+    font-size: 15px;
 }
 
 
 /*----------------------------------- Sections -------------------------------*/
+div:last-child {
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: lighter;
+    padding-top: 1em;
+}
+
+h2 + p {
+    padding-top: 1.5em;
+}
+
+h3 {
+    padding-bottom: 1em;
+}
+
+
+section {
+    padding: 30px;
+    min-height: 360px;
+    background: @colour-active-backgr;
+    color: @colour-body-text;
+    position: relative;
+    transition: background 500ms, color 500ms;
+    -moz-transition: background 500ms, color 500ms;
+    -webkit-transition: background 500ms, color 500ms;
+}
 
 section, section a {
     color: @colour-body-text;
     text-decoration: none;
 }
 
-section {
-    background: @colour-inactive-backgr;
+section small {
+    color: @colour-secondary;
 }
 
-section {
+
+section,
+section a {
+    color: @colour-secondary;
+    text-decoration: none;
+}
+
+/*section.active {
     background: @colour-active-backgr;
+    color: @colour-body-text;
+    opacity: 1;
+}*/
+
+/*section.active a {
     color: @colour-body-text;
 }
 
-section small {
+section.active small {
     color: @colour-secondary;
+}*/
+
+section img{
+    padding: 2em 0 2em 0;
 }
 
 #title{
@@ -46,56 +93,53 @@ section small {
     color: @colour-secondary;
 }
 
-/* --------------------------- IPAD ----------------------------------------*/
+/* --------------------------- DEVICES ----------------------------------------*/
+article{
+     z-index: 21;
+}
 
-/*@media (min-width:768px) {*/
-    body {
-        margin: 0px;
-        background: @colour-active-backgr;
+
+#pane{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 0;
+}
+
+    #map {
+        position: absolute;
+        left:0px;
+        top: 0px;
+        bottom: 0px;
+        width: 100%;
+        transition: opacity 250ms;
+        -moz-transition: opacity 250ms;
+        -webkit-transition: opacity 250ms;
     }
 
-    article {
-        width: 50%;
-        min-width: 320px;
-        position: relative;
-        z-index: 21;
-    }
-
-    section {
-        padding: 40px;
-        padding-left: 80px;
-        position: relative;
-        transition: background 500ms, color 500ms;
-        -moz-transition: background 500ms, color 500ms;
-        -webkit-transition: background 500ms, color 500ms;
-    }
-
-        section,
-        section a {
-            color: @colour-secondary;
-            text-decoration: none;
-        }
-
-    section {
-        background: @colour-inactive-backgr;
-    }
-
-    section.active {
-        background: @colour-active-backgr;
-        color: @colour-body-text;
+    /* Distinguish the "cover page" visually other sections. */
+    body.section-0 #map {
         opacity: 1;
     }
 
-    section.active a {
-        color: @colour-body-text;
-    }
 
-    section.active small {
-        color: @colour-secondary;
-    }
+.transparent-map{
+    height:100vh;
+    background-color: rgba(0,0,0,0.2);
+}
 
-    section img{
-        padding:10px;
+@media (min-width: 1279px) {
+    section{
+        padding: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    article {
+        width: @size-of-article;
+        min-width: 320px;
+        position: relative;
+        z-index: 21;
     }
 
     .scroll {
@@ -113,39 +157,11 @@ section small {
         top: 0px;
         bottom: 0px;
         right: 0px;
-        width: 50%;
+        width: 100-@size-of-article;
         z-index: 20;
     }
+} //END IPAD and above
 
-    #map {
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        width: 250%;
-        left: -150%;
-        transition: opacity 250ms;
-        -moz-transition: opacity 250ms;
-        -webkit-transition: opacity 250ms;
-    }
-
-    .mapboxgl-canvas-container{
-        opacity: 0.6;
-    }
-
-    /* Distinguish the "cover page" visually other sections. */
-    body.section-0 #map {
-        opacity: 1;
-    }
-/*}*/
-
-/* ------------------------------ COMPUTER -----------------------------*/
-
-@media (min-width:1280px) {
-    body {
-        font-size: 18px;
-        line-height: 24px;
-    }
-}
 
 /*--------------------------- Map comments @bottom ------------------*/
 
@@ -221,24 +237,32 @@ text {
 
 .number-container {
     position: absolute;
-    color: rgba(153, 0, 0, 0.8);
+    color: @font-number-color;
     transition: opacity 250ms;
     -moz-transition: opacity 250ms;
     -webkit-transition: opacity 250ms;
     font-size: 2.5em;
     font-weight: 500;
     z-index: 9999;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: @font-secondary;
     display: flex;
+    line-height: 1;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
 }
 
 #in-need {
-    left: 70%;
+    left: 20%;
     top: 20%;
 }
 
 #food-need {
-    left: 70%;
+    left: 20%;
     top: 30%;
     font-size:2em;
 }
@@ -246,7 +270,7 @@ text {
 /* styling numbers */
 .count {
     font-size: 1.7em;
-    font-family: Lato, sans-serif;
+    font-family:@font-secondary;
     min-width: 100px;
     display: block;
 }

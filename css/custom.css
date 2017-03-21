@@ -1,27 +1,64 @@
 ﻿/*--- Colours ---*/
+/*rgba(153, 0, 0, 0.8);*/
 body {
   padding: 0px;
-  background: #fff;
-}
-section {
-  padding: 60px 10px 0px 10px;
-  min-height: 360px;
+  background: none;
+  font-family: 'Muli', sans-serif;
+  line-height: 1.5;
+  font-size: 15px;
 }
 /*----------------------------------- Sections -------------------------------*/
+div:last-child {
+  padding-bottom: 1em;
+}
+h2 {
+  font-size: 2em;
+  font-weight: lighter;
+  padding-top: 1em;
+}
+h2 + p {
+  padding-top: 1.5em;
+}
+h3 {
+  padding-bottom: 1em;
+}
+section {
+  padding: 30px;
+  min-height: 360px;
+  background: #fff;
+  color: #333;
+  position: relative;
+  transition: background 500ms, color 500ms;
+  -moz-transition: background 500ms, color 500ms;
+  -webkit-transition: background 500ms, color 500ms;
+}
 section,
 section a {
   color: #333;
   text-decoration: none;
 }
-section {
-  background: rgba(34, 34, 34, 0.2);
-}
-section {
-  background: #fff;
-  color: #333;
-}
 section small {
   color: #999;
+}
+section,
+section a {
+  color: #999;
+  text-decoration: none;
+}
+/*section.active {
+    background: @colour-active-backgr;
+    color: @colour-body-text;
+    opacity: 1;
+}*/
+/*section.active a {
+    color: @colour-body-text;
+}
+
+section.active small {
+    color: @colour-secondary;
+}*/
+section img {
+  padding: 2em 0 2em 0;
 }
 #title {
   text-align: center;
@@ -30,88 +67,62 @@ section small {
 #instructions {
   color: #999;
 }
-/* --------------------------- IPAD ----------------------------------------*/
-/*@media (min-width:768px) {*/
-body {
-  margin: 0px;
-  background: #fff;
-}
+/* --------------------------- DEVICES ----------------------------------------*/
 article {
-  width: 50%;
-  min-width: 320px;
-  position: relative;
   z-index: 21;
 }
-section {
-  padding: 40px;
-  padding-left: 80px;
-  position: relative;
-  transition: background 500ms, color 500ms;
-  -moz-transition: background 500ms, color 500ms;
-  -webkit-transition: background 500ms, color 500ms;
-}
-section,
-section a {
-  color: #999;
-  text-decoration: none;
-}
-section {
-  background: rgba(34, 34, 34, 0.2);
-}
-section.active {
-  background: #fff;
-  color: #333;
-  opacity: 1;
-}
-section.active a {
-  color: #333;
-}
-section.active small {
-  color: #999;
-}
-section img {
-  padding: 10px;
-}
-.scroll {
-  text-align: center;
-  bottom: 0px;
-  font-size: 1em;
-  text-transform: uppercase;
-  padding: 2em;
-  color: darkred;
-}
-/*container for map*/
 #pane {
+  height: 100vh;
+  width: 100vw;
   position: fixed;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 50%;
-  z-index: 20;
+  z-index: 0;
 }
 #map {
   position: absolute;
+  left: 0px;
   top: 0px;
   bottom: 0px;
-  width: 250%;
-  left: -150%;
+  width: 100%;
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
-}
-.mapboxgl-canvas-container {
-  opacity: 0.6;
 }
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
   opacity: 1;
 }
-/*}*/
-/* ------------------------------ COMPUTER -----------------------------*/
-@media (min-width: 1280px) {
-  body {
-    font-size: 18px;
-    line-height: 24px;
+.transparent-map {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 1279px) {
+  section {
+    padding: 50px;
+  }
+}
+@media (min-width: 768px) {
+  article {
+    width: 55%;
+    min-width: 320px;
+    position: relative;
+    z-index: 21;
+  }
+  .scroll {
+    text-align: center;
+    bottom: 0px;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 2em;
+    color: darkred;
+  }
+  /*container for map*/
+  #pane {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 45%;
+    z-index: 20;
   }
 }
 /*--------------------------- Map comments @bottom ------------------*/
@@ -173,7 +184,7 @@ text {
 /*----------------------- numbers ---------------------*/
 .number-container {
   position: absolute;
-  color: rgba(153, 0, 0, 0.8);
+  color: #5e5e5e;
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
@@ -182,20 +193,27 @@ text {
   z-index: 9999;
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
+  line-height: 1;
+  padding-bottom: 2em;
+  text-align: center;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
 }
 #in-need {
-  left: 70%;
+  left: 20%;
   top: 20%;
 }
 #food-need {
-  left: 70%;
+  left: 20%;
   top: 30%;
   font-size: 2em;
 }
 /* styling numbers */
 .count {
   font-size: 1.7em;
-  font-family: Lato, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   min-width: 100px;
   display: block;
 }
