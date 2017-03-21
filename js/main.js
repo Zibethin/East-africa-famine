@@ -20,12 +20,12 @@ var pitch = [45, 15, 35, 5, 50, 20];
 
 // get viewport width and transform numbers
 var center = [
-    [-3.472168, 15.231699],     //SSD
-    [0.908691, 10.441022],    //SOM
-    [-29.544434, 14.434680],  //NGA
-    [8.830566, 15.114553],   //YEM
-    [3.446777, 10.679687],//[19.808350, 6.315299],    //KEN
-    [0.676758, 12.039321]];  //ETH
+    [30.585937, 14.562947],     //SSD
+    [45.042969, 11.045813],    //SOM
+    [9.843750, 14.978733],      //NGA
+    [47.636719, 20.509905],   //YEM
+    [39.023438, 9.449062],    //KEN
+    [40.078125, 14.895893]];  //ETH
 
 var activeChapterName = 'ETH';
 var activeRedCrossWork = 'ETH';
@@ -80,7 +80,7 @@ var mapLocations = {
     'africa': {
         'camera': {
             'duration': '4000',
-            'center': [-28.200195, 5.441022],
+            'center': [29.619141, 7.536764],
             'zoom': '2.5',
             'pitch': '0'
         },
@@ -237,7 +237,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYnJjbWFwcyIsImEiOiJRZklIbXY0In0.SeDBAb72saeEJ
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/brcmaps/cj00w54pm00na2ro400gflm5j',
-    center: [-28.200195, 5.441022],
+    center: [29.619141, 7.536764],
     zoom: 2.5,
     interactive: false
 });
