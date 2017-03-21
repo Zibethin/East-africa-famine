@@ -181,7 +181,9 @@ function setNumberCountUp(chapterName, needHtml, foodHtml, countDecimal) {
             }
 
             // function to animate the numbers to count up 10 means 1 decimal place
-            countUp(countDecimal);
+
+                //countUp(countDecimal);
+            }
 
         }, 500);
     }); // end fadedout of number container
