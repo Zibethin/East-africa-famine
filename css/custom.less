@@ -116,7 +116,9 @@ article{
         opacity: 1;
     }
 
-
+.mapboxgl-canvas{
+    z-index:0;
+}
 .transparent-map{
     /*height:100vh;*/
     background-color: rgba(0,0,0,0.2);
@@ -125,6 +127,7 @@ article{
     /*height:100vh;
     width:100%;
     overflow: hidden;*/
+    z-index:30; /*pane is at 0 and numbers are at 9999*/
 }
 
 
