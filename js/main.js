@@ -107,7 +107,7 @@ var countryBorders = Object.create(LayerObject);
 countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#fff','line-width': 1}, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3']);
 
 var countryNameHighlight = Object.create(LayerObject);
-countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibility': 'visible', 'text-field': '{name_en}', 'text-size': 14 }, { 'text-color': '#5e5e5e' },
+countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibility': 'visible', 'text-field': '{name_en}', 'text-size': 14 }, { 'text-color': '#3a3a3a'},//, 'text-halo-color': '#fff', 'text-halo-width': 1, 'text-halo-blur': 1  },
     'country_label', ['in', 'name_en', '']);
 
 //adding list of countries to parameters of the layer objects
@@ -122,7 +122,6 @@ countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryN
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    console.log("id=", id," top=", bounds.top, " bottom=", bounds.bottom, " window.innerHeight=", window.innerHeight);
     return bounds.top < (window.innerHeight/2) && bounds.bottom > 0;  //Returns true-false if element is in screen boundaries
 }
 
