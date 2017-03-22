@@ -144,7 +144,7 @@ function countUp(decimals) {
             duration: 1500,
             easing: 'swing',
             step: function (now) {
-                $(this).text(Math.ceil(now * decimals) / decimals);
+                $(this).text(parseFloat((Math.ceil(now * decimals) / decimals).toFixed(1)));
             }
         });
     });
@@ -182,7 +182,7 @@ function setNumberCountUp(chapterName, needHtml, foodHtml, countDecimal) {
 
             // function to animate the numbers to count up 10 means 1 decimal place
 
-                //countUp(countDecimal);
+                countUp(countDecimal);
             
 
         }, 500);
@@ -214,8 +214,8 @@ function setActiveChapter(chapterName) {
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
 
     // fade out previous number and then fade in new number of in number of people in Need
-    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div> million people in need</div>';
-    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div> million malnourished</div>';
+    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div class="number-text"> million people in need</div>';
+    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div class="number-text"> million malnourished</div>';
 
     setNumberCountUp(chapterName, needHtml, foodHtml, 10);
 
