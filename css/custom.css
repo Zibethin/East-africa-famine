@@ -40,18 +40,6 @@ section a {
 section small {
   color: #999;
 }
-/*section.active {
-    background: @colour-active-backgr;
-    color: @colour-body-text;
-    opacity: 1;
-}*/
-/*section.active a {
-    color: @colour-body-text;
-}
-
-section.active small {
-    color: @colour-secondary;
-}*/
 section img {
   padding: 2em 0 2em 0;
 }
@@ -85,9 +73,6 @@ article {
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
   opacity: 1;
-}
-.mapboxgl-canvas {
-  z-index: 0;
 }
 .transparent-map {
   height: 100vh;
@@ -220,54 +205,8 @@ text {
   min-width: 100px;
 }
 /*------------------------- Content layout ----------------------*/
-.modal-content-img {
-  background: #fff;
-  border-radius: 0px;
-}
-.modal-80 {
-  width: 80%;
-}
-.modal-body-img {
-  padding: 20px;
-}
-.modal-img {
-  margin-left: auto;
-  margin-right: auto;
-}
-.modalLink {
-  padding: 0px 12px 12px 12px;
-  cursor: pointer;
-}
 .header-name {
   margin-top: 0px;
-}
-.modalLink-half {
-  width: 49%;
-  cursor: pointer;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 12px;
-}
-.modalLinkImg {
-  /*  border: 1px solid #222222;*/
-  margin-left: auto;
-  margin-right: auto;
-}
-.close-imgModal {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  opacity: 0.8;
-  color: white;
-  font-size: 26px;
-}
-.close-imgModal:hover {
-  color: white;
-}
-.img-double-sm {
-  max-width: 49%;
-  vertical-align: baseline;
 }
 /* Disable these awful hyperlink colours*/
 a:link,
