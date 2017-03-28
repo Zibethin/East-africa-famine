@@ -31,6 +31,23 @@ var activeChapterName = 'ETH';
 var activeRedCrossWork = 'ETH';
 var oldChapter = 'africa';
 
+//initialising the locations list
+
+var mapLocations = {
+    'africa': {
+        'camera': {
+            'duration': '4000',
+            'center': [29.619141, 7.536764],
+            'zoom': '2.5',
+            'pitch': '0'
+        },
+        'inNeed': 70.1,
+        'foodNeed': 0,
+        'idp': 0
+    }
+};
+
+var layerName = 'admin0-4r2su7';
 //---------------------------------------- OBJECT DEFINITIONS -------------------------------------------
 
 //creating the layer object for map layers
@@ -74,21 +91,7 @@ var CameraObject = {
 };
 
 //------------------------------------------ CREATING OBJECTS -------------------------------------------
-//initialising the locations list
 
-var mapLocations = {
-    'africa': {
-        'camera': {
-            'duration': '4000',
-            'center': [29.619141, 7.536764],
-            'zoom': '2.5',
-            'pitch': '0'
-        },
-        'inNeed': 70.1,
-        'foodNeed': 0,
-        'idp': 0
-    }
-};
 
 //adding other countries to the locations list 
 
@@ -104,7 +107,7 @@ for (var i = 0; i < listOfISO3.length; i++) {
 //creating the layers for borders and name highlighting
 
 var countryBorders = Object.create(LayerObject);
-countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#fff','line-width': 1}, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3']);
+countryBorders.init('countryLine', 'line', 'countries', { 'visibility': 'visible' }, {'line-color': '#fff','line-width': 1}, layerName, ['in', 'iso_a3']);
 
 var countryNameHighlight = Object.create(LayerObject);
 countryNameHighlight.init('countryNames', 'symbol', 'countryNames', { 'visibility': 'visible', 'text-field': '{name_en}', 'text-size': 14 }, { 'text-color': '#3a3a3a'},//, 'text-halo-color': '#fff', 'text-halo-width': 1, 'text-halo-blur': 1  },
@@ -250,7 +253,7 @@ map.on('load', function () {
 
     map.addSource('countries', {
         type: 'vector',
-        url: 'mapbox://brcmaps.1sx9x8yc'
+        url: 'mapbox://brcmaps.4a5g1ou7'
     });
 
     //adding the country names from mapbox street default
@@ -263,7 +266,7 @@ map.on('load', function () {
 
     for (var i = 0; i < listOfISO3.length; i++) {
         var temp = Object.create(LayerObject);
-        temp.init(listOfISO3[i], 'fill', 'countries', { 'visibility': 'visible' }, { 'fill-color': colorNotActive }, 'ne_10m_admin_0_countries-99cdmu', ['in', 'ISO_A3', listOfISO3[i]]);
+        temp.init(listOfISO3[i], 'fill', 'countries', { 'visibility': 'visible' }, { 'fill-color': colorNotActive }, layerName, ['in', 'iso_a3', listOfISO3[i]]);
         map.addLayer(temp);
     }
 
