@@ -191,12 +191,12 @@ text {
 }
 #in-need {
   left: 20%;
-  top: 17%;
+  top: 15%;
 }
 #food-need {
   left: 20%;
-  top: 25%;
-  font-size: 1.7em;
+  top: 23%;
+  font-size: 1.6em;
 }
 /* styling numbers */
 .count {
