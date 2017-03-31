@@ -180,7 +180,7 @@ function setNumberCountUp(chapterName, needHtml, foodHtml, countDecimal) {
             }
              if (mapLocations[chapterName].idp > 0) {
                 $('#i-d-p').css("visibility", "visible");
-                $('#i-d-p').html(foodHtml).fadeIn(1000, function () {
+                $('#i-d-p').html(idpHtml).fadeIn(1000, function () {
                 });
             }
             if (mapLocations[chapterName].foodNeed === 0) {
