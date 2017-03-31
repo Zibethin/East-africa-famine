@@ -223,7 +223,7 @@ function setActiveChapter(chapterName) {
     activeChapterName = chapterName;
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
 
-    // fade out previous number and then fade in new number of in number of people in Need
+    // fade out previous number and then fade in new numbers
     var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div class="number-text"> million people in need</div>';
     var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div class="number-text"> million malnourished</div>';
     var idpHtml = '<div class=\'count\'> ' + mapLocations[chapterName].idp + '</div><div class="number-text"> million internally displaced</div>';
