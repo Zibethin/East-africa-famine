@@ -191,13 +191,19 @@ text {
 }
 #in-need {
   left: 20%;
-  top: 20%;
+  top: 12%;
 }
 #food-need {
   left: 20%;
-  top: 30%;
-  font-size: 2em;
+  top: 20%;
+  font-size: 1.7em;
 }
+#i-d-p {
+  left: 20%;
+  top: 25%;
+  font-size: 1.7em;
+}
+
 /* styling numbers */
 .count {
   font-size: 1.5em;
