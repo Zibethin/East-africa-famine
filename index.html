@@ -20,27 +20,14 @@
 
 </head>
 <body class='section-0'>
-    <div id="myImageModal" class="modal fade">
-        <div class="modal-dialog modal-lg modal-80">
-            <div class="modal-content modal-content-img">
-                <div class="modal-body modal-body-img">
-                    <button type="button" class="close close-imgModal" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <span class="sr-only">Close</span></button>
-                    <img class="modal-img img-responsive" src="#">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--  navbar for mobile only -->
-    <nav class="navbar visible-xs-block" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+    <nav class="navbar" role="navigation"> <!--visible-xs-block-->
+                <button type="button" id="menu-button" class="menu">
                     Menu
-                    <i class="fa fa-bars"></i>
                 </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div id="menu-items" class="dropdown-content">
+                <ul> <!--class="nav navbar-nav">-->
                     <li><a href="#">Bird's Eye View</a></li>
                     <li><a href="#YEM" id=""><span class="glyphicon glyphicon-picture color-red"></span>&nbsp; Yemen      </a>    </li>
                     <li><a href="#SOM"><span class="glyphicon glyphicon-user color-red">   </span>&nbsp; Somalia    </a>    </li>
@@ -464,6 +451,7 @@
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
         <script src="js/bootstrap.min.js"></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+        <script src="js/dropdown.js"></script>
         <script src="js/main.js"></script>
         <!--[if lt IE 9]>
         <script>
