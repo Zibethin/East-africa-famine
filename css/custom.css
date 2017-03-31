@@ -198,6 +198,12 @@ text {
   top: 20%;
   font-size: 1.7em;
 }
+#i-d-p {
+  left: 20%;
+  top 25%
+  font-size 1.7em;
+}
+
 /* styling numbers */
 .count {
   font-size: 1.5em;
