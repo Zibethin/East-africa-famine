@@ -163,7 +163,7 @@ takes the following parameters:
         a value of countDecimal = 10 will count up from 0.1 to 91.9 fo instance
         whereas a value of 1 will count up from 1 to 91*/
 
-function setNumberCountUp(chapterName, needHtml, foodHtml, countDecimal) {
+function setNumberCountUp(chapterName, needHtml, foodHtml, idpHtml, countDecimal) {
     $('.number-container').fadeOut(1000, function () {
         setTimeout(function () {
 
