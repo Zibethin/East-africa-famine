@@ -16,7 +16,8 @@ h2 {
   font-weight: lighter;
   padding-top: 1em;
 }
-h2 + p {
+h2 + p,
+p + h3 {
   padding-top: 1.5em;
 }
 h3 {
@@ -203,7 +204,6 @@ text {
   top: 25%;
   font-size: 1.7em;
 }
-
 /* styling numbers */
 .count {
   font-size: 1.5em;
