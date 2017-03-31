@@ -178,8 +178,16 @@ function setNumberCountUp(chapterName, needHtml, foodHtml, countDecimal) {
                 $('#food-need').html(foodHtml).fadeIn(1000, function () {
                 });
             }
+             if (mapLocations[chapterName].idp > 0) {
+                $('#i-d-p').css("visibility", "visible");
+                $('#i-d-p').html(foodHtml).fadeIn(1000, function () {
+                });
+            }
             if (mapLocations[chapterName].foodNeed === 0) {
                 $('#food-need').css("visibility", "hidden");
+            }
+            if (mapLocations[chapterName].idp === 0) {
+                $('#i-d-p').css("visibility", "hidden");
             }
 
             // function to animate the numbers to count up 10 means 1 decimal place
@@ -218,8 +226,9 @@ function setActiveChapter(chapterName) {
     // fade out previous number and then fade in new number of in number of people in Need
     var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div class="number-text"> million people in need</div>';
     var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div class="number-text"> million malnourished</div>';
-
-    setNumberCountUp(chapterName, needHtml, foodHtml, 10);
+    var idpHtml = '<div class=\'count\'> ' + mapLocations[chapterName].idp + '</div><div class="number-text"> million internally displaced</div>';
+    
+    setNumberCountUp(chapterName, needHtml, foodHtml, idpHtml, 10);
 
     oldChapter = chapterName;
 } //End function SetActive Chapter
