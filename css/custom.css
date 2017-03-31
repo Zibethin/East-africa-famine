@@ -172,6 +172,12 @@ text {
   position: fixed;
   background-color: white;
 }
+.dropdown-content {
+  display: none;
+}
+.show {
+  display: block;
+}
 /*----------------------- numbers ---------------------*/
 .number-container {
   position: absolute;
