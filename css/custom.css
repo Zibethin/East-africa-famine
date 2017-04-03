@@ -86,9 +86,22 @@ body.section-0 #map {
   z-index: 30;
   /*pane is at 0 and numbers are at 9999*/
 }
+.navigation-bar {
+  border-radius: 3px;
+  border: 2px solid black;
+  z-index: 10000;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  background-color: white;
+  -webkit-backface-visibility: hidden;
+}
 @media (min-width: 1279px) {
   section {
     padding: 50px;
+  }
+  .navigation-bar {
+    left: 45%;
   }
 }
 @media (min-width: 768px) {
@@ -165,18 +178,19 @@ text {
   z-index: 9999;
   height: 100%;
 }
-.navbar {
-  border-radius: 3px;
-  border-color: black;
-  z-index: 10000;
-  position: fixed;
-  background-color: white;
-}
 .dropdown-content {
   display: none;
 }
 .show {
   display: block;
+}
+.menu {
+  padding: 1em;
+}
+ul.nav-list {
+  list-style-type: none;
+  color: blue;
+  padding: 0 2em 0 2em;
 }
 /*----------------------- numbers ---------------------*/
 .number-container {
