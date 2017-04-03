@@ -96,12 +96,18 @@ body.section-0 #map {
   background-color: white;
   -webkit-backface-visibility: hidden;
 }
+.nav-list li {
+  padding: 1em 0 1em 0;
+}
 @media (min-width: 1279px) {
   section {
     padding: 50px;
   }
   .navigation-bar {
     left: 45%;
+  }
+  .nav-list li {
+    padding: 0;
   }
 }
 @media (min-width: 768px) {
