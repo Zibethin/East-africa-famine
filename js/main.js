@@ -125,7 +125,8 @@ countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryN
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < (window.innerHeight/2) && bounds.bottom > 0;  //Returns true-false if element is in screen boundaries
+    console.log("bounds.top=",bounds.top, "bounds.bottom=", bounds.bottom, ", id=", id);
+    return bounds.top < window.innerHeight && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
 
 // Function which looks for the section red-cross-work inside a given chapter ID
@@ -192,9 +193,7 @@ function setNumberCountUp(chapterName, needHtml, foodHtml, idpHtml, countDecimal
 
             // function to animate the numbers to count up 10 means 1 decimal place
 
-                countUp(countDecimal);
-            
-
+                countUp(countDecimal);  
         }, 500);
     }); // end fadedout of number container
 } //end setNumberCountUp
