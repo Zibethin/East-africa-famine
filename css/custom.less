@@ -124,10 +124,6 @@ body.section-0 #map {
     -webkit-backface-visibility: hidden;
 }
 
-.nav-list li{
-    padding: 1em 0 1em 0;
-}
-
 @media (min-width: 1279px) {
     section{
         padding: 50px;
@@ -138,6 +134,8 @@ body.section-0 #map {
     .nav-list li{
         padding: 0;
     }
+    #menu-items a {
+    padding: 0.5em 2em 0.5em 2em;
 }
 
 @media (min-width: 768px) {
@@ -219,6 +217,7 @@ body.section-0 #map {
 text {
     z-index:9999;
 }
+
 .navbar-header {
     background: @colour-active-backgr;
 }
@@ -229,7 +228,6 @@ text {
     z-index:9999;
     height:100%;
 }
-
 
 .dropdown-content{
     display:none;
@@ -245,13 +243,13 @@ text {
 
 #menu-items a {
     list-style-type: none;
-    padding: 0.5em 2em 0.5em 2em;
+    padding: 1em 2em 1em 2em;
     display: block;
 }
 
 #menu-items a:hover, #menu-items a:active {
     background-color: @colour-inactive-backgr;
-    color:rgba(153, 0, 0, 0.8);
+    color: rgba(153, 0, 0, 0.8);
 }
 
 /*----------------------- numbers ---------------------*/
