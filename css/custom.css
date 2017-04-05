@@ -106,6 +106,9 @@ body.section-0 #map {
   .nav-list li {
     padding: 0;
   }
+  #menu-items a {
+    padding: 0.5em 2em 0.5em 2em;
+  }
 }
 @media (min-width: 768px) {
   article {
@@ -192,7 +195,7 @@ text {
 }
 #menu-items a {
   list-style-type: none;
-  padding: 0.5em 2em 0.5em 2em;
+  padding: 1em 2em 1em 2em;
   display: block;
 }
 #menu-items a:hover,
