@@ -193,10 +193,15 @@ text {
 .menu {
   padding: 1em;
 }
-ul.nav-list {
+#menu-items a {
   list-style-type: none;
-  color: blue;
-  padding: 0 2em 0 2em;
+  padding: 0.5em 2em 0.5em 2em;
+  display: block;
+}
+#menu-items a:hover,
+#menu-items a:active {
+  background-color: rgba(34, 34, 34, 0.2);
+  color: rgba(153, 0, 0, 0.8);
 }
 /*----------------------- numbers ---------------------*/
 .number-container {
@@ -214,6 +219,16 @@ ul.nav-list {
 }
 /* For mobile phones: */
 [class*="col-"] {
+  width: 100%;
+}
+.mobile-map {
+  position: relative;
+  width: 100%;
+}
+.mobile-number {
+  position: absolute;
+  top: 30%;
+  left: 30%;
   width: 100%;
 }
 #in-need {
@@ -242,13 +257,13 @@ ul.nav-list {
 }
 /* Disable these awful hyperlink colours*/
 a:link,
-a:visited,
-a:active {
+a:visited {
   color: black;
   text-decoration: none;
   outline: 0;
 }
-a:hover {
+a:hover,
+a:active {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #88CFE9;
