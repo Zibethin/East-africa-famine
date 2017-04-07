@@ -18,6 +18,15 @@ var cashTransferred = [0, 100, 160, 48, 4, 0];  //ETH and SSD not known
 var idp = [1.8, 1.1, 1.9, 2.0, 0, 0 ];              //ETH not known - IDP = internally displaced people
 var pitch = [45, 15, 35, 5, 50, 20];
 
+//text on the map
+var needText = '</div><div class="number-text"> million people in need</div>';
+var foodText = '</div><div class="number-text"> million malnourished</div>';
+var idpText = '</div><div class="number-text"> million internally displaced</div>';
+var helpedHtml = '</div><div>&nbsp; thousand people helped</div>';
+var foodHtml = '</div><div> thousand people are provided food</div>';
+var cashTransfer = '</div><div> thousand people have been transferred cash</div>';
+var countDiv = '<div class=\'count\'> ';
+
 // get viewport width and transform numbers
 var center = [
     [30.585937, 14.562947],     //SSD
@@ -125,17 +134,17 @@ countryNameHighlight.filter.push.apply(countryNameHighlight.filter, listCountryN
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    console.log("bounds.top=",bounds.top, "bounds.bottom=", bounds.bottom, ", id=", id);
+    //console.log("bounds.top=",bounds.top, "bounds.bottom=", bounds.bottom, ", id=", id);
     return bounds.top < window.innerHeight && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
 
 // Function which looks for the section red-cross-work inside a given chapter ID
 function isRedCrossWorkOnScreen(id) {
-    var string = '#' + id + ' > .red-cross-work';
+    var string = '#' + id + ' > section > .red-cross-work';
     var element = document.querySelector(string);
     if (element !== null) {
         var bounds = element.getBoundingClientRect();
-        return bounds.top < window.innerHeight && bounds.bottom > 0; ////CHECK THIS FOR CHROME
+        return bounds.top < window.innerHeight && bounds.bottom > 50; ////CHECK THIS FOR CHROME
     } else { return false; }
 }
 
@@ -164,33 +173,35 @@ takes the following parameters:
         a value of countDecimal = 10 will count up from 0.1 to 91.9 fo instance
         whereas a value of 1 will count up from 1 to 91*/
 
-function setNumberCountUp(chapterName, needHtml, foodHtml, idpHtml, countDecimal) {
+function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var3, countDecimal) {
     $('.number-container').fadeOut(1000, function () {
         setTimeout(function () {
 
             // if the number of people in need is not null then add the numbers to the map
-            if (mapLocations[chapterName].inNeed > 0) {
-                $('#in-need').html(needHtml).fadeIn(1000, function () {
+            if (mapLocations[chapterName][var1] > 0) {
+                $('#in-need').css("visibility", "visible");
+                $('#in-need').html(html1).fadeIn(1000, function () {
                 });
             }
-
-            if (mapLocations[chapterName].foodNeed > 0) {
+            if (mapLocations[chapterName][var2] > 0) {
                 $('#food-need').css("visibility", "visible");
                 $('#food-need').html(foodHtml).fadeIn(1000, function () {
                 });
             }
-             if (mapLocations[chapterName].idp > 0) {
+            if (mapLocations[chapterName][var3] > 0) {
                 $('#i-d-p').css("visibility", "visible");
                 $('#i-d-p').html(idpHtml).fadeIn(1000, function () {
                 });
             }
-            if (mapLocations[chapterName].foodNeed === 0) {
+            if (mapLocations[chapterName][var1] === 0) {
+                $('#in-need').css("visibility", "hidden");
+            }
+            if (mapLocations[chapterName][var2] === 0) {
                 $('#food-need').css("visibility", "hidden");
             }
-            if (mapLocations[chapterName].idp === 0) {
+            if (mapLocations[chapterName][var3] === 0) {
                 $('#i-d-p').css("visibility", "hidden");
             }
-
             // function to animate the numbers to count up 10 means 1 decimal place
 
                 countUp(countDecimal);  
@@ -223,11 +234,11 @@ function setActiveChapter(chapterName) {
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
 
     // fade out previous number and then fade in new numbers
-    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].inNeed + '</div><div class="number-text"> million people in need</div>';
-    var foodHtml = '<div class=\'count\'> ' + mapLocations[chapterName].foodNeed + '</div><div class="number-text"> million malnourished</div>';
-    var idpHtml = '<div class=\'count\'> ' + mapLocations[chapterName].idp + '</div><div class="number-text"> million internally displaced</div>';
+    var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
+    var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
+    var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
     
-    setNumberCountUp(chapterName, needHtml, foodHtml, idpHtml, 10);
+    setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
 
     oldChapter = chapterName;
 } //End function SetActive Chapter
@@ -298,9 +309,13 @@ map.on('load', function () {
                 if (isRedCrossWorkOnScreen(chapterName)) {
                     if (activeRedCrossWork === chapterName) { break; }  // setting this so that the numbers don't go in a loop while we stay on the section
                     // fade out previous number and then fade in new number of in number of people in Need
-                    var needHtml = '<div class=\'count\'> ' + mapLocations[chapterName].peopleHelped + '</div><div>&nbsp; thousand people helped</div>';
-                    var foodHtml = '<div class=\'count\'>' + mapLocations[chapterName].foodHelped + '</div><div> thousand people are provided food</div>';
-                    setNumberCountUp(chapterName, needHtml, foodHtml, 1);
+                    var rc_var1 = "peopleHelped";
+                    var rc_var2 = "foodHelped";
+                    var rc_var3 = "cashTransferred";
+                    var rc_work_line1 = countDiv + mapLocations[chapterName][rc_var1] + helpedHtml;
+                    var rc_work_line2 = countDiv + mapLocations[chapterName][rc_var2]+ foodHtml;
+                    var rc_work_line3 = countDiv + mapLocations[chapterName][rc_var3] + cashTransfer;
+                    setNumberCountUp(chapterName, rc_work_line1, rc_var1, rc_work_line2, rc_var2, rc_work_line3, rc_var3, 1);
                     activeRedCrossWork = chapterName;
                     break;
                 }
