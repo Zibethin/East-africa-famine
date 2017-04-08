@@ -1,5 +1,4 @@
 ﻿/*--- Colours ---*/
-/*rgba(153, 0, 0, 0.8);*/
 body {
   padding: 0px;
   background: none;
@@ -44,12 +43,60 @@ section small {
 section img {
   padding: 2em 0 2em 0;
 }
-#title {
+.center {
   text-align: center;
+}
+#title {
   padding: 2em 0 2em 0;
 }
 #instructions {
   color: #999;
+}
+#footer {
+  padding-bottom: 3em;
+}
+#donate {
+  background-color: #ee2a24;
+  height: 35px;
+  font-size: 1.2em;
+  padding: 4px 10px 4px 10px;
+  color: white;
+  border-radius: 3px;
+  margin-right: 1px;
+  margin-left: 21px;
+}
+#donate1 {
+  background-color: #ee2a24;
+  height: 28px;
+  padding: 4px 10px 4px 10px;
+  color: white;
+  border-radius: 3px;
+  margin-right: 1px;
+  font-size: 13px;
+}
+#donate:hover,
+#donate1:hover {
+  background-color: #990000;
+}
+.button-social {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top !important;
+  margin-bottom: 10px;
+}
+.fb-share-button {
+  transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  -o-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  transform-origin: top left;
+  -ms-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -webkit-transform-origin: top left;
+}
+#footer .twitter-share-button {
+  margin-left: 20px;
 }
 /* --------------------------- DEVICES ----------------------------------------*/
 article {
@@ -118,12 +165,11 @@ body.section-0 #map {
     z-index: 21;
   }
   .scroll {
-    text-align: center;
     bottom: 0px;
     font-size: 1em;
     text-transform: uppercase;
     padding: 2em;
-    color: darkred;
+    color: #990000;
   }
   /*container for map*/
   #pane {
@@ -163,10 +209,10 @@ body.section-0 #map {
 /*------------------------------ Icons -----------------------------*/
 .glyphicon-large {
   font-size: 20px;
-  color: #ed1b2e;
+  color: #ee2a24;
 }
 .color-red {
-  color: #ed1b2e;
+  color: #ee2a24;
 }
 .section-indent {
   margin-left: 16px;
@@ -201,7 +247,7 @@ text {
 #menu-items a:hover,
 #menu-items a:active {
   background-color: rgba(34, 34, 34, 0.2);
-  color: rgba(153, 0, 0, 0.8);
+  color: #990000;
 }
 /*----------------------- numbers ---------------------*/
 .number-container {
