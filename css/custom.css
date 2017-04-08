@@ -74,7 +74,8 @@ section img {
   margin-right: 1px;
   font-size: 13px;
 }
-.button-social:hover {
+#donate:hover,
+#donate1:hover {
   background-color: #990000;
 }
 .button-social {
