@@ -3,8 +3,9 @@
 @colour-body-text : #333;
 @colour-active-backgr: #fff;
 @colour-inactive-backgr: rgba(34,34,34,0.2);
-@font-number-color: #5e5e5e;/*rgba(153, 0, 0, 0.8);*/
-
+@font-number-color: #5e5e5e;
+@colour-primary: #ee2a24;
+@colour-primary-hover: rgb(153, 0, 0);
 @colour-secondary: #999;
 @font-primary: 'Muli', sans-serif;
 @font-secondary: 'Roboto Condensed', sans-serif;
@@ -38,7 +39,6 @@ h3 {
     padding-bottom: 1em;
 }
 
-
 section {
     padding: 30px;
     min-height: 360px;
@@ -63,15 +63,72 @@ section img{
     padding: 2em 0 2em 0;
 }
 
-#title{
+.center{
     text-align:center;
+}
+
+#title{
     padding: 2em 0 2em 0;
 }
 
-#instructions {
-    color: @colour-secondary;
+#africa{
+    line-height:2em;
 }
 
+#footer{
+    padding-bottom:3em;
+}
+
+#donate{
+    background-color: @colour-primary;
+    height:35px; //based on the twitter button default height
+    font-size: 1.2em;
+    padding: 4px 10px 4px 10px;
+    color: white;
+    border-radius: 3px;
+    margin-right: 1px;
+    margin-left: 21px;
+}
+
+#donate1{
+    background-color: @colour-primary;
+    height:28px; //based on the twitter button default height
+    padding: 4px 10px 4px 10px;
+    color: white;
+    border-radius: 3px;
+    margin-right: 1px;
+    font-size:13px;
+}
+
+#donate:hover, #donate1:hover{
+    background-color:@colour-primary-hover;
+}
+
+.button-social{
+    text-align: center;
+    display:inline-block;
+    vertical-align: top !important;
+    margin-bottom: 10px;
+}
+
+.fb-share-button
+{
+    transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    transform-origin: top left;
+    -ms-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    -moz-transform-origin: top left;
+    -webkit-transform-origin: top left;
+   
+}
+
+#footer .twitter-share-button{
+    margin-left:20px;
+}
 /* --------------------------- DEVICES ----------------------------------------*/
 article{
      z-index: 21;
@@ -124,19 +181,18 @@ body.section-0 #map {
     -webkit-backface-visibility: hidden;
 }
 
-.nav-list li{
-    padding: 1em 0 1em 0;
-}
-
 @media (min-width: 1279px) {
     section{
-        padding: 50px;
+        padding: 0px 50px 50px 50px;
     }
     .navigation-bar{
         left:@size-of-article - 10;
     }
     .nav-list li{
         padding: 0;
+    }
+    #menu-items a {
+    padding: 0.5em 2em 0.5em 2em;
     }
 }
 
@@ -149,12 +205,11 @@ body.section-0 #map {
     }
 
     .scroll {
-        text-align: center;
         bottom: 0px;
         font-size: 1em;
         text-transform: uppercase;
         padding: 2em;
-        color: darkred;
+        color: @colour-primary-hover;
     }
 
     /*container for map*/
@@ -203,11 +258,11 @@ body.section-0 #map {
 
 .glyphicon-large {
     font-size: 20px;
-    color: #ed1b2e;
+    color: @colour-primary;
 }
 
 .color-red {
-    color: #ed1b2e;
+    color: @colour-primary;
 }
 
 .section-indent {
@@ -219,6 +274,7 @@ body.section-0 #map {
 text {
     z-index:9999;
 }
+
 .navbar-header {
     background: @colour-active-backgr;
 }
@@ -229,7 +285,6 @@ text {
     z-index:9999;
     height:100%;
 }
-
 
 .dropdown-content{
     display:none;
@@ -243,10 +298,15 @@ text {
     padding:1em;
 }
 
-ul.nav-list {
+#menu-items a {
     list-style-type: none;
-    color:blue;
-    padding: 0 2em 0 2em;
+    padding: 1em 2em 1em 2em;
+    display: block;
+}
+
+#menu-items a:hover, #menu-items a:active {
+    background-color: @colour-inactive-backgr;
+    color: @colour-primary-hover;
 }
 
 /*----------------------- numbers ---------------------*/
@@ -267,6 +327,18 @@ ul.nav-list {
 
 /* For mobile phones: */
 [class*="col-"] {
+    width: 100%;
+}
+
+.mobile-map{
+    position:relative;
+    width:100%;
+}
+
+.mobile-number{
+    position:absolute;
+    top: 30%; 
+    left: 30%; 
     width: 100%;
 }
 
@@ -299,16 +371,15 @@ ul.nav-list {
     margin-top: 0px;
 }
 
-
 /* Disable these awful hyperlink colours*/
 
-a:link, a:visited, a:active {
+a:link, a:visited {
     color: black;
     text-decoration: none;
     outline: 0;
 }
 
-a:hover {
+a:hover, a:active  {
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
     color: #88CFE9;
