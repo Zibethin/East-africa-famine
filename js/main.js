@@ -91,31 +91,32 @@ $.when(sheetCall).then(function (dataArgs) {
             return parseFloat(number);
         }
     };
-    dataArgs.forEach(function (c, i) {
-        if (i === 0) {
-            description = c;
-        }
-        else if (i === 1) { }
-        else {
-            console.log(c[orderOfVariables[11]].trim());
-            listCountryNames[index] = c[orderOfVariables[0]].trim();
-            listOfISO3[index] = c[orderOfVariables[1]].trim();
-            inNeed[index] = checkZeros(c[orderOfVariables[2]]);
-            foodNeed[index] = checkZeros(c[orderOfVariables[3]]);
-            childFoodNeed[index] = checkZeros(c[orderOfVariables[4]]);
-            waterNeed[index] = checkZeros(c[orderOfVariables[5]]);
-            idp[index] = checkZeros(c[orderOfVariables[6]]);
-            peopleHelped[index] = checkZeros(c[orderOfVariables[7]]);
-            foodHelped[index] = checkZeros(c[orderOfVariables[8]]);
-            cashTransferred[index] = checkZeros(c[orderOfVariables[9]]);
-            waterSafe[index] = checkZeros(c[orderOfVariables[10]]);
-            center[index] = [];
-            center[index][0] = checkZeros(c[orderOfVariables[11]].trim());
-            center[index][1] = checkZeros(c[orderOfVariables[12]].trim());
+    try {
+        dataArgs.forEach(function (c, i) {
+            if (i === 0) {
+                description = c;
+            }
+            else if (i === 1) { }
+            else {
+                listCountryNames[index] = c[orderOfVariables[0]].trim();
+                listOfISO3[index] = c[orderOfVariables[1]].trim();
+                inNeed[index] = checkZeros(c[orderOfVariables[2]]);
+                foodNeed[index] = checkZeros(c[orderOfVariables[3]]);
+                childFoodNeed[index] = checkZeros(c[orderOfVariables[4]]);
+                waterNeed[index] = checkZeros(c[orderOfVariables[5]]);
+                idp[index] = checkZeros(c[orderOfVariables[6]]);
+                peopleHelped[index] = checkZeros(c[orderOfVariables[7]]);
+                foodHelped[index] = checkZeros(c[orderOfVariables[8]]);
+                cashTransferred[index] = checkZeros(c[orderOfVariables[9]]);
+                waterSafe[index] = checkZeros(c[orderOfVariables[10]]);
+                center[index] = [];
+                center[index][0] = checkZeros(c[orderOfVariables[11]].trim());
+                center[index][1] = checkZeros(c[orderOfVariables[12]].trim());
 
-            index++;
-        }
-    }); //End data args for each
+                index++;
+            }
+        }); //End data args for each
+    } catch (e) { console.log("Please check the spreadsheet with the data.");}
 
     createObjects();
     setMapbox();
@@ -272,7 +273,7 @@ function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var
             }
             // function to animate the numbers to count up 10 means 1 decimal place
 
-                countUp(countDecimal);  
+            countUp(countDecimal);
         }, 500);
     }); // end fadedout of number container
 } //end setNumberCountUp
@@ -305,7 +306,7 @@ function setActiveChapter(chapterName) {
     var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
     var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
     var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
-    
+
     setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
 
     oldChapter = chapterName;
@@ -320,18 +321,18 @@ the function takes the country chapter name/id as a parameter. e.g.: "SSD" for S
 //------------------------------------ SETTING UP MAPBOX ----------------------------------------------
 
 
-    //------------- Setting up the background map (grey basic map labelled east-africa-famine2 on mapbox)
+//------------- Setting up the background map (grey basic map labelled east-africa-famine2 on mapbox)
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYnJjbWFwcyIsImEiOiJRZklIbXY0In0.SeDBAb72saeEJhTVDrVusg';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/brcmaps/cj00w54pm00na2ro400gflm5j',
-        center: [29.619141, 7.536764],
-        zoom: 2.5,
-        interactive: false
-    });
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnJjbWFwcyIsImEiOiJRZklIbXY0In0.SeDBAb72saeEJhTVDrVusg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/brcmaps/cj00w54pm00na2ro400gflm5j',
+    center: [29.619141, 7.536764],
+    zoom: 2.5,
+    interactive: false
+});
 
-    // ------------------------------ When the map loads add all the layers --------------------------------
+// ------------------------------ When the map loads add all the layers --------------------------------
 
 function setMapbox() {
 
@@ -393,9 +394,6 @@ function setMapbox() {
                 }
             }
         };
-
     }); // END function on map load
 
 }
-
-
