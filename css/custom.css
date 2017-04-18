@@ -49,8 +49,8 @@ section img {
 #title {
   padding: 2em 0 2em 0;
 }
-#instructions {
-  color: #999;
+#africa {
+  line-height: 2em;
 }
 #footer {
   padding-bottom: 3em;
@@ -145,7 +145,7 @@ body.section-0 #map {
 }
 @media (min-width: 1279px) {
   section {
-    padding: 50px;
+    padding: 0px 50px 50px 50px;
   }
   .navigation-bar {
     left: 45%;
