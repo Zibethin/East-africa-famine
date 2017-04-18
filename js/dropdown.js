@@ -21,8 +21,15 @@ function closeMenu() {
 }
 
 function checkEvent(event) {
-    if (!event.target.matches('.menu')) {
-        closeMenu();
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    if (isIE) {
+        if (!event.target.msMatchesSelector('.menu')) {
+            closeMenu();
+        }
+    } else {
+        if (!event.target.matches('.menu')) {
+            closeMenu();
+        }
     }
 }
 
