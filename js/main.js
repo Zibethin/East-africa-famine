@@ -39,12 +39,15 @@ var pitch = [45, 15, 35, 5, 50, 20];
 
 
 //text on the map
-var needText = '</div><div class="number-text"> million people in need</div>';
-var foodText = '</div><div class="number-text"> million malnourished</div>';
-var idpText = '</div><div class="number-text"> million internally displaced</div>';
-var helpedHtml = '</div><div>&nbsp; thousand people helped</div>';
-var foodHtml = '</div><div> thousand people are provided food</div>';
-var cashTransfer = '</div><div> thousand people have been transferred cash</div>';
+var needText = '</div><div class="number-text"> ';
+var foodText = '</div><div class="number-text"> ';
+var idpText = '</div><div class="number-text"> ';
+var rcText = '</div><div> ';
+var rcFoodText = '</div><div> ';
+var cashTransfer = '</div><div> ';
+var rcWaterText = '</div><div> ';
+var childFoodtext = '</div><div> ';
+var waterText = '</div><div> ';
 var countDiv = '<div class=\'count\'> ';
 
 // get viewport width and transform numbers
@@ -53,6 +56,7 @@ var center = [];
 var activeChapterName = 'ETH';
 var activeRedCrossWork = 'ETH';
 var oldChapter = 'africa';
+var setNumbers = 0;
 
 //initialising the locations list
 
@@ -116,6 +120,17 @@ $.when(sheetCall).then(function (dataArgs) {
                 index++;
             }
         }); //End data args for each
+        // Setting up text for numbers on the map
+        needText = '</div><div> '+ description[orderOfVariables[2]] + "</div>";
+        foodText = '</div><div> '+ description[orderOfVariables[3]] + "</div>";
+        childFoodText = '</div><div> ' + description[orderOfVariables[4]] + "</div>";
+        waterText = '</div><div> ' + description[orderOfVariables[5]] + "</div>";
+        idpText = '</div><div> ' + description[orderOfVariables[6]] + "</div>";
+        rcText = '</div><div> ' + description[orderOfVariables[7]] + "</div>";
+        rcFoodText = '</div><div> ' + description[orderOfVariables[8]] + "</div>";
+        cashTransfer = '</div><div> ' + description[orderOfVariables[9]] + "</div>";
+        rcWaterText = '</div><div> ' + description[orderOfVariables[10]] + "</div>";
+        console.log(needHtml);
     } catch (e) { console.log("Please check the spreadsheet with the data.");}
 
     createObjects();
@@ -307,14 +322,7 @@ function setActiveChapter(chapterName) {
 
     activeChapterName = chapterName;
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
-
-    // fade out previous number and then fade in new numbers
-    var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
-    var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
-    var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
-
-    setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
-
+    setNumbers = 0;
     oldChapter = chapterName;
 } //End function SetActive Chapter
 
@@ -389,12 +397,21 @@ function setMapbox() {
                         var rc_var1 = "peopleHelped";
                         var rc_var2 = "foodHelped";
                         var rc_var3 = "cashTransferred";
-                        var rc_work_line1 = countDiv + mapLocations[chapterName][rc_var1] + helpedHtml;
-                        var rc_work_line2 = countDiv + mapLocations[chapterName][rc_var2] + foodHtml;
+                        var rc_work_line1 = countDiv + mapLocations[chapterName][rc_var1] + rcText;
+                        var rc_work_line2 = countDiv + mapLocations[chapterName][rc_var2] + rcFoodText;
                         var rc_work_line3 = countDiv + mapLocations[chapterName][rc_var3] + cashTransfer;
                         setNumberCountUp(chapterName, rc_work_line1, rc_var1, rc_work_line2, rc_var2, rc_work_line3, rc_var3, 1);
                         activeRedCrossWork = chapterName;
                         break;
+                    } else {
+                        if (setNumbers === 1) { break; }
+                        // fade out previous number and then fade in new numbers
+                        var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
+                        var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
+                        var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
+                        console.log(foodHtml);
+                        setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
+                        serNumbers = 1;
                     }
                     break;
                 }
