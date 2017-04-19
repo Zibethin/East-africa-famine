@@ -326,7 +326,9 @@ function setActiveChapter(chapterName) {
     oldChapter = chapterName;
 } //End function SetActive Chapter
 
-
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 /*This function will fade out overall country numbers and fade in Red Cross numbers
 the function takes the country chapter name/id as a parameter. e.g.: "SSD" for South Sudan */
@@ -397,18 +399,18 @@ function setMapbox() {
                         var rc_var1 = "peopleHelped";
                         var rc_var2 = "foodHelped";
                         var rc_var3 = "cashTransferred";
-                        var rc_work_line1 = countDiv + mapLocations[chapterName][rc_var1] + rcText;
-                        var rc_work_line2 = countDiv + mapLocations[chapterName][rc_var2] + rcFoodText;
-                        var rc_work_line3 = countDiv + mapLocations[chapterName][rc_var3] + cashTransfer;
+                        var rc_work_line1 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var1]) + rcText;
+                        var rc_work_line2 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var2]) + rcFoodText;
+                        var rc_work_line3 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var3]) + cashTransfer;
                         setNumberCountUp(chapterName, rc_work_line1, rc_var1, rc_work_line2, rc_var2, rc_work_line3, rc_var3, 1);
                         activeRedCrossWork = chapterName;
                         break;
                     } else {
                         if (setNumbers === 1) { break; }
                         // fade out previous number and then fade in new numbers
-                        var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
-                        var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
-                        var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
+                        var needHtml = countDiv + numberWithCommas(mapLocations[chapterName].inNeed) + needText;
+                        var foodHtml = countDiv + numberWithCommas(mapLocations[chapterName].foodNeed) + foodText;
+                        var idpHtml = countDiv + numberWithCommas(mapLocations[chapterName].idp) + idpText;
                         console.log(foodHtml);
                         setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
                         serNumbers = 1;
