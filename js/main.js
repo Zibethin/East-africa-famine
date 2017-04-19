@@ -245,8 +245,8 @@ function changeAndAnimateNumbers(id, html) {
     $(id).animate({ "opacity": 0 }, 1000, "linear", function(){
         var tm1 = setTimeout(function () {
             $(id).html(html);
+            $(id).css("display", "flex");
         }, 1000);
-        $(id).css("display", "flex");
         var tm2 = setTimeout(function () {
             $(id).animate({ "opacity": 1 }, 1000)
         }, 1500);
@@ -259,31 +259,28 @@ function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var
     if (mapLocations[chapterName][var1] > 0) {
         changeAndAnimateNumbers('#in-need', html1);
     };
-            if (mapLocations[chapterName][var2] > 0) {
-                $('#number1').css("visibility", "visible");
-                $('#number1').html(foodHtml).fadeIn(1000, function () {
-                });
-            }
-            if (mapLocations[chapterName][var3] > 0) {
-                $('#number2').css("visibility", "visible");
-                $('#number2').html(idpHtml).fadeIn(1000, function () {
-                });
-            }
-            if (mapLocations[chapterName][var1] === 0) {
-                $('#in-need').animate({ opacity: 0 }, 1000);
-                $('#in-need').css("display", "none");
-            }
-            if (mapLocations[chapterName][var2] === 0) {
-                $('#number1').css("display", "none");
-            }
-            if (mapLocations[chapterName][var3] === 0) {
-                $('#number2').css("display", "none");
-            }
-            // function to animate the numbers to count up 10 means 1 decimal place
+    if (mapLocations[chapterName][var2] > 0) {
+        changeAndAnimateNumbers('#number1', foodHtml);
+    }
+    if (mapLocations[chapterName][var3] > 0) {
+        changeAndAnimateNumbers('#number2', idpHtml);
+    }
+    if (mapLocations[chapterName][var1] === 0) {
+        $('#in-need').animate({ opacity: 0 }, 1000, "linear");
+        setTimeout(function () { $('#in-need').css("display", "none"); }, 1000);
+    }
+    if (mapLocations[chapterName][var2] === 0) {
+        $('#number1').animate({ opacity: 0 }, 1000, "linear");
+        setTimeout(function () { $('#number1').css("display", "none"); }, 1000);
+    }
+    if (mapLocations[chapterName][var3] === 0) {
+        $('#number2').animate({ opacity: 0 }, 1000, "linear");
+        setTimeout(function () { $('#number2').css("display", "none"); }, 1000);
+    }
+    // function to animate the numbers to count up 10 means 1 decimal place
 
-            countUp(countDecimal);
-        //}, 500);
-    //}); // end fadedout of number container
+    countUp(countDecimal);
+
 } //end setNumberCountUp
 
 
