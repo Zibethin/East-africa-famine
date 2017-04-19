@@ -218,17 +218,17 @@ function isRedCrossWorkOnScreen(id) {
 }
 
 function countUp(decimals) {
-    $('.count').each(function () {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 1500,
-            easing: 'swing',
-            step: function (now) {
-                $(this).text(parseFloat((Math.ceil(now * decimals) / decimals).toFixed(1)));
-            }
-        });
-    });
+    //$('.count').each(function () {
+    //    $(this).prop('Counter', 0).animate({
+    //        Counter: $(this).text()
+    //    }, {
+    //        duration: 1500,
+    //        easing: 'swing',
+    //        step: function (now) {
+    //            $(this).text(parseFloat((Math.ceil(now * decimals) / decimals).toFixed(1)));
+    //        }
+    //    });
+    //});
 }
 
 
@@ -241,41 +241,48 @@ takes the following parameters:
         if the number of people affected are 91.9 million, 
         a value of countDecimal = 10 will count up from 0.1 to 91.9 fo instance
         whereas a value of 1 will count up from 1 to 91*/
-
+var tm1, tm2;
 function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var3, countDecimal) {
-    $('.number-container').fadeOut(1000, function () {
-        setTimeout(function () {
-
+    $('#in-need').stop();
+    $('#in-need').css("opacity", 0);
             // if the number of people in need is not null then add the numbers to the map
-            if (mapLocations[chapterName][var1] > 0) {
-                $('#in-need').css("visibility", "visible");
-                $('#in-need').html(html1).fadeIn(1000, function () {
-                });
-            }
+    if (mapLocations[chapterName][var1] > 0) {
+        $('#in-need').animate({ "opacity": 0 }, 1000, "linear", function(){
+            tm1 = setTimeout(function () {
+                $('#in-need').html(html1);
+            }, 1000);
+            tm2 = setTimeout(function () {
+                //$('#in-need').css("display", "flex");
+                $('#in-need').animate({ "opacity": 1 }, 1000)
+            }, 1500);
+        })};
+
+           // }
             if (mapLocations[chapterName][var2] > 0) {
-                $('#food-need').css("visibility", "visible");
-                $('#food-need').html(foodHtml).fadeIn(1000, function () {
+                $('#number1').css("visibility", "visible");
+                $('#number1').html(foodHtml).fadeIn(1000, function () {
                 });
             }
             if (mapLocations[chapterName][var3] > 0) {
-                $('#i-d-p').css("visibility", "visible");
-                $('#i-d-p').html(idpHtml).fadeIn(1000, function () {
+                $('#number2').css("visibility", "visible");
+                $('#number2').html(idpHtml).fadeIn(1000, function () {
                 });
             }
             if (mapLocations[chapterName][var1] === 0) {
-                $('#in-need').css("visibility", "hidden");
+                $('#in-need').animate({ opacity: 0 }, 1000);
+                $('#in-need').css("display", "none");
             }
             if (mapLocations[chapterName][var2] === 0) {
-                $('#food-need').css("visibility", "hidden");
+                $('#number1').css("visibility", "hidden");
             }
             if (mapLocations[chapterName][var3] === 0) {
-                $('#i-d-p').css("visibility", "hidden");
+                $('#number2').css("visibility", "hidden");
             }
             // function to animate the numbers to count up 10 means 1 decimal place
 
             countUp(countDecimal);
-        }, 500);
-    }); // end fadedout of number container
+        //}, 500);
+    //}); // end fadedout of number container
 } //end setNumberCountUp
 
 

@@ -250,8 +250,15 @@ text {
   color: #990000;
 }
 /*----------------------- numbers ---------------------*/
-.number-container {
+#numbers {
+  top: 20%;
+  width: 100%;
+  height: 100%;
+  left: 3em;
   position: absolute;
+  z-index: 9999;
+}
+.number-container {
   color: #5e5e5e;
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
@@ -260,8 +267,9 @@ text {
   font-weight: 500;
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
+  width: 100%;
   padding-bottom: 2em;
-  z-index: 9999;
+  opacity: 0;
 }
 /* For mobile phones: */
 [class*="col-"] {

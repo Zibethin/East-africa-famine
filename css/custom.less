@@ -311,8 +311,16 @@ text {
 
 /*----------------------- numbers ---------------------*/
 
-.number-container {
+#numbers{
+    top: 20%;
+    width: 100%;
+    height: 100%;
+    left: 3em;
     position: absolute;
+    z-index: 9999;
+}
+
+.number-container {
     color: @font-number-color;
     transition: opacity 250ms;
     -moz-transition: opacity 250ms;
@@ -321,8 +329,9 @@ text {
     font-weight: 500;
     font-family: @font-secondary;
     display: flex;
+    width:100%;
     padding-bottom: 2em;
-    z-index: 9999;
+    opacity:0;
 }
 
 /* For mobile phones: */
