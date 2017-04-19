@@ -251,20 +251,21 @@ text {
 }
 /*----------------------- numbers ---------------------*/
 #numbers {
-  top: 20%;
-  width: 100%;
+  top: 15%;
+  width: 90%;
   height: 100%;
   left: 3em;
   position: absolute;
   z-index: 9999;
 }
+#numbers .number-container:first-child {
+  font-size: 2.5em;
+}
 .number-container {
   color: #5e5e5e;
-  font-size: 2.5em;
-  font-weight: 500;
+  font-size: 2em;
   font-family: 'Roboto Condensed', sans-serif;
   width: 100%;
-  padding-bottom: 2em;
   opacity: 0;
   display: none;
 }
@@ -276,15 +277,6 @@ text {
   -o-transition: opacity 2s ease-in;
   -ms-transition: opacity 2s ease-in;
   transition: opacity 2s ease-in;
-}
-.fadeOut {
-  display: flex;
-  /*opacity: 1;
-    -webkit-transition: opacity 2s ease-out;
-    -moz-transition: opacity 2s ease-out;
-    -o-transition: opacity 2s ease-out;
-    -ms-transition: opacity 2s ease-out;
-    transition: opacity 2s ease-out;*/
 }
 /* For mobile phones: */
 [class*="col-"] {
@@ -300,25 +292,11 @@ text {
   left: 30%;
   width: 100%;
 }
-#in-need {
-  left: 20%;
-  top: 12%;
-}
-#food-need {
-  left: 20%;
-  top: 20%;
-  font-size: 1.7em;
-}
-#i-d-p {
-  left: 20%;
-  top: 25%;
-  font-size: 1.7em;
-}
 /* styling numbers */
 .count {
   font-size: 1.5em;
   font-family: 'Roboto Condensed', sans-serif;
-  min-width: 100px;
+  padding-right: 0.3em;
 }
 /*------------------------- Content layout ----------------------*/
 .header-name {
