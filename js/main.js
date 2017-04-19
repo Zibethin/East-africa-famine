@@ -241,23 +241,24 @@ takes the following parameters:
         if the number of people affected are 91.9 million, 
         a value of countDecimal = 10 will count up from 0.1 to 91.9 fo instance
         whereas a value of 1 will count up from 1 to 91*/
-var tm1, tm2;
+function changeAndAnimateNumbers(id, html) {
+    $(id).animate({ "opacity": 0 }, 1000, "linear", function(){
+        var tm1 = setTimeout(function () {
+            $(id).html(html);
+        }, 1000);
+        $(id).css("display", "flex");
+        var tm2 = setTimeout(function () {
+            $(id).animate({ "opacity": 1 }, 1000)
+        }, 1500);
+    })
+}
 function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var3, countDecimal) {
     $('#in-need').stop();
     $('#in-need').css("opacity", 0);
             // if the number of people in need is not null then add the numbers to the map
     if (mapLocations[chapterName][var1] > 0) {
-        $('#in-need').animate({ "opacity": 0 }, 1000, "linear", function(){
-            tm1 = setTimeout(function () {
-                $('#in-need').html(html1);
-            }, 1000);
-            tm2 = setTimeout(function () {
-                //$('#in-need').css("display", "flex");
-                $('#in-need').animate({ "opacity": 1 }, 1000)
-            }, 1500);
-        })};
-
-           // }
+        changeAndAnimateNumbers('#in-need', html1);
+    };
             if (mapLocations[chapterName][var2] > 0) {
                 $('#number1').css("visibility", "visible");
                 $('#number1').html(foodHtml).fadeIn(1000, function () {
@@ -273,10 +274,10 @@ function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var
                 $('#in-need').css("display", "none");
             }
             if (mapLocations[chapterName][var2] === 0) {
-                $('#number1').css("visibility", "hidden");
+                $('#number1').css("display", "none");
             }
             if (mapLocations[chapterName][var3] === 0) {
-                $('#number2').css("visibility", "hidden");
+                $('#number2').css("display", "none");
             }
             // function to animate the numbers to count up 10 means 1 decimal place
 
