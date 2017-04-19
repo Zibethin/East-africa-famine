@@ -322,17 +322,42 @@ text {
 
 .number-container {
     color: @font-number-color;
-    transition: opacity 250ms;
-    -moz-transition: opacity 250ms;
-    -webkit-transition: opacity 250ms;
     font-size: 2.5em;
     font-weight: 500;
     font-family: @font-secondary;
-    display: flex;
     width:100%;
     padding-bottom: 2em;
-    opacity:0;
+    opacity: 0;
 }
+
+.fadeIn{
+    display: flex;
+    opacity: 1;
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
+}
+.fadeOut{
+    display: flex;
+    /*opacity: 1;
+    -webkit-transition: opacity 2s ease-out;
+    -moz-transition: opacity 2s ease-out;
+    -o-transition: opacity 2s ease-out;
+    -ms-transition: opacity 2s ease-out;
+    transition: opacity 2s ease-out;*/
+}
+
+/*@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}*/
 
 /* For mobile phones: */
 [class*="col-"] {
