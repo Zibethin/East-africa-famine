@@ -39,7 +39,7 @@ h3 {
     padding-bottom: 1em;
 }
 
-section {
+section, #title {
     padding: 30px;
     min-height: 360px;
     background: @colour-active-backgr;
@@ -65,10 +65,6 @@ section img{
 
 .center{
     text-align:center;
-}
-
-#title{
-    padding: 2em 0 2em 0;
 }
 
 #africa{
@@ -197,6 +193,11 @@ body.section-0 #map {
 }
 
 @media (min-width: 768px) {
+
+    #title{
+        padding: 2em 5em 2em 5em;
+    }
+
     article {
         width: @size-of-article;
         min-width: 320px;

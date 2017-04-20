@@ -22,7 +22,8 @@ p + h3 {
 h3 {
   padding-bottom: 1em;
 }
-section {
+section,
+#title {
   padding: 30px;
   min-height: 360px;
   background: #fff;
@@ -45,9 +46,6 @@ section img {
 }
 .center {
   text-align: center;
-}
-#title {
-  padding: 2em 0 2em 0;
 }
 #africa {
   line-height: 2em;
@@ -158,6 +156,9 @@ body.section-0 #map {
   }
 }
 @media (min-width: 768px) {
+  #title {
+    padding: 2em 5em 2em 5em;
+  }
   article {
     width: 55%;
     min-width: 320px;
