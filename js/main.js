@@ -100,13 +100,13 @@ $.when(sheetCall).then(
     },
     // will fire when timeout or error is reached
     function () {
-        console.log("HXL Proxy is down. Using backup JSON.");
+        console.log("The HXL Proxy is down. Using backup JSON.");
         $.ajax({
             type: 'GET',
             url: "data/data.json",
             dataType: 'json',
             error: function () {
-                console.log("error loading backup JSON");
+                console.log("Error loading the backup JSON. Please contact https://twitter.com/zibethin about this issue.");
             },
             success: function (dataArgs) {
                 initialise(dataArgs);
