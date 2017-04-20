@@ -26,6 +26,7 @@ section,
 #title {
   padding: 30px;
   min-height: 360px;
+  max-width: 650px;
   background: #fff;
   color: #333;
   position: relative;
