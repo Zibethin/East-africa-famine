@@ -37,14 +37,21 @@ var cashTransferred = [];
 var waterSafe = [];
 var pitch = [45, 15, 35, 5, 50, 20];
 
+var rc_var1 = "peopleHelped";
+var rc_var2 = "foodHelped";
+var rc_var3 = "cashTransferred";
+var rc_var4 = "waterHelped";
 
 //text on the map
-var needText = '</div><div class="number-text"> million people in need</div>';
-var foodText = '</div><div class="number-text"> million malnourished</div>';
-var idpText = '</div><div class="number-text"> million internally displaced</div>';
-var helpedHtml = '</div><div>&nbsp; thousand people helped</div>';
-var foodHtml = '</div><div> thousand people are provided food</div>';
-var cashTransfer = '</div><div> thousand people have been transferred cash</div>';
+var needText = '</div><div class="number-text"> ';
+var foodText = '</div><div class="number-text"> ';
+var idpText = '</div><div class="number-text"> ';
+var rcText = '</div><div> ';
+var rcFoodText = '</div><div> ';
+var cashTransfer = '</div><div> ';
+var rcWaterText = '</div><div> ';
+var childFoodtext = '</div><div> ';
+var waterText = '</div><div> ';
 var countDiv = '<div class=\'count\'> ';
 
 // get viewport width and transform numbers
@@ -53,6 +60,7 @@ var center = [];
 var activeChapterName = 'ETH';
 var activeRedCrossWork = 'ETH';
 var oldChapter = 'africa';
+var setNumbers = 0;
 
 //initialising the locations list
 
@@ -66,7 +74,9 @@ var mapLocations = {
         },
         'inNeed': 70.1,
         'foodNeed': 0,
-        'idp': 0
+        'idp': 0,
+        'childNeed': 0,
+        'waterNeed':0,
     }
 };
 
@@ -116,6 +126,17 @@ $.when(sheetCall).then(function (dataArgs) {
                 index++;
             }
         }); //End data args for each
+        // Setting up text for numbers on the map
+        needText = '</div><div> '+ description[orderOfVariables[2]] + "</div>";
+        foodText = '</div><div> '+ description[orderOfVariables[3]] + "</div>";
+        childFoodText = '</div><div> ' + description[orderOfVariables[4]] + "</div>";
+        waterText = '</div><div> ' + description[orderOfVariables[5]] + "</div>";
+        idpText = '</div><div> ' + description[orderOfVariables[6]] + "</div>";
+        rcText = '</div><div> ' + description[orderOfVariables[7]] + "</div>";
+        rcFoodText = '</div><div> ' + description[orderOfVariables[8]] + "</div>";
+        cashTransfer = '</div><div> ' + description[orderOfVariables[9]] + "</div>";
+        rcWaterText = '</div><div> ' + description[orderOfVariables[10]] + "</div>";
+        console.log(childFoodNeed);
     } catch (e) { console.log("Please check the spreadsheet with the data.");}
 
     createObjects();
@@ -145,14 +166,17 @@ var LayerObject = {
 
 var CountryObject = {
     //initialising the object
-    init: function (camera, inNeed, foodNeed, idp, peopleHelped, foodHelped, cashTransferred) {
+    init: function (camera, inNeed, foodNeed, idp, childNeed, waterNeed, peopleHelped, foodHelped, cashTransferred, waterHelped) {
         this.camera = camera;
         this.inNeed = inNeed;
         this.foodNeed = foodNeed;
         this.idp = idp;
-        this.peopleHelped = peopleHelped;
-        this.foodHelped = foodHelped;
-        this.cashTransferred = cashTransferred;
+        this.childNeed = childNeed;
+        this.waterNeed = waterNeed;
+        this[rc_var1] = peopleHelped;
+        this[rc_var2] = foodHelped;
+        this[rc_var3] = cashTransferred;
+        this[rc_var4] = waterHelped;
     }
 };
 
@@ -178,10 +202,9 @@ function createObjects() {
         var tempCamera = Object.create(CameraObject);
         var temp = Object.create(CountryObject);
         tempCamera.init(4000, center[i], 3.5, pitch[i]);
-        temp.init(tempCamera, inNeed[i], foodNeed[i], idp[i], peopleHelped[i], foodHelped[i], cashTransferred[i]);
+        temp.init(tempCamera, inNeed[i], foodNeed[i], idp[i], childFoodNeed[i], waterNeed[i], peopleHelped[i], foodHelped[i], cashTransferred[i], waterSafe[i]);
         mapLocations[listOfISO3[i]] = temp;
     }
-
 
     //creating the layers for borders and name highlighting
 
@@ -203,9 +226,9 @@ function createObjects() {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    //console.log("bounds.top=",bounds.top, "bounds.bottom=", bounds.bottom, ", id=", id);
     return bounds.top < window.innerHeight && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
+
 
 // Function which looks for the section red-cross-work inside a given chapter ID
 function isRedCrossWorkOnScreen(id) {
@@ -218,64 +241,35 @@ function isRedCrossWorkOnScreen(id) {
 }
 
 function countUp(decimals) {
-    $('.count').each(function () {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 1500,
-            easing: 'swing',
-            step: function (now) {
-                $(this).text(parseFloat((Math.ceil(now * decimals) / decimals).toFixed(1)));
-            }
-        });
-    });
+    //$('.count').each(function () {
+    //    $(this).prop('Counter', 0).animate({
+    //        Counter: $(this).text()
+    //    }, {
+    //        duration: 1500,
+    //        easing: 'swing',
+    //        step: function (now) {
+    //            $(this).text(parseFloat((Math.ceil(now * decimals) / decimals).toFixed(1)));
+    //        }
+    //    });
+    //});
 }
 
 
-/* setNumberCountUp: function which fades existing numbers out and fades in new numbers
-takes the following parameters: 
-    - name of the current chapter/country, 
-    - the text for the first line
-    - the text for the second line
-    - and how many decimals the function should count up e.g.: 
-        if the number of people affected are 91.9 million, 
-        a value of countDecimal = 10 will count up from 0.1 to 91.9 fo instance
-        whereas a value of 1 will count up from 1 to 91*/
+function changeAndAnimateNumbers(id, html) {
 
-function setNumberCountUp(chapterName, html1, var1, foodHtml, var2, idpHtml, var3, countDecimal) {
-    $('.number-container').fadeOut(1000, function () {
-        setTimeout(function () {
+    $(id).html(html);
+    $(id).addClass("fadeIn");
+}
 
-            // if the number of people in need is not null then add the numbers to the map
-            if (mapLocations[chapterName][var1] > 0) {
-                $('#in-need').css("visibility", "visible");
-                $('#in-need').html(html1).fadeIn(1000, function () {
-                });
-            }
-            if (mapLocations[chapterName][var2] > 0) {
-                $('#food-need').css("visibility", "visible");
-                $('#food-need').html(foodHtml).fadeIn(1000, function () {
-                });
-            }
-            if (mapLocations[chapterName][var3] > 0) {
-                $('#i-d-p').css("visibility", "visible");
-                $('#i-d-p').html(idpHtml).fadeIn(1000, function () {
-                });
-            }
-            if (mapLocations[chapterName][var1] === 0) {
-                $('#in-need').css("visibility", "hidden");
-            }
-            if (mapLocations[chapterName][var2] === 0) {
-                $('#food-need').css("visibility", "hidden");
-            }
-            if (mapLocations[chapterName][var3] === 0) {
-                $('#i-d-p').css("visibility", "hidden");
-            }
-            // function to animate the numbers to count up 10 means 1 decimal place
+function setNumberCountUp(chapterName, html, var1, id) {
 
-            countUp(countDecimal);
-        }, 500);
-    }); // end fadedout of number container
+    // if the number of people in need is not null then add the numbers to the map
+    if (mapLocations[chapterName][var1] > 0) {
+        changeAndAnimateNumbers(id, html);
+    };
+    if (mapLocations[chapterName][var1] === 0) {
+        $(id).removeClass("fadeIn");
+    }
 } //end setNumberCountUp
 
 
@@ -296,26 +290,16 @@ function setActiveChapter(chapterName) {
     //Moving camera to new country
     map.flyTo(mapLocations[chapterName].camera);
 
-    //document.getElementById(chapterName).setAttribute('class', 'active');
-    //document.getElementById(activeChapterName).setAttribute('class', '');
-
     activeChapterName = chapterName;
     activeRedCrossWork = ''; // setting this so that when you scroll backwards red cross work numbers still appear
-
-    // fade out previous number and then fade in new numbers
-    var needHtml = countDiv + mapLocations[chapterName].inNeed + needText;
-    var foodHtml = countDiv + mapLocations[chapterName].foodNeed + foodText;
-    var idpHtml = countDiv + mapLocations[chapterName].idp + idpText;
-
-    setNumberCountUp(chapterName, needHtml, 'inNeed', foodHtml, 'foodNeed', idpHtml, 'idp', 10);
-
+    setNumbers = 0;
     oldChapter = chapterName;
 } //End function SetActive Chapter
 
-
-
-/*This function will fade out overall country numbers and fade in Red Cross numbers
-the function takes the country chapter name/id as a parameter. e.g.: "SSD" for South Sudan */
+function numberWithCommas(x) {
+    console.log(x);
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 //------------------------------------ SETTING UP MAPBOX ----------------------------------------------
@@ -380,15 +364,35 @@ function setMapbox() {
                     if (isRedCrossWorkOnScreen(chapterName)) {
                         if (activeRedCrossWork === chapterName) { break; }  // setting this so that the numbers don't go in a loop while we stay on the section
                         // fade out previous number and then fade in new number of in number of people in Need
-                        var rc_var1 = "peopleHelped";
-                        var rc_var2 = "foodHelped";
-                        var rc_var3 = "cashTransferred";
-                        var rc_work_line1 = countDiv + mapLocations[chapterName][rc_var1] + helpedHtml;
-                        var rc_work_line2 = countDiv + mapLocations[chapterName][rc_var2] + foodHtml;
-                        var rc_work_line3 = countDiv + mapLocations[chapterName][rc_var3] + cashTransfer;
-                        setNumberCountUp(chapterName, rc_work_line1, rc_var1, rc_work_line2, rc_var2, rc_work_line3, rc_var3, 1);
+
+                        var rc_work_line1 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var1]) + rcText;
+                        var rc_work_line2 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var2]) + rcFoodText;
+                        var rc_work_line3 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var3]) + cashTransfer;
+                        var rc_work_line4 = countDiv + numberWithCommas(mapLocations[chapterName][rc_var4]) + rcWaterText;
+                        setNumberCountUp(chapterName, rc_work_line1, rc_var1, '#in-need');
+                        setNumberCountUp(chapterName, rc_work_line2, rc_var2, '#number1');
+                        setNumberCountUp(chapterName, rc_work_line3, rc_var3, '#number2');
+                        setNumberCountUp(chapterName, rc_work_line4, rc_var4, '#number3');
+                        $("#number4").removeClass("fadeIn");
+
                         activeRedCrossWork = chapterName;
                         break;
+                    } else {
+                        if (setNumbers === 1) { break; }
+                        console.log(mapLocations[chapterName]);
+                        // fade out previous number and then fade in new numbers
+                        var needHtml = countDiv + numberWithCommas(mapLocations[chapterName].inNeed) + needText;
+                        var foodHtml = countDiv + numberWithCommas(mapLocations[chapterName].foodNeed) + foodText;
+                        var idpHtml = countDiv + numberWithCommas(mapLocations[chapterName].idp) + idpText;
+                        var childHtml = countDiv + numberWithCommas(mapLocations[chapterName].childNeed) + childFoodText;
+                        var waterHtml = countDiv + numberWithCommas(mapLocations[chapterName].waterNeed) + waterText;
+
+                        setNumberCountUp(chapterName, needHtml, 'inNeed', '#in-need');
+                        setNumberCountUp(chapterName, foodHtml, 'foodNeed', '#number1');
+                        setNumberCountUp(chapterName, idpHtml, 'idp', '#number2');
+                        setNumberCountUp(chapterName, childHtml, 'childNeed', '#number3');
+                        setNumberCountUp(chapterName, waterHtml, 'waterNeed', '#number4');
+                        serNumbers = 1;
                     }
                     break;
                 }

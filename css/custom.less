@@ -311,18 +311,36 @@ text {
 
 /*----------------------- numbers ---------------------*/
 
-.number-container {
+#numbers{
+    top: 15%;
+    width: 90%;
+    height: 100%;
+    left: 3em;
     position: absolute;
-    color: @font-number-color;
-    transition: opacity 250ms;
-    -moz-transition: opacity 250ms;
-    -webkit-transition: opacity 250ms;
-    font-size: 2.5em;
-    font-weight: 500;
-    font-family: @font-secondary;
-    display: flex;
-    padding-bottom: 2em;
     z-index: 9999;
+}
+
+#numbers .number-container:first-child{
+    font-size: 2.5em;
+}
+
+.number-container {
+    color: @font-number-color;
+    font-size: 1.5em;
+    font-family: @font-secondary;
+    width:100%;
+    opacity: 0;
+    display: none;
+}
+
+.fadeIn{
+    display: flex;
+    opacity: 1;
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
 }
 
 /* For mobile phones: */
@@ -342,26 +360,11 @@ text {
     width: 100%;
 }
 
-#in-need {
-  left: 20%;
-  top: 12%;
-}
-#food-need {
-  left: 20%;
-  top: 20%;
-  font-size: 1.7em;
-}
-#i-d-p {
-  left: 20%;
-  top: 25%;
-  font-size: 1.7em;
-}
-
 /* styling numbers */
 .count {
     font-size: 1.5em;
     font-family:@font-secondary;
-    min-width: 100px;
+    padding-right: 0.3em;
 }
 
 
