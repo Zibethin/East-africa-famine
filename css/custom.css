@@ -33,6 +33,7 @@ section,
   transition: background 500ms, color 500ms;
   -moz-transition: background 500ms, color 500ms;
   -webkit-transition: background 500ms, color 500ms;
+  margin: auto;
 }
 section,
 section a {
@@ -306,7 +307,6 @@ text {
 /*------------------------- Content layout ----------------------*/
 .header-name {
   margin-top: 0px;
-  text-align: center;
 }
 /* Disable these awful hyperlink colours*/
 a:link,
