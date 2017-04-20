@@ -1,0 +1,10 @@
+[
+["Country", "ISO3", "million in need", "million people in food crisis and emergency", "children suffering severe acute malnutrition", "million in need of safe drinking water", "million people displaced", "people helped", "people provided food", "cash transfer", "safe drinking water", "map longitude", "map latitude"],
+["#country", "#country+code+iso3", "#affected", "#food+need", "#food+children", "#water", "#displaced", "#reached", "#activity+type", "#cash", "#water+reached", "#lon", "#lat"],
+["Yemen", "YEM", "18.8", "17", "462000", "14.5", "2", "380000", "210000", "", "3.3", "47.636719", "20.509905"],
+["Nigeria", "NGA", "8.5", "7.1", "450000", "3.8", "2", "", "120000", "", "354,000", "9.84375", "14.978733"],
+["South Sudan", "SSD", "7.5", "4.9", "270000", "5.1", "3.3", "", "950000", "", "100,000", "30.585937", "14.562947"],
+["Somalia ", "SOM", "6.2", "2.9", "270000", "4.5", "1.9", "", "", "", "", "45.042969", "11.045813"],
+["Ethiopia ", "ETH", "9.7", "5.6", "303000", "9", "", "", "", "", "", "40.078125", "14.895893"],
+["Kenya", "KEN", "2.7", "2.2", "109000", "2.7", "90,000", "", "", "", "78200", "39.023438", "9.449062"]
+]

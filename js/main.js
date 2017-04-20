@@ -84,64 +84,35 @@ var layerName = 'admin0-4r2su7';
 
 //call to google sheet
 //googleSheet Link
-var gLink = "https://proxy.hxlstandard.org/data.json?force=on&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612&force=on";
+var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612";
 
 var sheetCall = $.ajax({
     type: 'GET',
     url: gLink,
     dataType: 'json',
+    timeout: 3000 // sets timeout to 3 seconds
 });
 
-$.when(sheetCall).then(function (dataArgs) {
-    var index = 0;
-    function checkZeros(number) {
-        if (isNaN(parseFloat(number))) {
-            return 0;
-        } else {
-            return parseFloat(number);
-        }
-    };
-    try {
-        dataArgs.forEach(function (c, i) {
-            if (i === 0) {
-                description = c;
-            }
-            else if (i === 1) { }
-            else {
-                listCountryNames[index] = c[orderOfVariables[0]].trim();
-                listOfISO3[index] = c[orderOfVariables[1]].trim();
-                inNeed[index] = checkZeros(c[orderOfVariables[2]]);
-                foodNeed[index] = checkZeros(c[orderOfVariables[3]]);
-                childFoodNeed[index] = checkZeros(c[orderOfVariables[4]]);
-                waterNeed[index] = checkZeros(c[orderOfVariables[5]]);
-                idp[index] = checkZeros(c[orderOfVariables[6]]);
-                peopleHelped[index] = checkZeros(c[orderOfVariables[7]]);
-                foodHelped[index] = checkZeros(c[orderOfVariables[8]]);
-                cashTransferred[index] = checkZeros(c[orderOfVariables[9]]);
-                waterSafe[index] = checkZeros(c[orderOfVariables[10]]);
-                center[index] = [];
-                center[index][0] = checkZeros(c[orderOfVariables[11]].trim());
-                center[index][1] = checkZeros(c[orderOfVariables[12]].trim());
-
-                index++;
-            }
-        }); //End data args for each
-        // Setting up text for numbers on the map
-        needText = '</div><div> '+ description[orderOfVariables[2]] + "</div>";
-        foodText = '</div><div> '+ description[orderOfVariables[3]] + "</div>";
-        childFoodText = '</div><div> ' + description[orderOfVariables[4]] + "</div>";
-        waterText = '</div><div> ' + description[orderOfVariables[5]] + "</div>";
-        idpText = '</div><div> ' + description[orderOfVariables[6]] + "</div>";
-        rcText = '</div><div> ' + description[orderOfVariables[7]] + "</div>";
-        rcFoodText = '</div><div> ' + description[orderOfVariables[8]] + "</div>";
-        cashTransfer = '</div><div> ' + description[orderOfVariables[9]] + "</div>";
-        rcWaterText = '</div><div> ' + description[orderOfVariables[10]] + "</div>";
-        console.log(childFoodNeed);
-    } catch (e) { console.log("Please check the spreadsheet with the data.");}
-
-    createObjects();
-    setMapbox();
-
+$.when(sheetCall).then(
+    //runs when call successful
+    function (dataArgs) {
+        initialise(dataArgs);
+    },
+    // will fire when timeout or error is reached
+    function () {
+        console.log("HXL Proxy is down. Using backup JSON.");
+        $.ajax({
+            type: 'GET',
+            url: "data/data.json",
+            dataType: 'json',
+            error: function () {
+                console.log("error loading backup JSON");
+            },
+            success: function (dataArgs) {
+                initialise(dataArgs);
+            },
+            timeout: 3000 // sets timeout to 3 seconds
+        });
 })
 
 
@@ -221,6 +192,56 @@ function createObjects() {
 }
 
 //----------------------------------- FUNCTIONS ------------------------------------------------------
+function initialise(dataArgs) {
+    var index = 0;
+    function checkZeros(number) {
+        if (isNaN(parseFloat(number))) {
+            return 0;
+        } else {
+            return parseFloat(number);
+        }
+    };
+    try {
+        dataArgs.forEach(function (c, i) {
+            if (i === 0) {
+                description = c;
+            }
+            else if (i === 1) { }
+            else {
+                listCountryNames[index] = c[orderOfVariables[0]].trim();
+                listOfISO3[index] = c[orderOfVariables[1]].trim();
+                inNeed[index] = checkZeros(c[orderOfVariables[2]]);
+                foodNeed[index] = checkZeros(c[orderOfVariables[3]]);
+                childFoodNeed[index] = checkZeros(c[orderOfVariables[4]]);
+                waterNeed[index] = checkZeros(c[orderOfVariables[5]]);
+                idp[index] = checkZeros(c[orderOfVariables[6]]);
+                peopleHelped[index] = checkZeros(c[orderOfVariables[7]]);
+                foodHelped[index] = checkZeros(c[orderOfVariables[8]]);
+                cashTransferred[index] = checkZeros(c[orderOfVariables[9]]);
+                waterSafe[index] = checkZeros(c[orderOfVariables[10]]);
+                center[index] = [];
+                center[index][0] = checkZeros(c[orderOfVariables[11]].trim());
+                center[index][1] = checkZeros(c[orderOfVariables[12]].trim());
+
+                index++;
+            }
+        }); //End data args for each
+        // Setting up text for numbers on the map
+        needText = '</div><div> ' + description[orderOfVariables[2]] + "</div>";
+        foodText = '</div><div> ' + description[orderOfVariables[3]] + "</div>";
+        childFoodText = '</div><div> ' + description[orderOfVariables[4]] + "</div>";
+        waterText = '</div><div> ' + description[orderOfVariables[5]] + "</div>";
+        idpText = '</div><div> ' + description[orderOfVariables[6]] + "</div>";
+        rcText = '</div><div> ' + description[orderOfVariables[7]] + "</div>";
+        rcFoodText = '</div><div> ' + description[orderOfVariables[8]] + "</div>";
+        cashTransfer = '</div><div> ' + description[orderOfVariables[9]] + "</div>";
+        rcWaterText = '</div><div> ' + description[orderOfVariables[10]] + "</div>";
+    } catch (e) { console.log("Please check the spreadsheet with the data."); }
+
+    createObjects();
+    setMapbox();
+}
+
 
 // Function which checks if a given country chapter is on screen
 function isElementOnScreen(id) {
@@ -297,7 +318,6 @@ function setActiveChapter(chapterName) {
 } //End function SetActive Chapter
 
 function numberWithCommas(x) {
-    console.log(x);
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -379,7 +399,6 @@ function setMapbox() {
                         break;
                     } else {
                         if (setNumbers === 1) { break; }
-                        console.log(mapLocations[chapterName]);
                         // fade out previous number and then fade in new numbers
                         var needHtml = countDiv + numberWithCommas(mapLocations[chapterName].inNeed) + needText;
                         var foodHtml = countDiv + numberWithCommas(mapLocations[chapterName].foodNeed) + foodText;
