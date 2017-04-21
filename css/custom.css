@@ -187,6 +187,9 @@ body.section-0 #map {
     width: 45%;
     z-index: 20;
   }
+  #Error {
+    background-image: url("img/map.png");
+  }
 }
 /*--------------------------- Map comments @bottom ------------------*/
 .attribution {
