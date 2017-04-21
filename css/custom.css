@@ -94,9 +94,13 @@ section img {
   -ms-transform-origin: top left;
   -moz-transform-origin: top left;
   -webkit-transform-origin: top left;
+  height: 28px;
 }
-#footer .twitter-share-button {
+.twitter-share-button {
   margin-left: 20px;
+}
+.buttons {
+  line-height: 1.4em;
 }
 /* --------------------------- DEVICES ----------------------------------------*/
 article {
