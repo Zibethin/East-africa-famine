@@ -40,7 +40,7 @@
 
     <div id='pane' class="hidden-xs">
         <!--class="hidden-xs"-->
-        <div id="Error"><p>Warning: this browser is not the latest version, please upgrade it to view the visualisation. If you do have the latest version of the browser but are still experiencing issues, please <a href="https://twitter.com/zibethin">get in touch</a>.</p></div>
+        <div id="Error"></div>
         <div id='map'>
             <div id="numbers">
                 <div id="in-need" class="number-container"></div>
@@ -94,14 +94,16 @@
 
                 <p class='scroll center hidden-xs'>Start scrolling ▼</p>
 
-                <div class="center">
-                    <a href="http://www.redcross.org.uk/en/Donate-Now?single=1"><div id="donate1" class="button-social">Donate</div></a>
+                <div class="buttons center">
+                    <a href="http://www.redcross.org.uk/en/Donate-Now?single=1"><div id="donate" class="button-social">Donate</div></a>
+                    <br />
                     <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="https://zibethin.github.io/East-africa-famine/" data-via="BritishRedCross" data-hashtags="EastAfrica" data-show-count="false">Tweet</a>
                     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <br />
                     <div class="fb-share-button button-social" data-href="https://zibethin.github.io/East-africa-famine/" data-layout="button" data-size="small" data-mobile-iframe="true">
                         <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzibethin.github.io%2FEast-africa-famine%2F&amp;src=sdkpreparse">Share</a>
                     </div>
-                </div>
+                 </div>
             </section>
         </div>
 
@@ -521,11 +523,12 @@
 
     </article>
 
-    <!--<script src="js/bootstrap.min.js"></script>-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/main.js"></script>
+    <!--uncomment below for dev version-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/dropdown.js"></script>
+        <script src="js/main.js"></script>
+    <!--uncomment below for prod version-->
     <!--<script src="js/bundle.min.js"></script>-->
     <!--[if lt IE 9]>
     <script>

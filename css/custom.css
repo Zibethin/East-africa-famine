@@ -64,6 +64,7 @@ section img {
   border-radius: 3px;
   margin-right: 1px;
   margin-left: 21px;
+  line-height: 1.6em;
 }
 #donate1 {
   background-color: #ee2a24;
@@ -94,9 +95,13 @@ section img {
   -ms-transform-origin: top left;
   -moz-transform-origin: top left;
   -webkit-transform-origin: top left;
+  height: 28px;
 }
-#footer .twitter-share-button {
+.twitter-share-button {
   margin-left: 20px;
+}
+.buttons {
+  line-height: 1.5em;
 }
 /* --------------------------- DEVICES ----------------------------------------*/
 article {
@@ -117,7 +122,9 @@ article {
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
-  background-color: white;
+}
+#Error p a {
+  color: red;
 }
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
@@ -188,7 +195,6 @@ body.section-0 #map {
     z-index: 20;
   }
   #Error {
-    background-image: url("../img/map.png");
     height: 100%;
     background-position: center;
     text-align: center;
