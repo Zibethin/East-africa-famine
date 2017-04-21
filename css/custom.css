@@ -64,6 +64,7 @@ section img {
   border-radius: 3px;
   margin-right: 1px;
   margin-left: 21px;
+  line-height: 1.6em;
 }
 #donate1 {
   background-color: #ee2a24;
@@ -100,7 +101,7 @@ section img {
   margin-left: 20px;
 }
 .buttons {
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 /* --------------------------- DEVICES ----------------------------------------*/
 article {
