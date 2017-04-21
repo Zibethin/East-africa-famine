@@ -123,8 +123,8 @@ article {
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
 }
-#map p:link {
-  color: #007399;
+#Error p a {
+  color: red;
 }
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
@@ -195,7 +195,6 @@ body.section-0 #map {
     z-index: 20;
   }
   #Error {
-    background-image: url("../img/map.png");
     height: 100%;
     background-position: center;
     text-align: center;
