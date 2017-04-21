@@ -117,6 +117,7 @@ article {
   transition: opacity 250ms;
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
+  background-color: white;
 }
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
