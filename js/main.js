@@ -247,7 +247,7 @@ function initialise(dataArgs) {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
+    return bounds.top < window.innerHeight/2 && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
 
 
