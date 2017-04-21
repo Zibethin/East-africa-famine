@@ -341,7 +341,7 @@ var map = new mapboxgl.Map({
 function setMapbox() {
 
     map.on('load', function () {
-
+        $("#map").css("background-color", 'white');
         //Adding Map Sources: 
         //adding the natural earth boundaries
 
