@@ -187,6 +187,12 @@ body.section-0 #map {
     width: 45%;
     z-index: 20;
   }
+  #Error {
+    background-image: url("../img/map.png");
+    height: 100%;
+    background-position: center;
+    text-align: center;
+  }
 }
 /*--------------------------- Map comments @bottom ------------------*/
 .attribution {
