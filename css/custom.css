@@ -188,7 +188,10 @@ body.section-0 #map {
     z-index: 20;
   }
   #Error {
-    background-image: url("img/map.png");
+    background-image: url("../img/map.png");
+    height: 100%;
+    background-position: center;
+    text-align: center;
   }
 }
 /*--------------------------- Map comments @bottom ------------------*/
