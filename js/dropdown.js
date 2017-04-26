@@ -52,7 +52,7 @@ document.onscroll = function () {
 }(document, 'script', 'facebook-jssdk'));
 
 setTimeout(function(){
-    $("#Error").css("background-image", "url('../img/map.png')");
+    $("#Error").css("background-image", "url('img/map.png')");
     var html1 = "<p>Warning: this browser is not the latest version, please upgrade it to view the visualisation. If you do have the latest version of the browser but are still experiencing issues, please <a href='https://twitter.com/zibethin'>get in touch</a>.</p>";
     $("#Error").html(html1);
 }, 5000);
