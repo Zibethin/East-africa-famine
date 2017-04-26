@@ -72,7 +72,7 @@ var mapLocations = {
             'zoom': '2.5',
             'pitch': '0'
         },
-        'inNeed': 70.1,
+        'inNeed': 0,
         'foodNeed': 0,
         'idp': 0,
         'childNeed': 0,
