@@ -107,8 +107,10 @@ section img {
 article {
   z-index: 21;
 }
-.box {
-  margin: 20px 70px 0 70px;
+.box img {
+  width: 650px;
+  text-align: center;
+  margin: 0 auto 0 auto;
 }
 #pane {
   height: 100vh;
