@@ -21,7 +21,7 @@ var orderOfVariables = [0, //Country,
 ];
 
 
-var colorNotActive = 'rgba(189, 182, 176, 0.8)'//'rgba(153, 0, 0, 0.7)';
+var colorNotActive = 'rgba(189, 182, 176, 0.8)';//'rgba(153, 0, 0, 0.7)';
 var colorActive = 'rgba(238, 42, 36, 1)';//'rgba(204, 0, 0, 1)';
 var listOfISO3 = [];
 var listCountryNames = [];
@@ -76,7 +76,7 @@ var mapLocations = {
         'foodNeed': 0,
         'idp': 0,
         'childNeed': 0,
-        'waterNeed':0,
+        'waterNeed':0
     }
 };
 
@@ -113,7 +113,7 @@ $.when(sheetCall).then(
             },
             timeout: 3000 // sets timeout to 3 seconds
         });
-})
+    });
 
 
 //---------------------------------------- OBJECT DEFINITIONS -------------------------------------------
@@ -200,13 +200,13 @@ function initialise(dataArgs) {
         } else {
             return parseFloat(number);
         }
-    };
+    }
     try {
         dataArgs.forEach(function (c, i) {
             if (i === 0) {
                 description = c;
             }
-            else if (i === 1) { }
+            else if (i === 1) {console.log("");}
             else {
                 listCountryNames[index] = c[orderOfVariables[0]].trim();
                 listOfISO3[index] = c[orderOfVariables[1]].trim();
@@ -287,7 +287,7 @@ function setNumberCountUp(chapterName, html, var1, id) {
     // if the number of people in need is not null then add the numbers to the map
     if (mapLocations[chapterName][var1] > 0) {
         changeAndAnimateNumbers(id, html);
-    };
+    }
     if (mapLocations[chapterName][var1] === 0) {
         $(id).removeClass("fadeIn");
     }
