@@ -60,7 +60,7 @@ section img {
   font-size: 0.9em;
 }
 #donate {
-  background-color: #ee2a24;
+  background-color: #ef1829;
   height: 35px;
   font-size: 1.2em;
   padding: 4px 10px 4px 10px;
@@ -71,7 +71,7 @@ section img {
   line-height: 1.6em;
 }
 #donate1 {
-  background-color: #ee2a24;
+  background-color: #ef1829;
   height: 28px;
   padding: 4px 10px 4px 10px;
   color: white;
@@ -238,10 +238,10 @@ body.section-0 #map {
 /*------------------------------ Icons -----------------------------*/
 .glyphicon-large {
   font-size: 20px;
-  color: #ee2a24;
+  color: #ef1829;
 }
 .color-red {
-  color: #ee2a24;
+  color: #ef1829;
 }
 .section-indent {
   margin-left: 16px;
