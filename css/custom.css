@@ -27,7 +27,6 @@ section,
   padding: 30px;
   max-width: 650px;
   background: #fff;
-  color: #333;
   position: relative;
   transition: background 500ms, color 500ms;
   -moz-transition: background 500ms, color 500ms;
@@ -44,6 +43,10 @@ section small {
 }
 section img {
   padding: 2em 0 2em 0;
+}
+.img-responsive {
+  margin: 0 auto 0 auto;
+  width: 100%;
 }
 .center {
   text-align: center;
