@@ -54,6 +54,11 @@ section img {
 #footer {
   padding-bottom: 3em;
 }
+#footer .credits {
+  font-style: italic;
+  padding: 3em 0 0 0;
+  font-size: 0.9em;
+}
 #donate {
   background-color: #ee2a24;
   height: 35px;
@@ -322,7 +327,7 @@ text {
   font-family: 'Roboto Condensed', sans-serif;
   padding-right: 0.3em;
 }
-/*------------------------- Content layout ----------------------*/
+/*------------------------- Links ----------------------*/
 .header-name {
   margin-top: 0px;
 }
