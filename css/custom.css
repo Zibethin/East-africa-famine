@@ -128,8 +128,8 @@ article {
   -moz-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
 }
-#Error p a {
-  color: red;
+#Error p {
+  padding: 50px;
 }
 /* Distinguish the "cover page" visually other sections. */
 body.section-0 #map {
