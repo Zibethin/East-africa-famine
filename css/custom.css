@@ -298,16 +298,6 @@ text {
   opacity: 0;
   display: none;
 }
-.fadeIn {
-  display: flex;
-  opacity: 1;
-  -webkit-transition: opacity 2s ease-in;
-  -moz-transition: opacity 2s ease-in;
-  -o-transition: opacity 2s ease-in;
-  -ms-transition: opacity 2s ease-in;
-  /*for old IE versions*/
-  transition: opacity 2s ease-in;
-}
 /* For mobile phones: */
 [class*="col-"] {
   width: 100%;
