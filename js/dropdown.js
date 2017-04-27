@@ -57,3 +57,11 @@ setTimeout(function(){
     var html1 = "<p>Warning: this browser is not the latest version, please upgrade it to view the visualisation. If you do have the latest version of the browser but are still experiencing issues, please get in touch: tnguyen [at] redcross.org.uk.</p>";
     $("#Error").html(html1);
 }, 5000);
+
+
+$(function () {
+    $('a[href*=#]').on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
+    });
+});
