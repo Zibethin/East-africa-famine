@@ -3,9 +3,9 @@
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 
-document.getElementById("menu-button").onclick = function() {
+document.getElementById("menu-button").onclick = function () {
     document.getElementById("menu-items").classList.toggle("show");
-}
+};
 
 // Close the dropdown if the user clicks outside of it
 
@@ -35,11 +35,11 @@ function checkEvent(event) {
 
 window.onclick = function (event) {
     checkEvent(event);
-}
+};
 
 document.onscroll = function () {
     closeMenu();
-}
+};
 
 // script for facebook share
 
