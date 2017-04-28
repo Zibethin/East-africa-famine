@@ -7,9 +7,9 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 
-document.getElementById("menu-button").onclick = function() {
+document.getElementById("menu-button").onclick = function () {
     document.getElementById("menu-items").classList.toggle("show");
-}
+};
 
 // Close the dropdown if the user clicks outside of it
 
@@ -39,11 +39,11 @@ function checkEvent(event) {
 
 window.onclick = function (event) {
     checkEvent(event);
-}
+};
 
 document.onscroll = function () {
     closeMenu();
-}
+};
 
 // script for facebook share
 
@@ -61,6 +61,14 @@ setTimeout(function(){
     var html1 = "<p>Warning: this browser is not the latest version, please upgrade it to view the visualisation. If you do have the latest version of the browser but are still experiencing issues, please get in touch: tnguyen [at] redcross.org.uk.</p>";
     $("#Error").html(html1);
 }, 5000);
+
+
+$(function () {
+    $('.top-button').on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
+    });
+});
 //Dataset for map, chapter names, numbers and zoom 
 //Note the country code needs to be the ISO3 code
 
@@ -84,7 +92,7 @@ var orderOfVariables = [0, //Country,
 ];
 
 
-var colorNotActive = 'rgba(189, 182, 176, 0.8)'//'rgba(153, 0, 0, 0.7)';
+var colorNotActive = 'rgba(189, 182, 176, 0.8)';//'rgba(153, 0, 0, 0.7)';
 var colorActive = 'rgba(238, 42, 36, 1)';//'rgba(204, 0, 0, 1)';
 var listOfISO3 = [];
 var listCountryNames = [];
@@ -139,7 +147,7 @@ var mapLocations = {
         'foodNeed': 0,
         'idp': 0,
         'childNeed': 0,
-        'waterNeed':0,
+        'waterNeed':0
     }
 };
 
@@ -147,7 +155,7 @@ var layerName = 'admin0-4r2su7';
 
 //call to google sheet
 //googleSheet Link
-var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612";
+var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612&force=on";
 
 var sheetCall = $.ajax({
     type: 'GET',
@@ -176,7 +184,7 @@ $.when(sheetCall).then(
             },
             timeout: 3000 // sets timeout to 3 seconds
         });
-})
+    });
 
 
 //---------------------------------------- OBJECT DEFINITIONS -------------------------------------------
@@ -263,13 +271,13 @@ function initialise(dataArgs) {
         } else {
             return parseFloat(number);
         }
-    };
+    }
     try {
         dataArgs.forEach(function (c, i) {
             if (i === 0) {
                 description = c;
             }
-            else if (i === 1) { }
+            else if (i === 1) {console.log("");}
             else {
                 listCountryNames[index] = c[orderOfVariables[0]].trim();
                 listOfISO3[index] = c[orderOfVariables[1]].trim();
@@ -310,7 +318,7 @@ function initialise(dataArgs) {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight/2 && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
+    return bounds.top < window.innerHeight / 2 && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
 
 
@@ -320,7 +328,7 @@ function isRedCrossWorkOnScreen(id) {
     var element = document.querySelector(string);
     if (element !== null) {
         var bounds = element.getBoundingClientRect();
-        return bounds.top < window.innerHeight && bounds.bottom > 50; ////CHECK THIS FOR CHROME
+        return bounds.top < window.innerHeight/2 && bounds.bottom > 0; ////CHECK THIS FOR CHROME
     } else { return false; }
 }
 
@@ -350,7 +358,7 @@ function setNumberCountUp(chapterName, html, var1, id) {
     // if the number of people in need is not null then add the numbers to the map
     if (mapLocations[chapterName][var1] > 0) {
         changeAndAnimateNumbers(id, html);
-    };
+    }
     if (mapLocations[chapterName][var1] === 0) {
         $(id).removeClass("fadeIn");
     }
