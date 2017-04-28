@@ -257,7 +257,6 @@ function isRedCrossWorkOnScreen(id) {
     var element = document.querySelector(string);
     if (element !== null) {
         var bounds = element.getBoundingClientRect();
-        console.log(bounds.bottom);
         return bounds.top < window.innerHeight/2 && bounds.bottom > 0; ////CHECK THIS FOR CHROME
     } else { return false; }
 }
@@ -395,7 +394,7 @@ function setMapbox() {
                         setNumberCountUp(chapterName, rc_work_line3, rc_var3, '#number2');
                         setNumberCountUp(chapterName, rc_work_line4, rc_var4, '#number3');
                         $("#number4").removeClass("fadeIn");
-                        console.log("!");
+
                         activeRedCrossWork = chapterName;
                         break;
                     } else {
