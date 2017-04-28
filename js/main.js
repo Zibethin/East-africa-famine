@@ -84,7 +84,7 @@ var layerName = 'admin0-4r2su7';
 
 //call to google sheet
 //googleSheet Link
-var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612";
+var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612&force=on";
 
 var sheetCall = $.ajax({
     type: 'GET',
@@ -247,7 +247,7 @@ function initialise(dataArgs) {
 function isElementOnScreen(id) {
     var element = document.getElementById(id);
     var bounds = element.getBoundingClientRect();
-    return bounds.top < window.innerHeight/2 && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
+    return bounds.top < window.innerHeight / 2 && bounds.bottom > 50;  //Returns true-false if element is in screen boundaries 
 }
 
 
@@ -257,7 +257,8 @@ function isRedCrossWorkOnScreen(id) {
     var element = document.querySelector(string);
     if (element !== null) {
         var bounds = element.getBoundingClientRect();
-        return bounds.top < window.innerHeight && bounds.bottom > 50; ////CHECK THIS FOR CHROME
+        console.log(bounds.bottom);
+        return bounds.top < window.innerHeight/2 && bounds.bottom > 0; ////CHECK THIS FOR CHROME
     } else { return false; }
 }
 
@@ -394,7 +395,7 @@ function setMapbox() {
                         setNumberCountUp(chapterName, rc_work_line3, rc_var3, '#number2');
                         setNumberCountUp(chapterName, rc_work_line4, rc_var4, '#number3');
                         $("#number4").removeClass("fadeIn");
-
+                        console.log("!");
                         activeRedCrossWork = chapterName;
                         break;
                     } else {
