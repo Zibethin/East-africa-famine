@@ -84,7 +84,7 @@ var layerName = 'admin0-4r2su7';
 
 //call to google sheet
 //googleSheet Link
-var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612&force=on";
+var gLink = "https://proxy.hxlstandard.org/data.json?&url=https%3A//docs.google.com/spreadsheets/d/13dT082rHZEm7-HT8YBVypsi7rGGaQooKJCyJ_1HTfys/edit%23gid%3D454209612";
 
 var sheetCall = $.ajax({
     type: 'GET',
